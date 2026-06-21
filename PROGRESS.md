@@ -63,6 +63,20 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
 
 ---
 
+## ⚠️ Known constraint — Google Drive delivery of the built app
+The built single file is ~75 KB (~63 K characters). The available Google Drive MCP
+tools (`create_file`) require the **entire file content inline**, with **no
+append/update/delete** tool. A 63 K‑char payload cannot be emitted faithfully in one
+tool call (a single bad char in the minified JSON = blank app, and it can't be deleted).
+Netlify deploy is also blocked unattended (no CLI; the MCP refuses to create a new site
+without explicit user confirmation). **Workaround used in Iteration 2:** the full app is
+committed to `dist/` in the repo, and a small instructions Google Doc was placed in the
+Drive `ChongHwa` folder ("中华备考 App · 第2次迭代更新说明") telling the user to drag
+`dist/ChongHwa-Prep-App.html` into the folder.
+**For Iteration 3:** ask the user to either (a) point me at an **existing Netlify site
+id** so I can `deploy-site` (reliable, gives a portable URL), or (b) confirm they're OK
+with the manual drag, or (c) keep the per‑iteration instructions doc approach.
+
 ## Next up (ideas for Iteration 3+)
 
 - [ ] **Mine more real questions** from the 2024/2025, 2023, 2022 papers (Chinese & English passages, more Malay).
