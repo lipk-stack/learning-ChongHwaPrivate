@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0" />
+  <meta name="theme-color" content="#c8102e" />
+  <meta name="description" content="马来西亚吉隆坡中华独立中学入学考试 — 互动学习应用 · Chong Hwa Independent High School Entrance Exam Trainer" />
+  <title>中华入学试 · Chong Hwa Entrance Trainer</title>
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="中华入学试" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Top bar -->
+    <header class="topbar" id="topbar">
+      <button class="icon-btn" id="backBtn" aria-label="返回 Back" hidden>‹</button>
+      <div class="brand">
+        <span class="brand-badge">华</span>
+        <span class="brand-text">中华入学试</span>
+      </div>
+      <div class="stats-mini" id="statsMini">
+        <span class="stat-chip" title="连胜 Streak">🔥 <b id="miniStreak">0</b></span>
+        <span class="stat-chip" title="星星 XP">⭐ <b id="miniXp">0</b></span>
+      </div>
+    </header>
+
+    <!-- Views get injected here -->
+    <main id="view" class="view"></main>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- Install hint for iOS -->
+  <div id="iosInstall" class="ios-install" hidden>
+    <div class="ios-install-card">
+      <button class="ios-close" id="iosClose" aria-label="关闭">×</button>
+      <p>📱 在 iPhone / iPad 上安装：点按 <b>分享</b> <span class="ios-share">⬆️</span> → <b>加入主屏幕</b></p>
+      <p class="muted">Install on iPhone/iPad: tap <b>Share</b> → <b>Add to Home Screen</b></p>
+    </div>
+  </div>
+
+  <script src="js/data/subjects.js"></script>
+  <script src="js/data/questions.js"></script>
+  <script src="js/data/pastpaper.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

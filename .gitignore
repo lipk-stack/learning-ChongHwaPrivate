@@ -1,0 +1,10 @@
+# Node test deps (used only for local smoke tests, never shipped)
+node_modules/
+package-lock.json
+package.json
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/

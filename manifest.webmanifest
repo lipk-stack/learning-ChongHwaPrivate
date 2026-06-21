@@ -1,0 +1,19 @@
+{
+  "name": "中华入学试 · Chong Hwa Entrance Trainer",
+  "short_name": "中华入学试",
+  "description": "吉隆坡中华独立中学入学考试互动学习应用 — 华文、数学、英文、国文。",
+  "lang": "zh-Hans",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fdfbf7",
+  "theme_color": "#c8102e",
+  "categories": ["education"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
