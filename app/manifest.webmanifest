@@ -1,0 +1,17 @@
+{
+  "name": "中华独中 初一备考 · Chong Hwa Junior 1 Prep",
+  "short_name": "中华备考",
+  "description": "吉隆坡中华独立中学 初一新生考试 趣味备考 App",
+  "lang": "zh",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1226",
+  "theme_color": "#e23d3d",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

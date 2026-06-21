@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0" />
+<meta name="theme-color" content="#e23d3d" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="中华备考" />
+<meta name="description" content="吉隆坡中华独立中学 初一新生考试 趣味备考 App" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="styles.css" />
+<title>中华独中 · 初一备考</title>
+</head>
+<body>
+<div id="app">
+  <!-- HOME -->
+  <section id="screen-home" class="screen active">
+    <header class="hero">
+      <div class="hero-badge">🏫 吉隆坡中华独立中学</div>
+      <h1 class="hero-title">初一新生考试<br/><span>趣味备考 App</span></h1>
+      <p class="hero-sub">Chong Hwa Junior 1 Entrance Exam · Fun Prep</p>
+      <div class="streak-bar">
+        <div class="stat"><span class="stat-num" id="stat-level">1</span><span class="stat-lbl">等级 Lv</span></div>
+        <div class="stat"><span class="stat-num" id="stat-xp">0</span><span class="stat-lbl">经验 XP</span></div>
+        <div class="stat"><span class="stat-num" id="stat-streak">0</span><span class="stat-lbl">🔥 连胜</span></div>
+        <div class="stat"><span class="stat-num" id="stat-acc">–</span><span class="stat-lbl">正确率</span></div>
+      </div>
+      <div class="xp-track"><div class="xp-fill" id="xp-fill"></div></div>
+      <p class="xp-hint" id="xp-hint"></p>
+    </header>
+
+    <h2 class="section-h">选择科目 · Choose a Subject</h2>
+    <div id="subject-grid" class="subject-grid"></div>
+
+    <h2 class="section-h">挑战模式 · Modes</h2>
+    <div class="mode-row">
+      <button class="mode-card" data-mode="mixed">🎲<span>综合挑战</span><small>Mixed quiz</small></button>
+      <button class="mode-card" data-mode="review">🩹<span>错题重练</span><small>Review mistakes</small></button>
+    </div>
+
+    <p class="foot">题目取自《2026 小六历届试题（修订版）》· 答案附详细讲解<br/><span id="foot-meta"></span></p>
+  </section>
+
+  <!-- SUBJECT DETAIL -->
+  <section id="screen-subject" class="screen">
+    <div class="topbar"><button class="back" data-home>‹ 返回</button><span id="subj-title"></span></div>
+    <div id="subj-head" class="subj-head"></div>
+    <div class="actions">
+      <button class="btn-primary" id="start-practice">▶ 开始练习 Practice</button>
+    </div>
+    <div id="topic-stats" class="topic-stats"></div>
+    <div id="notes-wrap"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="screen-quiz" class="screen">
+    <div class="quiz-top">
+      <button class="back" id="quit-quiz">✕</button>
+      <div class="qprogress"><div class="qprogress-fill" id="qprogress-fill"></div></div>
+      <div class="qcount"><span id="q-index">1</span>/<span id="q-total">1</span></div>
+    </div>
+    <div class="qbody">
+      <div class="qmeta"><span id="q-subject" class="chip"></span><span id="q-topic" class="chip ghost"></span></div>
+      <div id="q-stem" class="q-stem"></div>
+      <div id="q-options" class="q-options"></div>
+      <div id="q-fill" class="q-fill" hidden>
+        <input id="q-input" type="text" inputmode="text" autocomplete="off" placeholder="输入答案…" />
+        <button id="q-submit" class="btn-primary">提交 Submit</button>
+      </div>
+      <div id="q-feedback" class="q-feedback" hidden></div>
+    </div>
+    <div class="quiz-foot">
+      <button id="q-next" class="btn-primary" hidden>下一题 ›</button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="screen-result" class="screen">
+    <div id="result-emoji" class="result-emoji">🎉</div>
+    <h2 id="result-title">做得好！</h2>
+    <div class="result-score"><span id="result-correct">0</span> / <span id="result-total">0</span></div>
+    <p id="result-msg" class="result-msg"></p>
+    <div class="result-xp" id="result-xp"></div>
+    <div class="actions col">
+      <button class="btn-primary" id="result-again">再来一组 ↻</button>
+      <button class="btn-ghost" data-home>回首页 Home</button>
+    </div>
+  </section>
+</div>
+
+<div id="confetti"></div>
+<script src="data/questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
