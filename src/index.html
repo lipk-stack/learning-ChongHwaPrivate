@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0" />
+<meta name="theme-color" content="#e23d3d" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="中华备考" />
+<title>中华独中 · 初一备考 ⭐ Star Quest</title>
+<style>
+/*{{CSS}}*/
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== HOME ===== -->
+  <section id="screen-home" class="screen active">
+    <div class="hero">
+      <div class="brand"><span class="logo">📚</span><span>中华独中 · 初一备考</span></div>
+      <div class="sub" id="hero-sub">Chong Hwa Junior-1 Entrance Exam · Star Quest</div>
+      <div class="starline">
+        <div class="starbig">⭐ <span id="stat-stars">0</span> <small id="stars-en">stars · 星星</small></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="stat-level">1</b><span>等级 Level</span></div>
+        <div class="stat"><b id="stat-streak">0</b><span>连胜 Streak</span></div>
+        <div class="stat"><b id="stat-acc">–</b><span>正确率 Accuracy</span></div>
+        <div class="stat"><b id="stat-life">0</b><span>累计星 Lifetime</span></div>
+      </div>
+      <div class="mstone">
+        <div class="top"><span>🎮 下一个小游戏 · Next mini-game</span><span id="ms-count"></span></div>
+        <div class="mbar"><i id="ms-fill" style="width:0%"></i></div>
+        <div class="hint" id="ms-hint"></div>
+      </div>
+    </div>
+
+    <h2 class="section-h">选择科目 · Choose a Subject</h2>
+    <div class="grid" id="subject-grid"></div>
+
+    <h2 class="section-h">挑战模式 · Challenge Modes</h2>
+    <div class="modes">
+      <button class="mode-card" data-mode="mixed"><div class="ic">🎯</div><div class="t">综合挑战</div><div class="d">Mixed quiz · 全科混合 15 题</div></button>
+      <button class="mode-card" data-mode="review"><div class="ic">🔁</div><div class="t">错题重练</div><div class="d">Review mistakes · 攻克错题</div></button>
+    </div>
+    <div class="foot" id="foot-meta"></div>
+  </section>
+
+  <!-- ===== SUBJECT ===== -->
+  <section id="screen-subject" class="screen">
+    <div class="topbar"><button class="back" data-home>‹ 返回</button><div class="title" id="subj-title"></div></div>
+    <div class="subj-head" id="subj-head"></div>
+    <div class="topics" id="topic-stats"></div>
+    <button class="btn primary" id="start-practice">开始练习 · Start Practice</button>
+    <div id="notes-wrap"></div>
+  </section>
+
+  <!-- ===== QUIZ ===== -->
+  <section id="screen-quiz" class="screen">
+    <div class="topbar"><button class="back" id="quit-quiz">‹ 退出</button>
+      <div class="title">第 <span id="q-index">1</span> / <span id="q-total">15</span> 题</div>
+      <div class="chip">⭐ <span id="q-stars">0</span></div></div>
+    <div class="qprogress"><i id="qprogress-fill" style="width:0%"></i></div>
+    <div class="qcard">
+      <div class="qmeta"><span class="badge" id="q-subject"></span><span id="q-topic" class="qtopic"></span></div>
+      <div class="qstem" id="q-stem"></div>
+      <div id="q-options"></div>
+      <div id="q-fill" class="fillwrap" hidden>
+        <input id="q-input" type="text" autocomplete="off" autocapitalize="off" placeholder="输入答案 · type your answer" />
+        <button class="btn primary" id="q-submit">确定</button>
+      </div>
+      <div id="q-feedback" class="feedback" hidden></div>
+      <button class="btn primary" id="q-next" hidden style="margin-top:14px">下一题 ›</button>
+    </div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section id="screen-result" class="screen">
+    <div class="result">
+      <div class="emoji" id="result-emoji">🎉</div>
+      <h2 id="result-title"></h2>
+      <div class="score"><span id="result-correct">0</span><small>/<span id="result-total">0</span></small></div>
+      <div class="meta" id="result-stars"></div>
+      <div class="msg" id="result-msg"></div>
+      <button class="btn primary" id="result-again" style="margin-bottom:10px">再来一次 · Play Again</button>
+      <button class="btn ghost" data-home>回到主页 · Home</button>
+    </div>
+  </section>
+
+  <!-- ===== GAME ===== -->
+  <section id="screen-game" class="screen">
+    <div class="topbar"><button class="back" id="quit-game">‹ 退出</button>
+      <div class="title" id="game-title">小游戏</div>
+      <div class="chip" id="game-reward">⭐ 0</div></div>
+    <div class="gamewrap" id="game-host"></div>
+  </section>
+
+</div>
+
+<!-- milestone modal -->
+<div class="modal" id="modal-ms">
+  <div class="box">
+    <div class="em" id="ms-em">🎁</div>
+    <h3 id="ms-tt"></h3>
+    <p id="ms-desc"></p>
+    <div class="row">
+      <button class="btn ghost" id="ms-later" style="flex:1">稍后</button>
+      <button class="btn gold" id="ms-play" style="flex:2">立即挑战 ▶</button>
+    </div>
+  </div>
+</div>
+
+<div id="confetti"></div>
+
+<script>
+/*{{DATA}}*/
+</script>
+<script>
+/*{{APP}}*/
+</script>
+</body>
+</html>
