@@ -5,6 +5,25 @@
      Iteration 2 — adds the STAR economy and milestone mini-games.
      Portable: single file, offline, localStorage progress.
   =================================================================== */
+  // Distribution builds ship a compact bank (window.QB) to save space;
+  // expand it to the full shape the app expects. Readable builds already
+  // define window.QUESTION_BANK, so this is a no-op there.
+  if (window.QB && !window.QUESTION_BANK) {
+    var c = window.QB, o = { meta: c.meta, subjects: {} };
+    Object.keys(c.subjects).forEach(function (k) {
+      var s = c.subjects[k];
+      o.subjects[k] = {
+        key: s.k, name: s.name, enName: s.en, icon: s.icon, color: s.color, blurb: s.blurb,
+        notes: (s.notes || []).map(function (n) { return { title: n[0], body: n[1] }; }),
+        questions: s.Q.map(function (q, i) {
+          var obj = { id: k + "-" + i, topic: q[0], stem: q[1], answer: q[3], explanation: q[4] };
+          if (q[2] === 0) obj.type = "fill"; else obj.options = q[2];
+          return obj;
+        })
+      };
+    });
+    window.QUESTION_BANK = o;
+  }
   var BANK = window.QUESTION_BANK;
   var SUBJECTS = BANK.subjects;
   var LETTERS = ["A", "B", "C", "D", "E"];
