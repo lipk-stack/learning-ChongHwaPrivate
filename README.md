@@ -17,10 +17,12 @@ node -c src/app.js      # syntax check
 Source layout and the full plan live in **[PROGRESS.md](PROGRESS.md)** — read it before each iteration.
 
 ## Features
-- **147** curated questions across 4 subjects, each in its **correct language** with a **worked explanation**.
-- **Star economy:** correct +5⭐ (+streak bonus), wrong −3⭐.
-- **Milestone mini‑games** — a *different* game each milestone, harder each time:
-  ⚡ Speed Math · 🧩 Memory Match · 🌠 Star Catcher · 🔤 Word Scramble.
+- **157** curated questions across 4 subjects, each in its **correct language** with a **worked explanation**.
+- **Star economy:** correct +2⭐ (+streak bonus, max +3), wrong −4⭐ — stars are earned, not handed out.
+- **Daily goal & streak:** earn 30⭐ a day to bank a **+8⭐ bonus** and grow your 🔥 day‑streak.
+- **🛍️ Star Shop** — spend stars (a sink that never touches your level) on **6 themes** and **8 avatars**.
+- **Milestone mini‑games** — a *different* game each milestone, harder each time (6 in rotation):
+  ⚡ Speed Math · 🧩 Memory Match · 🌠 Star Catcher · 🔤 Word Scramble · 🔢 Sequence Sprint · 📚 Meaning Match.
 - Practice by subject, **Mixed** challenge, and **Review mistakes** modes; study notes per subject.
 
 Source material: `ChongHwa/2026小六历届试题（修订版).pdf` (Google Drive).

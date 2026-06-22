@@ -2,7 +2,8 @@
   "use strict";
   /* ===================================================================
      Chong Hwa Junior-1 Entrance Exam · Star Quest
-     Iteration 2 — adds the STAR economy and milestone mini-games.
+     Iteration 3 — adds a daily-goal streak, a Star Shop (themes +
+     avatars that spend stars), and two more milestone mini-games.
      Portable: single file, offline, localStorage progress.
   =================================================================== */
   // Distribution builds ship a compact bank (window.QB) to save space;
@@ -34,20 +35,63 @@
   var STAR_WRONG = -4;       // stars deducted for a wrong answer (balance never < 0)
   function streakBonus(s) { return Math.min(Math.floor(s / 3), 3); } // +1 per 3-in-a-row, max +3
   function milestoneAt(k) { return 70 * k + 20 * k * k; } // 90,220,390,600,850,...
+  var DAY_GOAL = 30;     // stars to earn in a day to hit the daily goal
+  var DAILY_BONUS = 8;   // bonus stars for meeting the daily goal
 
   var state = load();
   function load() {
-    try {
-      var s = JSON.parse(localStorage.getItem(STORE_KEY));
-      if (s && s.seen) return s;
-    } catch (e) {}
-    return {
-      stars: 0, lifetime: 0, offered: 0,
-      streak: 0, bestStreak: 0,
-      seen: {}, wrong: {}, totalAns: 0, totalCorrect: 0
-    };
+    var s = null;
+    try { s = JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) {}
+    if (!s || !s.seen) {
+      s = {
+        stars: 0, lifetime: 0, offered: 0,
+        streak: 0, bestStreak: 0,
+        seen: {}, wrong: {}, totalAns: 0, totalCorrect: 0
+      };
+    }
+    // ---- migrations / defaults for fields added in later iterations ----
+    if (s.day == null || s.day.date == null) s.day = { date: "", stars: 0 };
+    if (s.dayStreak == null) s.dayStreak = 0;
+    if (s.lastGoalDate === undefined) s.lastGoalDate = null;
+    if (s.dailyAwarded == null) s.dailyAwarded = false;
+    if (s.theme == null) s.theme = "default";
+    if (s.avatar == null) s.avatar = "📚";
+    if (!s.owned) s.owned = { default: true };
+    if (!s.ownedAvatars) s.ownedAvatars = { "📚": true };
+    return s;
   }
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+
+  /* ---------- daily goal + streak ---------- */
+  function dateStr(d) { d = d || new Date(); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); }
+  function yesterdayStr() { var d = new Date(); d.setDate(d.getDate() - 1); return dateStr(d); }
+  function rollDay() {
+    var t = dateStr();
+    if (state.day.date !== t) {
+      // a new calendar day: if the goal wasn't met yesterday, the daily streak breaks
+      if (state.lastGoalDate !== yesterdayStr() && state.lastGoalDate !== t) state.dayStreak = 0;
+      state.day = { date: t, stars: 0 };
+      state.dailyAwarded = false;
+      save();
+    }
+  }
+  function checkDailyGoal() {
+    if (!state.dailyAwarded && state.day.stars >= DAY_GOAL) {
+      state.dailyAwarded = true;
+      state.lastGoalDate = state.day.date;
+      state.dayStreak += 1;
+      state.stars += DAILY_BONUS;
+      state.lifetime += DAILY_BONUS;
+      save();
+      toast("🎯 完成今日目标！连续打卡 " + state.dayStreak + " 天 · 奖励 +" + DAILY_BONUS + "⭐");
+      burst(40);
+    }
+  }
+  function toast(msg) {
+    var t = el("toast"); if (!t) return;
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove("show"); }, 2800);
+  }
 
   var el = function (s) { return document.getElementById(s); };
   function levelFromLife(n) { return Math.floor(n / 120) + 1; }
@@ -78,7 +122,12 @@
   /* ---------- star awarding + milestone detection ---------- */
   function addStars(n, countLifetime) {
     state.stars = Math.max(0, state.stars + n);
-    if (countLifetime && n > 0) state.lifetime += n;
+    if (countLifetime && n > 0) {
+      state.lifetime += n;
+      rollDay();
+      state.day.stars += n;
+      checkDailyGoal();
+    }
     save();
   }
   // how many milestones the lifetime total has crossed
@@ -91,6 +140,8 @@
 
   /* ---------- HOME ---------- */
   function renderHome() {
+    rollDay();
+    var av = el("hero-avatar"); if (av) av.textContent = state.avatar;
     el("stat-stars").textContent = state.stars;
     el("stat-level").textContent = levelFromLife(state.lifetime);
     el("stat-streak").textContent = state.streak;
@@ -107,6 +158,15 @@
     var gname = GAMES[reached % GAMES.length];
     el("ms-hint").innerHTML = "再赚 <b>" + Math.max(0, next - state.lifetime) +
       "</b> 颗星即可解锁：<b>" + gname.icon + " " + gname.name + "</b>";
+
+    // daily goal progress
+    var dpct = Math.min(100, Math.round((state.day.stars / DAY_GOAL) * 100));
+    el("day-fill").style.width = Math.max(3, dpct) + "%";
+    el("day-streak").textContent = "🔥 连续 " + state.dayStreak + " 天";
+    el("day-hint").innerHTML = state.day.stars >= DAY_GOAL
+      ? "今日目标已完成 ✅ 太棒了！明天再来保持连胜。"
+      : "今日已赚 <b>" + state.day.stars + "</b> / " + DAY_GOAL + " ⭐，再赚 <b>" +
+        (DAY_GOAL - state.day.stars) + "</b> 颗即可达标，额外得 +" + DAILY_BONUS + "⭐";
 
     el("foot-meta").textContent = BANK.meta.school + "\n" + BANK.meta.exam +
       " · 题库 " + allQuestions().length + " 题 · 第 " + BANK.meta.builtIteration + " 次迭代";
@@ -281,7 +341,7 @@
      difficulty so the student can earn bonus stars. Interface:
        game.start(host, level, onDone)  ->  onDone(starsEarned)
   ================================================================= */
-  function goHome() { show("screen-home"); renderHome(); }
+  function goHome() { clearGameTimers(); show("screen-home"); renderHome(); }
 
   function maybeOfferMilestone() {
     var m = state.offered + 1;                 // the milestone number being offered (1-based)
@@ -327,6 +387,11 @@
   /* ---------- shared helpers for games ---------- */
   function fmtTime(s) { return s + "s"; }
   function pickMany(arr, n) { return shuffle(arr).slice(0, n); }
+  // Game timers are tracked so they can be stopped when the player quits a
+  // game mid-play (otherwise an interval keeps firing on removed DOM nodes).
+  var gameIntervals = [];
+  function gInterval(fn, ms) { var id = setInterval(fn, ms); gameIntervals.push(id); return id; }
+  function clearGameTimers() { for (var i = 0; i < gameIntervals.length; i++) clearInterval(gameIntervals[i]); gameIntervals = []; }
 
   // small pools derived from the bank for matching/scramble games
   function pairPool() {
@@ -404,7 +469,7 @@
         });
       }
       newQ();
-      var iv = setInterval(function () {
+      var iv = gInterval(function () {
         time--; el("t").textContent = time;
         if (time <= 0) { clearInterval(iv); done(score); }
       }, 1000);
@@ -500,8 +565,8 @@
         };
         setTimeout(function () { if (!killed) s.remove(); }, dur + 50);
       }
-      var di = setInterval(drop, 750 - level * 30);
-      var ti = setInterval(function () {
+      var di = gInterval(drop, 750 - level * 30);
+      var ti = gInterval(function () {
         time--; el("t").textContent = time;
         if (time <= 0) { clearInterval(ti); clearInterval(di); field.innerHTML = ""; done(score); }
       }, 1000);
@@ -561,7 +626,177 @@
     }
   };
 
-  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble];
+  /* =========== GAME 5: 🔢 Sequence Sprint =========== */
+  var gameSequence = {
+    name: "数列规律 Sequence", icon: "🔢",
+    blurb: "找出数列的规律，选出问号处的数。",
+    howto: "观察数列的规律（等差、等比、平方、递增差或斐波那契……），从四个选项中选出「？」处正确的数。30 秒内答对越多越好 ⭐！",
+    start: function (host, level, done) {
+      var time = 30, score = 0;
+      host.innerHTML = '<div class="gamehud"><span class="timer">⏱ <span id="t">30</span>s</span>' +
+        '<span class="sc">✔ <span id="s">0</span></span></div>' +
+        '<div class="game-q" id="q" style="font-size:21px"></div><div class="game-opts" id="o"></div>';
+      function genSeq() {
+        var type = (Math.random() * (level >= 3 ? 5 : 3)) | 0;
+        var seq = [], i, cur, d;
+        if (type === 0) {                       // arithmetic
+          var start = 1 + ((Math.random() * 9) | 0); d = 2 + ((Math.random() * (3 + level)) | 0);
+          for (i = 0; i < 5; i++) seq.push(start + d * i);
+        } else if (type === 1) {                // geometric ×2 / ×3
+          var s0 = 1 + ((Math.random() * 4) | 0), r = 2 + ((Math.random() * 2) | 0);
+          for (i = 0; i < 5; i++) seq.push(s0 * Math.pow(r, i));
+        } else if (type === 2) {                // increasing differences
+          cur = 1 + ((Math.random() * 5) | 0); d = 1 + ((Math.random() * 3) | 0);
+          seq.push(cur); for (i = 1; i < 5; i++) { cur += d; d++; seq.push(cur); }
+        } else if (type === 3) {                // perfect squares
+          var b = 1 + ((Math.random() * 4) | 0);
+          for (i = 0; i < 5; i++) seq.push((i + b) * (i + b));
+        } else {                                 // fibonacci-like
+          seq.push(1 + ((Math.random() * 3) | 0)); seq.push(1 + ((Math.random() * 3) | 0));
+          for (i = 2; i < 5; i++) seq.push(seq[i - 1] + seq[i - 2]);
+        }
+        var ans = seq[4]; seq[4] = "?";
+        return { text: seq.join(",  "), ans: ans };
+      }
+      function newQ() {
+        var Q = genSeq();
+        el("q").textContent = Q.text;
+        var opts = [Q.ans], guard = 0;
+        while (opts.length < 4 && guard++ < 60) {
+          var d = Q.ans + (((Math.random() * 9) | 0) - 4) + (Math.random() < .5 ? 0 : (1 + ((Math.random() * 3) | 0)));
+          if (d !== Q.ans && opts.indexOf(d) < 0 && d > 0) opts.push(d);
+        }
+        while (opts.length < 4) opts.push(Q.ans + opts.length * 2);
+        opts = shuffle(opts);
+        var o = el("o"); o.innerHTML = "";
+        opts.forEach(function (v) {
+          var b2 = document.createElement("button"); b2.textContent = v;
+          b2.onclick = function () {
+            if (v === Q.ans) { score++; el("s").textContent = score; b2.classList.add("good"); }
+            else b2.classList.add("bad");
+            setTimeout(newQ, 150);
+          };
+          o.appendChild(b2);
+        });
+      }
+      newQ();
+      var iv = gInterval(function () { time--; el("t").textContent = time; if (time <= 0) { clearInterval(iv); done(score); } }, 1000);
+    }
+  };
+
+  /* =========== GAME 6: 📚 Meaning Match =========== */
+  function meaningPool() {
+    return [
+      ["守株待兔", "死守经验、不知变通"], ["画蛇添足", "多此一举，反而坏事"],
+      ["雪中送炭", "在别人困难时及时帮助"], ["亡羊补牢", "出问题后及时补救"],
+      ["虚怀若谷", "非常谦虚"], ["全力以赴", "用尽全部力量去做"],
+      ["一丝不苟", "认真细致，毫不马虎"], ["掉以轻心", "太轻视、不当回事"],
+      ["abundant", "plentiful 丰富的"], ["reluctant", "unwilling 不情愿的"],
+      ["fragile", "easily broken 易碎的"], ["generous", "willing to give 慷慨的"],
+      ["ancient", "very old 古老的"], ["rapid", "very fast 快速的"],
+      ["rajin", "diligent 勤劳的 (Malay)"], ["gembira", "happy 高兴的 (Malay)"],
+      ["berani", "brave 勇敢的 (Malay)"], ["pandai", "clever 聪明的 (Malay)"]
+    ];
+  }
+  var gameMeaning = {
+    name: "词义大挑战 Meaning Match", icon: "📚",
+    blurb: "看词语 / 单词，快速选出正确的意思。",
+    howto: "屏幕上方会显示一个成语或单词（华文 / English / Malay），从四个意思中点选正确的一个。30 秒内答对越多 ⭐！",
+    start: function (host, level, done) {
+      var time = 30, score = 0, pool = meaningPool();
+      host.innerHTML = '<div class="gamehud"><span class="timer">⏱ <span id="t">30</span>s</span>' +
+        '<span class="sc">✔ <span id="s">0</span></span></div>' +
+        '<div class="game-q" id="q"></div><div class="game-opts" id="o" style="grid-template-columns:1fr"></div>';
+      function newQ() {
+        var pick = pool[(Math.random() * pool.length) | 0];
+        var wrongs = shuffle(pool.filter(function (p) { return p[1] !== pick[1]; })).slice(0, 3)
+          .map(function (p) { return p[1]; });
+        var opts = shuffle([pick[1]].concat(wrongs));
+        el("q").textContent = pick[0];
+        var o = el("o"); o.innerHTML = "";
+        opts.forEach(function (v) {
+          var b2 = document.createElement("button"); b2.textContent = v; b2.style.fontSize = "15px";
+          b2.onclick = function () {
+            if (v === pick[1]) { score++; el("s").textContent = score; b2.classList.add("good"); }
+            else b2.classList.add("bad");
+            setTimeout(newQ, 170);
+          };
+          o.appendChild(b2);
+        });
+      }
+      newQ();
+      var iv = gInterval(function () { time--; el("t").textContent = time; if (time <= 0) { clearInterval(iv); done(score); } }, 1000);
+    }
+  };
+
+  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning];
+
+  /* =================================================================
+     STAR SHOP — a sink for stars. Buying spends the current balance
+     (state.stars) but never touches lifetime/level. Themes restyle the
+     app; avatars change the home badge.
+  ================================================================= */
+  var THEMES = [
+    { id: "default", name: "经典红 Classic", emoji: "❤️", cost: 0, vars: { brand: "#e23d3d", b1: "#0f1226", b2: "#141938", b3: "#1a1330" } },
+    { id: "ocean", name: "海洋蓝 Ocean", emoji: "🌊", cost: 80, vars: { brand: "#1f8bd6", b1: "#081a2c", b2: "#0c2438", b3: "#0a1f30" } },
+    { id: "forest", name: "森林绿 Forest", emoji: "🌳", cost: 80, vars: { brand: "#2e9e5b", b1: "#0c1f16", b2: "#102a1d", b3: "#0e2418" } },
+    { id: "sunset", name: "日落橙 Sunset", emoji: "🌅", cost: 140, vars: { brand: "#ff7a3d", b1: "#241023", b2: "#2e1326", b3: "#1f1020" } },
+    { id: "grape", name: "葡萄紫 Grape", emoji: "🍇", cost: 200, vars: { brand: "#8b5cf6", b1: "#160f2b", b2: "#1d1438", b3: "#160f2b" } },
+    { id: "sakura", name: "樱花粉 Sakura", emoji: "🌸", cost: 280, vars: { brand: "#ff5d8f", b1: "#241020", b2: "#301428", b3: "#1f0f1c" } }
+  ];
+  var AVATARS = [
+    { e: "📚", name: "书本", cost: 0 }, { e: "🦊", name: "小狐狸", cost: 40 },
+    { e: "🐼", name: "熊猫", cost: 40 }, { e: "🚀", name: "火箭", cost: 60 },
+    { e: "🦉", name: "猫头鹰", cost: 60 }, { e: "🐯", name: "小虎", cost: 100 },
+    { e: "🦁", name: "狮子", cost: 150 }, { e: "🐲", name: "神龙", cost: 240 }
+  ];
+  function themeById(id) { for (var i = 0; i < THEMES.length; i++) if (THEMES[i].id === id) return THEMES[i]; return THEMES[0]; }
+  function applyTheme(id) {
+    var v = themeById(id).vars, root = document.documentElement.style;
+    root.setProperty("--brand", v.brand);
+    document.body.style.background = "linear-gradient(160deg," + v.b1 + "," + v.b2 + " 60%," + v.b3 + ")";
+  }
+  function openShop() { renderShop(); show("screen-shop"); }
+  function renderShop() {
+    el("shop-bal").textContent = state.stars;
+    function statusBtn(active, owned, cost) {
+      return active ? '<button class="si-btn on">使用中 ✓</button>'
+        : owned ? '<button class="si-btn use">使用</button>'
+        : '<button class="si-btn buy">⭐ ' + cost + '</button>';
+    }
+    var tg = el("shop-themes"); tg.innerHTML = "";
+    THEMES.forEach(function (t) {
+      var owned = !!state.owned[t.id], active = state.theme === t.id;
+      var card = document.createElement("div");
+      card.className = "shop-item" + (active ? " active" : "");
+      card.innerHTML = '<div class="si-em" style="background:' + t.vars.brand + '33;border-color:' + t.vars.brand + '">' +
+        t.emoji + '</div><div class="si-nm">' + t.name + '</div>' + statusBtn(active, owned, t.cost);
+      card.querySelector(".si-btn").onclick = function () {
+        if (active) return;
+        if (owned) { state.theme = t.id; }
+        else if (state.stars >= t.cost) { state.stars -= t.cost; state.owned[t.id] = true; state.theme = t.id; burst(18); }
+        else { toast("⭐ 不够啦！再去练习赚星星吧。"); return; }
+        applyTheme(state.theme); save(); renderShop();
+      };
+      tg.appendChild(card);
+    });
+    var ag = el("shop-avatars"); ag.innerHTML = "";
+    AVATARS.forEach(function (a) {
+      var owned = !!state.ownedAvatars[a.e], active = state.avatar === a.e;
+      var card = document.createElement("div");
+      card.className = "shop-item" + (active ? " active" : "");
+      card.innerHTML = '<div class="si-em">' + a.e + '</div><div class="si-nm">' + a.name + '</div>' +
+        statusBtn(active, owned, a.cost);
+      card.querySelector(".si-btn").onclick = function () {
+        if (active) return;
+        if (owned) { state.avatar = a.e; }
+        else if (state.stars >= a.cost) { state.stars -= a.cost; state.ownedAvatars[a.e] = true; state.avatar = a.e; burst(18); }
+        else { toast("⭐ 不够啦！再去练习赚星星吧。"); return; }
+        save(); renderShop();
+      };
+      ag.appendChild(card);
+    });
+  }
 
   /* ---------- confetti ---------- */
   function burst(n) {
@@ -586,6 +821,8 @@
   for (var j = 0; j < modeBtns.length; j++) (function (b) { b.onclick = function () { startMode(b.dataset.mode); }; })(modeBtns[j]);
   el("quit-quiz").onclick = function () { if (confirm("退出本次练习？进度已保存。")) goHome(); };
   el("quit-game").onclick = function () { if (confirm("退出小游戏？")) goHome(); };
+  el("open-shop").onclick = openShop;
 
+  applyTheme(state.theme);
   renderHome();
 })();

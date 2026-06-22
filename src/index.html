@@ -19,7 +19,7 @@
   <!-- ===== HOME ===== -->
   <section id="screen-home" class="screen active">
     <div class="hero">
-      <div class="brand"><span class="logo">📚</span><span>中华独中 · 初一备考</span></div>
+      <div class="brand"><span class="logo" id="hero-avatar">📚</span><span>中华独中 · 初一备考</span></div>
       <div class="sub" id="hero-sub">Chong Hwa Junior-1 Entrance Exam · Star Quest</div>
       <div class="starline">
         <div class="starbig">⭐ <span id="stat-stars">0</span> <small id="stars-en">stars · 星星</small></div>
@@ -30,11 +30,17 @@
         <div class="stat"><b id="stat-acc">–</b><span>正确率 Accuracy</span></div>
         <div class="stat"><b id="stat-life">0</b><span>累计星 Lifetime</span></div>
       </div>
+      <div class="daily">
+        <div class="top"><span>🎯 今日目标 · Daily Goal</span><span id="day-streak"></span></div>
+        <div class="dbar"><i id="day-fill" style="width:0%"></i></div>
+        <div class="hint" id="day-hint"></div>
+      </div>
       <div class="mstone">
         <div class="top"><span>🎮 下一个小游戏 · Next mini-game</span><span id="ms-count"></span></div>
         <div class="mbar"><i id="ms-fill" style="width:0%"></i></div>
         <div class="hint" id="ms-hint"></div>
       </div>
+      <button class="btn gold shopbtn" id="open-shop">🛍️ 星星商店 · Star Shop</button>
     </div>
 
     <h2 class="section-h">选择科目 · Choose a Subject</h2>
@@ -97,6 +103,18 @@
     <div class="gamewrap" id="game-host"></div>
   </section>
 
+  <!-- ===== SHOP ===== -->
+  <section id="screen-shop" class="screen">
+    <div class="topbar"><button class="back" data-home>‹ 返回</button>
+      <div class="title">🛍️ 星星商店</div>
+      <div class="chip">⭐ <span id="shop-bal">0</span></div></div>
+    <p class="shop-intro">用你练习赚到的 ⭐ 兑换主题与头像。购买会「花掉」星星余额，但<b>不会</b>影响你的累计星与等级。</p>
+    <h2 class="section-h">🎨 主题 · Themes</h2>
+    <div class="shop-grid" id="shop-themes"></div>
+    <h2 class="section-h">😀 头像 · Avatars</h2>
+    <div class="shop-grid" id="shop-avatars"></div>
+  </section>
+
 </div>
 
 <!-- milestone modal -->
@@ -113,6 +131,7 @@
 </div>
 
 <div id="confetti"></div>
+<div id="toast" class="toast"></div>
 
 <script>
 /*{{DATA}}*/

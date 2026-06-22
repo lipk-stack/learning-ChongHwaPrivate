@@ -1,12 +1,12 @@
 // Chong Hwa Junior-1 Entrance Exam — Question Bank
 // Source: 2026小六历届试题（修订版）, Chong Hwa Independent High School KL
-// Iteration 2: 147 curated questions (Chinese / Bahasa Melayu / English / Math) with full explanations.
+// Iteration 3: 157 curated questions (Chinese / Bahasa Melayu / English / Math) with full explanations.
 window.QUESTION_BANK = {
   meta: {
     school: "吉隆坡中华独立中学 / Chong Hwa Independent High School, KL",
     exam: "初一新生考试 · Junior 1 Entrance Examination",
     paperYear: 2026,
-    builtIteration: 2
+    builtIteration: 3
   },
   subjects: {
     chinese: {
@@ -43,7 +43,9 @@ window.QUESTION_BANK = {
         { id:"zh30", topic:"文化常识", stem:"以下哪一个节庆是纪念爱国诗人屈原的？", options:["中秋节","端午节","中元节","元宵节"], answer:1, explanation:"端午节相传是为纪念投江的爱国诗人屈原而设，习俗有赛龙舟、吃粽子。故选 B。" },
         { id:"zh31", topic:"文学常识", stem:"下列哪一位「不是」儒家的代表人物？", options:["孔子","孟子","荀子","韩非子"], answer:3, explanation:"韩非子是「法家」的代表人物。孔子、孟子、荀子皆为儒家代表。故选 D。" },
         { id:"zh32", topic:"文学常识", stem:"「本是同根生，相煎何太急？」这句诗的作者是谁？", options:["曹操","曹丕","曹植","诸葛亮"], answer:2, explanation:"此句出自曹植的《七步诗》，以萁豆相煎比喻兄弟相残。故选 C。" },
-        { id:"zh33", topic:"年龄称谓", stem:"明光的爷爷今年正值「古稀」之年。请问爷爷今年几岁？", options:["60 岁","70 岁","80 岁","90 岁"], answer:1, explanation:"杜甫诗「人生七十古来稀」，「古稀」指七十岁。故选 B。" }
+        { id:"zh33", topic:"年龄称谓", stem:"明光的爷爷今年正值「古稀」之年。请问爷爷今年几岁？", options:["60 岁","70 岁","80 岁","90 岁"], answer:1, explanation:"杜甫诗「人生七十古来稀」，「古稀」指七十岁。故选 B。" },
+        { id:"zh34", topic:"标点符号", stem:"下列哪一句的标点符号使用「正确」？", options:["他问我：「你今天为什么迟到。」","我喜欢吃苹果、香蕉和橙子。","「快走吧，」他说。「电影要开始了。」","妈妈叫我去图书馆借书、看报、和写功课。"], answer:1, explanation:"B 正确：并列词语之间用顿号，句末用句号。A 是疑问句，句末应改用问号；C 引语中间的句号应改为逗号（「快走吧，」他说，「……」）；D 最后两个并列项之间已用「和」连接，「和」前不应再加顿号。故选 B。" },
+        { id:"zh35", topic:"量词", stem:"下列哪一项量词搭配「不恰当」？", options:["一匹骏马","一头黄牛","一架飞机","一颗大树"], answer:3, explanation:"树木的量词应用「棵」，作「一棵大树」；「颗」多用于颗粒状或小而圆的东西（一颗珍珠、一颗星）。其余搭配均正确。故选 D。" }
       ],
       notes: [
         { title:"现代文阅读 · 林海音《迟到》", body:"2026 年现代文阅读选用林海音《迟到》。重点考查：① 字音字形（皱 zhòu、哀 āi）；② 用成语概括人物状态（被打后「狼狈不堪」）；③ 体会父亲「含蓄深沉」的爱；④ 概括人物习惯（养成「守时」的习惯）；⑤ 谈启示（父母严格管教背后是爱与关心，要学会理解与感恩）。答题技巧：概括题先找原文依据，再用自己的话归纳；启示题要联系全文主旨，言之成理即可。" },
@@ -83,7 +85,9 @@ window.QUESTION_BANK = {
         { id:"ms27", topic:"Penjodoh bilangan", stem:"Nenek membeli tiga ________ telur ayam di pasar pagi tadi.", options:["biji","buah","ekor","batang"], answer:0, explanation:"Penjodoh bilangan bagi telur ialah 'biji' — tiga biji telur. Jawapan A." },
         { id:"ms28", topic:"Peribahasa", stem:"Usaha yang dilakukan sedikit demi sedikit akhirnya membuahkan hasil yang besar. Peribahasa yang sesuai ialah ________.", options:["sedikit-sedikit, lama-lama menjadi bukit","seperti katak di bawah tempurung","bagai aur dengan tebing","melentur buluh biarlah dari rebungnya"], answer:0, explanation:"'Sedikit-sedikit, lama-lama menjadi bukit' bermaksud sesuatu yang dilakukan sedikit demi sedikit akhirnya menjadi banyak. Jawapan A." },
         { id:"ms29", topic:"Kata sendi nama", stem:"Setiap hari ayah pergi ke pejabat ________ menaiki keretapi.", options:["dengan","pada","untuk","akan"], answer:0, explanation:"'dengan' menunjukkan cara atau alat — pergi dengan menaiki keretapi. Jawapan A." },
-        { id:"ms30", topic:"Antonim", stem:"Lawan kata (antonim) bagi perkataan 'rajin' ialah ________.", options:["malas","tekun","usaha","cekal"], answer:0, explanation:"Lawan bagi 'rajin' ialah 'malas'. 'Tekun' dan 'cekal' pula seerti dengan rajin. Jawapan A." }
+        { id:"ms30", topic:"Antonim", stem:"Lawan kata (antonim) bagi perkataan 'rajin' ialah ________.", options:["malas","tekun","usaha","cekal"], answer:0, explanation:"Lawan bagi 'rajin' ialah 'malas'. 'Tekun' dan 'cekal' pula seerti dengan rajin. Jawapan A." },
+        { id:"ms31", topic:"Imbuhan", stem:"Pihak sekolah berusaha ________ kawasan taman itu supaya kelihatan lebih ceria dan menarik.", options:["mencantik","mempercantik","dipercantik","kecantikan"], answer:1, explanation:"Kata kerja transitif berimbuhan memper-...-kan yang bermaksud 'menjadikan lebih cantik' ialah 'mempercantik' (kawasan taman). 'Dipercantik' ialah bentuk pasif, manakala 'kecantikan' ialah kata nama. Jawapan B." },
+        { id:"ms32", topic:"Peribahasa", stem:"Dua orang sahabat yang sentiasa tolong-menolong dan saling melengkapi antara satu sama lain diibaratkan ________.", options:["bagai aur dengan tebing","bagai api dengan air","bagai katak di bawah tempurung","bagai melukut di tepi gantang"], answer:0, explanation:"'Bagai aur dengan tebing' bermaksud dua pihak yang saling membantu dan bekerjasama. 'Bagai api dengan air' bermaksud tidak sehaluan; 'katak di bawah tempurung' bermaksud cetek pengetahuan. Jawapan A." }
       ],
       notes: [
         { title:"Bahagian A — Karangan (30%)", body:"2026: Tulis karangan bertajuk \"Kelebihan Tinggal di Bandar\" (≥100 patah perkataan) berdasarkan kata kunci: banyak kemudahan awam, institusi pendidikan, tempat percutian (monorel, hospital, universiti, taman tema air). Petua: satu isi satu perenggan, gunakan penanda wacana (selain itu, di samping itu, kesimpulannya) dan ayat majmuk." },
@@ -139,7 +143,9 @@ window.QUESTION_BANK = {
         { id:"en43", topic:"Vocabulary", stem:"The detective examined every ________ carefully before solving the mysterious case.", options:["clue","cue","queue","crew"], answer:0, explanation:"A piece of evidence that helps solve a mystery is a 'clue'. A 'cue' is a signal, a 'queue' is a line, a 'crew' is a team. Answer: A." },
         { id:"en44", topic:"Word form", stem:"His ________ to finish the marathon, despite the injury, inspired everyone watching.", options:["determine","determined","determination","determinedly"], answer:2, explanation:"After the possessive 'His' we need a noun: 'determination'. Answer: C." },
         { id:"en45", topic:"Subject–verb agreement", stem:"The list of ingredients ________ printed clearly on the back of the packet.", options:["is","are","were","have"], answer:0, explanation:"The subject is the singular noun 'list' (not 'ingredients'), so the verb is 'is'. Answer: A." },
-        { id:"en46", topic:"Vocabulary", stem:"Learning a new language can be challenging at first, but with daily practice it becomes ________.", options:["easier","easiest","more easy","easy more"], answer:0, explanation:"A comparative is needed to show change over time: 'easier'. Answer: A." }
+        { id:"en46", topic:"Vocabulary", stem:"Learning a new language can be challenging at first, but with daily practice it becomes ________.", options:["easier","easiest","more easy","easy more"], answer:0, explanation:"A comparative is needed to show change over time: 'easier'. Answer: A." },
+        { id:"en47", topic:"Vocabulary", stem:"The volunteers worked tirelessly to ________ food and warm clothes for the flood victims.", options:["collect","correct","connect","collapse"], answer:0, explanation:"To gather things together is to 'collect'. 'Correct' means to fix, 'connect' means to join, and 'collapse' means to fall down. Answer: A." },
+        { id:"en48", topic:"Articles", stem:"My brother wants to be ________ engineer one day because he loves designing and building things.", options:["a","an","the","(no article)"], answer:1, explanation:"Use 'an' before a word that begins with a vowel sound: 'an engineer'. Answer: B." }
       ],
       notes: [
         { title:"Section A — Composition (20 marks)", body:"2026: Choose ONE — (1) a picture-based story set at a cinema, using all the words: cinema, tickets, queue, broke into, pretended, annoyed, crowd, apologised, fault, embarrassed; or (2) a mind-map composition about your primary school (100–120 words). Plan: title → beginning (setting) → problem → climax → resolution/feeling." }
@@ -188,7 +194,11 @@ window.QUESTION_BANK = {
         { id:"ma42", topic:"单利", stem:"向银行贷款 RM50000，以单利计算，年利率 6%。5 年后的利息是多少令吉（RM）？", type:"fill", answer:["15000"], explanation:"利息 = 本金 × 利率 × 年数 = 50000 × 6% × 5 = RM15000。" },
         { id:"ma43", topic:"比·逻辑", stem:"农场里鸡和羊共 2100 只，其中鸡有 1500 只。鸡的脚和羊的脚的数量比是多少？（以最简比表示）", type:"fill", answer:["5:4","5：4"], explanation:"羊 = 2100 − 1500 = 600 只；鸡脚 = 1500 × 2 = 3000，羊脚 = 600 × 4 = 2400；比 = 3000:2400 = 5:4。" },
         { id:"ma44", topic:"促销·计数", stem:"一支红笔 RM2，文具店促销「买 5 送 1」。用 RM50 最多可得多少支红笔？", type:"fill", answer:["30"], explanation:"RM50 可买 50 ÷ 2 = 25 支；每买 5 支送 1 支，25 ÷ 5 = 5 支赠品；合计 25 + 5 = 30 支。" },
-        { id:"ma45", topic:"找规律", stem:"已知 8＊3=55、7＊3=40、5＊2=21、4＊2=12。若 A＊6=45 且 A>0，求 A。", type:"fill", answer:["9"], explanation:"规律为 a＊b = a² − b²（如 8²−3²=55）。A² − 6² = 45 → A² = 81 → A = 9。" }
+        { id:"ma45", topic:"找规律", stem:"已知 8＊3=55、7＊3=40、5＊2=21、4＊2=12。若 A＊6=45 且 A>0，求 A。", type:"fill", answer:["9"], explanation:"规律为 a＊b = a² − b²（如 8²−3²=55）。A² − 6² = 45 → A² = 81 → A = 9。" },
+        { id:"ma46", topic:"分数运算", stem:"计算 3/4 + 1/6 的值（以最简分数表示）。", type:"fill", answer:["11/12"], explanation:"先通分：3/4 = 9/12，1/6 = 2/12；相加 = 9/12 + 2/12 = 11/12（已是最简分数）。" },
+        { id:"ma47", topic:"百分比·折扣", stem:"一件外套原价 RM80，商店以八折出售。打折后的售价是多少令吉（RM）？", type:"fill", answer:["64","64.00"], explanation:"打八折即售价是原价的 80%。售价 = 80 × 80% = 80 × 0.8 = RM64。" },
+        { id:"ma48", topic:"平均数", stem:"五个数的平均数是 12。若再加入一个数 18，这六个数的平均数是多少？", type:"fill", answer:["13"], explanation:"原五数之和 = 12 × 5 = 60；加入 18 后总和 = 60 + 18 = 78；新平均数 = 78 ÷ 6 = 13。" },
+        { id:"ma49", topic:"找规律", stem:"找出数列中问号处的数：2, 6, 12, 20, 30, ____。", type:"fill", answer:["42"], explanation:"相邻两数的差依次为 4、6、8、10，逐次增加 2；下一个差为 12，故 30 + 12 = 42。（也等于 n×(n+1)：6×7 = 42。）" }
       ],
       notes: [
         { title:"作答须知", body:"2026 数学卷共 30 题：甲组 20 题（每题 3.5 分），乙组 10 题（每题 3 分），全部填空作答。常考点：四则混合运算、分数小数互化、百分比与盈亏、比例分配、平均数、单利、行程问题，以及抽屉原理、找规律、计数等逻辑题。本题库收录可清晰还原的题目并附完整解题步骤。" },

@@ -62,6 +62,21 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
 - Built `dist/ChongHwa-Prep-App.html` and uploaded to the Drive `ChongHwa` folder.
 - Tested with jsdom: home/subject/quiz/result render, all 4 games launch with 0 runtime errors.
 
+### Iteration 3 (this repo — current) ✅
+- **Daily goal & streak** added: earn **30⭐/day** to bank a **+8⭐ bonus** and grow a 🔥 day‑streak
+  (resets if a day is missed). New home bar shows today's progress. State migrates cleanly from v2.
+- **🛍️ Star Shop** — the long‑planned **star sink**. Spend the *current* balance (never lifetime/level)
+  on **6 themes** (recolour the whole app live) and **8 avatars** (home badge). Owned items persist.
+- **Two more milestone mini‑games → 6 in rotation**, so unlocks feel fresher:
+  5. 🔢 **数列规律 Sequence Sprint** — find the next number (等差/等比/平方/递增差/斐波那契); ties into 找规律.
+  6. 📚 **词义大挑战 Meaning Match** — flash a 成语/word (华文/English/Malay), pick the right meaning; reinforces vocab.
+- **Bug fix (pre‑existing):** quitting a game mid‑play leaked its `setInterval` (threw on removed nodes).
+  Game timers are now tracked via `gInterval()` and cleared in `goHome()`/quit.
+- **Question bank 147 → 157**: +华文2 (标点、量词) · +国文2 (imbuhan、peribahasa) · +英文2 (vocab、articles) ·
+  +数学4 (分数、折扣、平均数、找规律). Per subject now: 华文 33 · BM 32 · English 48 · 数学 44. Math answers re‑verified.
+- `meta.builtIteration` → 3. Rebuilt `dist/ChongHwa-Prep-App.html` (~104 KB) via `python3 build.py`.
+- Tested with jsdom: home/quiz/shop render + all **6** games launch & quit cleanly with **0** runtime errors.
+
 ---
 
 ## ⚠️ Known constraint — Google Drive delivery of the built app
@@ -78,17 +93,19 @@ Drive `ChongHwa` folder ("中华备考 App · 第2次迭代更新说明") tellin
 id** so I can `deploy-site` (reliable, gives a portable URL), or (b) confirm they're OK
 with the manual drag, or (c) keep the per‑iteration instructions doc approach.
 
-## Next up (ideas for Iteration 3+)
+## Next up (ideas for Iteration 4+)
 
-- [ ] **Mine more real questions** from the 2024/2025, 2023, 2022 papers (Chinese & English passages, more Malay).
-      Helper already in place: decrypt with `pikepdf.open(pdf, password="chonghwakl.edu.my")` →
+- [ ] **Mine more real questions** from the 2024/2023/2022 papers (Chinese & English passages, more Malay).
+      Helper: decrypt with `pikepdf.open(pdf, password="chonghwakl.edu.my")` →
       `pdfminer.high_level.extract_text`. Verify each math answer by computing it.
 - [ ] **Reading‑comprehension mode**: show a passage (e.g. 林海音《迟到》, the Melaka & mooncake texts) then its questions.
 - [ ] **Timed mock‑exam mode** per subject matching real mark allocations (华文 选择 50分; 数学 30题 甲/乙组).
-- [ ] **Two more mini‑games** (e.g. 成语接龙 idiom‑chain; Malay peribahasa match) so milestones feel fresher.
-- [ ] **Daily streak / daily goal** and a small **shop** to spend ⭐ (avatars, themes) — gives stars a sink.
-- [ ] **Spaced repetition** for wrong questions (resurface after N days).
+- [ ] **Spaced repetition** for wrong questions (resurface after N days) — fields exist (`state.wrong`).
+- [ ] **More shop depth**: spend ⭐ on power‑ups (50/50, skip), badges/titles, or a streak‑freeze.
+- [ ] One more mini‑game idea: 🀄 成语接龙 idiom‑chain or Malay peribahasa match.
 - [ ] Optional **service worker + manifest** for a true installable PWA (still single‑folder portable).
+
+✅ Done in Iteration 3: daily goal/streak, Star Shop (themes + avatars), two new mini‑games.
 
 ## Resume checklist for the next agent
 1. Read this file. Confirm Drive `ChongHwa` folder + PDF still accessible (password `chonghwakl.edu.my`).
@@ -96,5 +113,6 @@ with the manual drag, or (c) keep the per‑iteration instructions doc approach.
 3. Pick an item from **Next up**, edit `data/questions.js` / `src/*`, keep languages subject‑correct,
    give every question a full explanation, verify math answers.
 4. Bump `meta.builtIteration` in `data/questions.js`. Rebuild. Smoke‑test with jsdom (0 errors).
-5. Update this log, commit to branch `claude/cool-ramanujan-iby9qi`, push, and upload the new
+   (jsdom isn't committed; `npm install jsdom --no-save` then load `dist/...html` with `url:"https://localhost/"`.)
+5. Update this log, commit to the iteration's working branch, push, merge to `main`, and upload the new
    `dist/ChongHwa-Prep-App.html` to the Drive `ChongHwa` folder.
