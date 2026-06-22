@@ -30,10 +30,10 @@
   var STORE_KEY = "chonghwa_starquest_v2";
 
   /* ---------- star economy tuning ---------- */
-  var STAR_RIGHT = 5;        // base stars for a correct answer
-  var STAR_STREAK_MAX = 5;   // extra stars from streak bonus
-  var STAR_WRONG = -3;       // stars deducted for a wrong answer (balance never < 0)
-  function milestoneAt(k) { return 40 * k + 10 * k * k; } // 50,120,210,320,450,...
+  var STAR_RIGHT = 2;        // base stars for a correct answer (stars are earned, not handed out)
+  var STAR_WRONG = -4;       // stars deducted for a wrong answer (balance never < 0)
+  function streakBonus(s) { return Math.min(Math.floor(s / 3), 3); } // +1 per 3-in-a-row, max +3
+  function milestoneAt(k) { return 70 * k + 20 * k * k; } // 90,220,390,600,850,...
 
   var state = load();
   function load() {
@@ -221,7 +221,7 @@
       state.totalCorrect++; quiz.correct++;
       state.streak++; state.bestStreak = Math.max(state.bestStreak, state.streak);
       delete state.wrong[q.id];
-      delta = STAR_RIGHT + Math.min(state.streak, STAR_STREAK_MAX);
+      delta = STAR_RIGHT + streakBonus(state.streak);
       quiz.stars += delta;
       addStars(delta, true);
       burst(14);
@@ -406,7 +406,7 @@
       newQ();
       var iv = setInterval(function () {
         time--; el("t").textContent = time;
-        if (time <= 0) { clearInterval(iv); done(score * 2); }
+        if (time <= 0) { clearInterval(iv); done(score); }
       }, 1000);
     }
   };
@@ -442,8 +442,8 @@
             matched++; first = null; lock = false; burst(8);
             if (matched === nPairs) {
               var perfect = nPairs; // ideal moves
-              var stars = Math.max(nPairs, Math.round(nPairs * 3 - (moves - perfect)));
-              setTimeout(function () { done(Math.max(nPairs, stars)); }, 400);
+              var stars = Math.round(nPairs * 1.5 - (moves - perfect));
+              setTimeout(function () { done(Math.max(Math.ceil(nPairs / 2), stars)); }, 400);
             }
           } else {
             setTimeout(function () {
@@ -503,7 +503,7 @@
       var di = setInterval(drop, 750 - level * 30);
       var ti = setInterval(function () {
         time--; el("t").textContent = time;
-        if (time <= 0) { clearInterval(ti); clearInterval(di); field.innerHTML = ""; done(score * 2); }
+        if (time <= 0) { clearInterval(ti); clearInterval(di); field.innerHTML = ""; done(score); }
       }, 1000);
     }
   };
@@ -539,7 +539,7 @@
           if (built.join("") === w) {
             score++; el("s").textContent = score; burst(10);
             idx++;
-            setTimeout(function () { idx < rounds ? load() : done(score * 3 + level); }, 500);
+            setTimeout(function () { idx < rounds ? load() : done(score); }, 500);
           }
         }
         letters.forEach(function (ch) {

@@ -33,11 +33,12 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
 - **Languages are subject‑correct:** 华文 questions & explanations in Chinese; Bahasa Melayu wholly in
   Malay; English wholly in English; 数学 in Chinese (as in the real Chinese‑medium paper).
 - **Every question has a full worked explanation** (字词辨析理由 / langkah / reasoning / 解题步骤).
-- **Star economy (the gamification core):** correct answer **+5⭐** plus a streak bonus (up to +5);
-  wrong answer **−3⭐** (balance never drops below 0). `lifetime` stars only ever go up and drive milestones.
-- **Milestones unlock a *different* mini‑game each time.** Thresholds: `milestoneAt(k)=40k+10k²`
-  → 50, 120, 210, 320, 450, 600… Games cycle `[Speed, Memory, Catcher, Scramble]`; difficulty rises with k.
-  Games award bonus stars, can chain into the next milestone.
+- **Star economy (the gamification core), tuned to be hard to grind:** correct answer **+2⭐**
+  plus a streak bonus of **+1 per 3‑in‑a‑row (max +3)**; wrong answer **−4⭐** (balance never
+  drops below 0). `lifetime` stars only ever go up and drive milestones.
+- **Milestones unlock a *different* mini‑game each time.** Thresholds: `milestoneAt(k)=70k+20k²`
+  → 90, 220, 390, 600, 850… Games cycle `[Speed, Memory, Catcher, Scramble]`; difficulty rises with k.
+  Game payouts are modest (≈1× score) so the games supplement rather than replace real practice.
 
 ---
 
