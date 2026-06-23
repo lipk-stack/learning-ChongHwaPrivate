@@ -28,7 +28,7 @@ def compact(bank):
         Q = []
         for q in s["questions"]:
             opts = 0 if q.get("type") == "fill" else q["options"]
-            Q.append([q["topic"], q["stem"], opts, q["answer"], q["explanation"]])
+            Q.append([q["topic"], q["stem"], opts, q["answer"], q["explanation"], q.get("diff", 0)])
         sub[k] = {
             "k": s["key"], "name": s["name"], "en": s["enName"], "icon": s["icon"],
             "color": s["color"], "blurb": s["blurb"],

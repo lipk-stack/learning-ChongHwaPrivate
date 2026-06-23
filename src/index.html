@@ -51,6 +51,9 @@
       <button class="mode-card" data-mode="mixed"><div class="ic">🎯</div><div class="t">综合挑战</div><div class="d">Mixed quiz · 全科混合 15 题</div></button>
       <button class="mode-card" data-mode="review"><div class="ic">🔁</div><div class="t">错题重练</div><div class="d">Review mistakes · 攻克错题</div></button>
     </div>
+    <div class="settings-row">
+      <button class="btn ghost danger" id="reset-progress">♻️ 重置星星与成绩 · Reset Stars &amp; Score</button>
+    </div>
     <div class="foot" id="foot-meta"></div>
   </section>
 
@@ -70,7 +73,7 @@
       <div class="chip">⭐ <span id="q-stars">0</span></div></div>
     <div class="qprogress"><i id="qprogress-fill" style="width:0%"></i></div>
     <div class="qcard">
-      <div class="qmeta"><span class="badge" id="q-subject"></span><span id="q-topic" class="qtopic"></span></div>
+      <div class="qmeta"><span class="badge" id="q-subject"></span><span id="q-diff" class="diffbadge" hidden></span><span id="q-topic" class="qtopic"></span></div>
       <div class="qstem" id="q-stem"></div>
       <div id="q-options"></div>
       <div id="q-fill" class="fillwrap" hidden>

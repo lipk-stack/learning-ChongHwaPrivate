@@ -77,6 +77,26 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
 - `meta.builtIteration` → 3. Rebuilt `dist/ChongHwa-Prep-App.html` (~104 KB) via `python3 build.py`.
 - Tested with jsdom: home/quiz/shop render + all **6** games launch & quit cleanly with **0** runtime errors.
 
+### Iteration 4 (this repo — current) ✅
+- **Syllabus / standards & content uplift:** bank **157 → 180** questions and added a per‑question
+  **difficulty标准** (`diff` 1=基础 Basic / 2=进阶 Intermediate / 3=挑战 Challenge), shown as a badge in the quiz.
+  New items broaden coverage: 华文 古诗词/文言词义/对偶/语序病句/感情色彩; BM 同义反义/被动句/形容词/谚语;
+  English synonyms/antonyms/prepositions/future‑perfect/idioms; 数学 周长/比例分配/行程/分数/百分比逆推/平方数规律.
+  Per subject now: 华文 39 · BM 37 · English 53 · 数学 51. All math answers re‑verified.
+- **Responsive “maximise to screen” layout:** `#app` widens on tablets/desktops (880→1040px); game area
+  fills the viewport (`min-height: 100svh − …`, flex column); fonts/buttons/grids use `clamp()`/`vw`/`svh`;
+  subject & shop grids gain columns on wide screens. Star‑catcher field and memory grid now grow to fill height.
+- **♻️ Reset Stars & Score** on the home screen — clears progress/streaks/milestones (keeps bought cosmetics),
+  with a confirm dialog.
+- **Bug fix (pre‑existing, found by the stress test):** after quitting a game, a queued `setTimeout`
+  continuation (e.g. `newQ`) fired on removed DOM and threw. Added a `gameLive` flag guarding every
+  timer‑driven continuation; `done()` payouts are also gated on it.
+- **Build plumbing:** `diff` carried through both `build.py` (readable) and `make_dist.py` (compact);
+  the `window.QB` loader expands it. `meta.builtIteration` → 4. Rebuilt dist (~113 KB).
+- **Stress‑tested with jsdom:** 150+ answered questions across all subjects + Mixed/Review, full Star‑Shop
+  buy‑out + theme/avatar switching, reset, and **all 6 games launched, hammered with random clicks, and quit**
+  — repeated 4× on **both** the readable and compact builds with **0** runtime errors.
+
 ---
 
 ## ⚠️ Known constraint — Google Drive delivery of the built app
@@ -106,6 +126,8 @@ with the manual drag, or (c) keep the per‑iteration instructions doc approach.
 - [ ] Optional **service worker + manifest** for a true installable PWA (still single‑folder portable).
 
 ✅ Done in Iteration 3: daily goal/streak, Star Shop (themes + avatars), two new mini‑games.
+✅ Done in Iteration 4: +23 questions (180 total) with difficulty标准 badges, responsive full‑screen
+   layout, ♻️ reset stars/score, and a quit‑game timer‑leak fix — all stress‑tested on both builds.
 
 ## Resume checklist for the next agent
 1. Read this file. Confirm Drive `ChongHwa` folder + PDF still accessible (password `chonghwakl.edu.my`).

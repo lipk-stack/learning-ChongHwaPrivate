@@ -19,6 +19,7 @@
         questions: s.Q.map(function (q, i) {
           var obj = { id: k + "-" + i, topic: q[0], stem: q[1], answer: q[3], explanation: q[4] };
           if (q[2] === 0) obj.type = "fill"; else obj.options = q[2];
+          if (q[5]) obj.diff = q[5];
           return obj;
         })
       };
@@ -29,6 +30,12 @@
   var SUBJECTS = BANK.subjects;
   var LETTERS = ["A", "B", "C", "D", "E"];
   var STORE_KEY = "chonghwa_starquest_v2";
+  // Per-question difficulty / academic standard (shown as a badge in the quiz).
+  var DIFF = {
+    1: { label: "基础 Basic", color: "#19402f", ink: "#7be0a4" },
+    2: { label: "进阶 Intermediate", color: "#2a2655", ink: "#b6b0ff" },
+    3: { label: "挑战 Challenge", color: "#3a1a22", ink: "#ff9aa6" }
+  };
 
   /* ---------- star economy tuning ---------- */
   var STAR_RIGHT = 2;        // base stars for a correct answer (stars are earned, not handed out)
@@ -138,6 +145,21 @@
   }
   var snoozeReached = -1; // suppress re-offering after "later" until more stars earned
 
+  /* ---------- reset progress (stars, score, streaks) ---------- */
+  function resetProgress() {
+    state.stars = 0; state.lifetime = 0; state.offered = 0;
+    state.streak = 0; state.bestStreak = 0;
+    state.seen = {}; state.wrong = {};
+    state.totalAns = 0; state.totalCorrect = 0;
+    state.day = { date: "", stars: 0 };
+    state.dayStreak = 0; state.lastGoalDate = null; state.dailyAwarded = false;
+    snoozeReached = -1;
+    // Purchased themes/avatars are cosmetic and intentionally kept.
+    save();
+    renderHome();
+    toast("♻️ 已重置星星与成绩。已购买的主题和头像仍保留。");
+  }
+
   /* ---------- HOME ---------- */
   function renderHome() {
     rollDay();
@@ -231,6 +253,11 @@
     el("q-stars").textContent = quiz.stars;
     el("qprogress-fill").style.width = (quiz.i / quiz.qs.length) * 100 + "%";
     var sc = el("q-subject"); sc.textContent = subj.icon + " " + subj.name; sc.style.background = subj.color;
+    var db = el("q-diff");
+    if (q.diff && DIFF[q.diff]) {
+      db.hidden = false; db.textContent = DIFF[q.diff].label;
+      db.style.background = DIFF[q.diff].color; db.style.color = DIFF[q.diff].ink;
+    } else { db.hidden = true; }
     el("q-topic").textContent = q.topic;
     el("q-stem").textContent = q.stem;
     el("q-feedback").hidden = true;
@@ -369,10 +396,12 @@
       '</h3><p>' + game.howto + '</p><button class="btn gold" id="go">开始 ▶</button></div>';
     el("go").onclick = function () {
       host.innerHTML = "";
-      game.start(host, level, function (earned) { finishGame(game, earned); });
+      gameLive = true;
+      game.start(host, level, function (earned) { if (!gameLive) return; gameLive = false; finishGame(game, earned); });
     };
   }
   function finishGame(game, earned) {
+    gameLive = false;
     earned = Math.max(0, earned | 0);
     addStars(earned, true); // bonus stars count toward lifetime (may chain unlocks)
     var host = el("game-host");
@@ -390,8 +419,12 @@
   // Game timers are tracked so they can be stopped when the player quits a
   // game mid-play (otherwise an interval keeps firing on removed DOM nodes).
   var gameIntervals = [];
+  var gameLive = false; // true only while a game is actively being played
   function gInterval(fn, ms) { var id = setInterval(fn, ms); gameIntervals.push(id); return id; }
-  function clearGameTimers() { for (var i = 0; i < gameIntervals.length; i++) clearInterval(gameIntervals[i]); gameIntervals = []; }
+  function clearGameTimers() {
+    for (var i = 0; i < gameIntervals.length; i++) clearInterval(gameIntervals[i]);
+    gameIntervals = []; gameLive = false;
+  }
 
   // small pools derived from the bank for matching/scramble games
   function pairPool() {
@@ -437,6 +470,7 @@
         '<span class="sc">✔ <span id="s">0</span></span></div>' +
         '<div class="game-q" id="q"></div><div class="game-opts" id="o"></div>';
       function newQ() {
+        if (!gameLive) return;
         var a, b, op, ans, text;
         var r = Math.random();
         if (level >= 3 && r < 0.35) { // percentage
@@ -543,7 +577,7 @@
       setQ();
       var colors = ["#ffd23f", "#ff9d3d", "#4f8cff", "#34c77b"];
       function drop() {
-        if (time <= 0) return;
+        if (!gameLive || time <= 0) return;
         var good = Math.random() < 0.5;
         var val = good ? cur.ans : cur.ans + (Math.random() < .5 ? -1 : 1) * (1 + ((Math.random() * 6) | 0));
         if (!good && val === cur.ans) val += 2;
@@ -583,11 +617,12 @@
       var words = pickMany(scramblePool(level), rounds);
       host.innerHTML = '<div class="gamehud"><span>🔤 <span id="rd">1</span>/' + rounds + '</span>' +
         '<span class="sc">⭐ <span id="s">0</span></span></div>' +
-        '<div class="scr-hint" id="hint"></div>' +
+        '<div class="scr-wrap"><div class="scr-hint" id="hint"></div>' +
         '<div class="scr-slots" id="answer"></div>' +
         '<div class="scr-slots" id="pool"></div>' +
-        '<button class="btn ghost" id="reset" style="margin-top:8px">重排 Reset</button>';
+        '<button class="btn ghost" id="reset" style="margin-top:8px;max-width:240px;margin-left:auto;margin-right:auto">重排 Reset</button></div>';
       function load() {
+        if (!gameLive) return;
         var w = words[idx][0], hint = words[idx][1];
         el("rd").textContent = idx + 1;
         el("hint").textContent = "提示：" + hint;
@@ -659,6 +694,7 @@
         return { text: seq.join(",  "), ans: ans };
       }
       function newQ() {
+        if (!gameLive) return;
         var Q = genSeq();
         el("q").textContent = Q.text;
         var opts = [Q.ans], guard = 0;
@@ -708,6 +744,7 @@
         '<span class="sc">✔ <span id="s">0</span></span></div>' +
         '<div class="game-q" id="q"></div><div class="game-opts" id="o" style="grid-template-columns:1fr"></div>';
       function newQ() {
+        if (!gameLive) return;
         var pick = pool[(Math.random() * pool.length) | 0];
         var wrongs = shuffle(pool.filter(function (p) { return p[1] !== pick[1]; })).slice(0, 3)
           .map(function (p) { return p[1]; });
@@ -822,6 +859,11 @@
   el("quit-quiz").onclick = function () { if (confirm("退出本次练习？进度已保存。")) goHome(); };
   el("quit-game").onclick = function () { if (confirm("退出小游戏？")) goHome(); };
   el("open-shop").onclick = openShop;
+  el("reset-progress").onclick = function () {
+    if (confirm("确定要重置所有星星与成绩吗？\n（练习进度、连胜、每日打卡与里程碑都会清零；已购买的主题和头像会保留。）\n此操作无法撤销。")) {
+      resetProgress();
+    }
+  };
 
   applyTheme(state.theme);
   renderHome();

@@ -1,12 +1,13 @@
 // Chong Hwa Junior-1 Entrance Exam — Question Bank
 // Source: 2026小六历届试题（修订版）, Chong Hwa Independent High School KL
-// Iteration 3: 157 curated questions (Chinese / Bahasa Melayu / English / Math) with full explanations.
+// Iteration 4: 180 curated questions (Chinese / Bahasa Melayu / English / Math) with full
+// explanations and per-question difficulty (diff 1=基础 / 2=进阶 / 3=挑战) for standards alignment.
 window.QUESTION_BANK = {
   meta: {
     school: "吉隆坡中华独立中学 / Chong Hwa Independent High School, KL",
     exam: "初一新生考试 · Junior 1 Entrance Examination",
     paperYear: 2026,
-    builtIteration: 3
+    builtIteration: 4
   },
   subjects: {
     chinese: {
@@ -45,7 +46,13 @@ window.QUESTION_BANK = {
         { id:"zh32", topic:"文学常识", stem:"「本是同根生，相煎何太急？」这句诗的作者是谁？", options:["曹操","曹丕","曹植","诸葛亮"], answer:2, explanation:"此句出自曹植的《七步诗》，以萁豆相煎比喻兄弟相残。故选 C。" },
         { id:"zh33", topic:"年龄称谓", stem:"明光的爷爷今年正值「古稀」之年。请问爷爷今年几岁？", options:["60 岁","70 岁","80 岁","90 岁"], answer:1, explanation:"杜甫诗「人生七十古来稀」，「古稀」指七十岁。故选 B。" },
         { id:"zh34", topic:"标点符号", stem:"下列哪一句的标点符号使用「正确」？", options:["他问我：「你今天为什么迟到。」","我喜欢吃苹果、香蕉和橙子。","「快走吧，」他说。「电影要开始了。」","妈妈叫我去图书馆借书、看报、和写功课。"], answer:1, explanation:"B 正确：并列词语之间用顿号，句末用句号。A 是疑问句，句末应改用问号；C 引语中间的句号应改为逗号（「快走吧，」他说，「……」）；D 最后两个并列项之间已用「和」连接，「和」前不应再加顿号。故选 B。" },
-        { id:"zh35", topic:"量词", stem:"下列哪一项量词搭配「不恰当」？", options:["一匹骏马","一头黄牛","一架飞机","一颗大树"], answer:3, explanation:"树木的量词应用「棵」，作「一棵大树」；「颗」多用于颗粒状或小而圆的东西（一颗珍珠、一颗星）。其余搭配均正确。故选 D。" }
+        { id:"zh35", topic:"量词", stem:"下列哪一项量词搭配「不恰当」？", options:["一匹骏马","一头黄牛","一架飞机","一颗大树"], answer:3, explanation:"树木的量词应用「棵」，作「一棵大树」；「颗」多用于颗粒状或小而圆的东西（一颗珍珠、一颗星）。其余搭配均正确。故选 D。" },
+        { id:"zh36", topic:"古诗词", stem:"李白《静夜思》「举头望明月」的下一句是：", options:["低头思故乡","疑是地上霜","清泉石上流","千里共婵娟"], answer:0, explanation:"《静夜思》：「床前明月光，疑是地上霜。举头望明月，低头思故乡。」故下一句是「低头思故乡」，选 A。", diff:1 },
+        { id:"zh37", topic:"文言词义", stem:"杜牧《山行》「停车坐爱枫林晚」中的「坐」意思是：", options:["坐下","因为","座位","坐落"], answer:1, explanation:"此处「坐」是文言虚词，意为「因为」——因为喜爱傍晚的枫林（而停下车）。并非「坐下」之意。故选 B。", diff:2 },
+        { id:"zh38", topic:"关联词", stem:"「他 ____ 学习成绩优异，____ 乐于帮助同学。」最恰当的关联词是：", options:["不但……而且","因为……所以","虽然……但是","只要……就"], answer:0, explanation:"前后两句是递进关系（成绩好，更进一步还乐于助人），应用表递进的「不但……而且」。故选 A。", diff:1 },
+        { id:"zh39", topic:"修辞·对偶", stem:"下列哪一句运用了「对偶」的修辞手法？", options:["桃花潭水深千尺，不及汪伦送我情。","两个黄鹂鸣翠柳，一行白鹭上青天。","飞流直下三千尺，疑是银河落九天。","随风潜入夜，润物细无声。"], answer:1, explanation:"「两个黄鹂鸣翠柳，一行白鹭上青天」字数相等、词性相对、结构一致（数量词对数量词、名词对名词），是典型的对偶。其余各项分别为夸张、夸张和拟人。故选 B。", diff:3 },
+        { id:"zh40", topic:"病句·语序", stem:"下列哪一句没有语病？", options:["我们要养成认真按时完成作业的好习惯。","为了防止不再发生意外，工地加强了管理。","他大约用了三个小时左右才完成。","能否取得好成绩，关键在于努力。"], answer:0, explanation:"A 句结构完整、语序正确。B「防止不再发生」否定不当（应为「防止再次发生」）；C「大约……左右」重复；D 是「能否……关键在于努力」两面对一面，搭配不当。故选 A。", diff:3 },
+        { id:"zh41", topic:"感情色彩", stem:"下列哪一组词语「全是褒义词」？", options:["果断、节俭、勇敢","狡猾、谦虚、热情","固执、聪明、善良","骄傲、勤奋、诚实"], answer:0, explanation:"A 组「果断、节俭、勇敢」都是褒义词。B 的「狡猾」、C 的「固执」、D 的「骄傲」（此处指自满）均为贬义词。故选 A。", diff:2 }
       ],
       notes: [
         { title:"现代文阅读 · 林海音《迟到》", body:"2026 年现代文阅读选用林海音《迟到》。重点考查：① 字音字形（皱 zhòu、哀 āi）；② 用成语概括人物状态（被打后「狼狈不堪」）；③ 体会父亲「含蓄深沉」的爱；④ 概括人物习惯（养成「守时」的习惯）；⑤ 谈启示（父母严格管教背后是爱与关心，要学会理解与感恩）。答题技巧：概括题先找原文依据，再用自己的话归纳；启示题要联系全文主旨，言之成理即可。" },
@@ -87,7 +94,12 @@ window.QUESTION_BANK = {
         { id:"ms29", topic:"Kata sendi nama", stem:"Setiap hari ayah pergi ke pejabat ________ menaiki keretapi.", options:["dengan","pada","untuk","akan"], answer:0, explanation:"'dengan' menunjukkan cara atau alat — pergi dengan menaiki keretapi. Jawapan A." },
         { id:"ms30", topic:"Antonim", stem:"Lawan kata (antonim) bagi perkataan 'rajin' ialah ________.", options:["malas","tekun","usaha","cekal"], answer:0, explanation:"Lawan bagi 'rajin' ialah 'malas'. 'Tekun' dan 'cekal' pula seerti dengan rajin. Jawapan A." },
         { id:"ms31", topic:"Imbuhan", stem:"Pihak sekolah berusaha ________ kawasan taman itu supaya kelihatan lebih ceria dan menarik.", options:["mencantik","mempercantik","dipercantik","kecantikan"], answer:1, explanation:"Kata kerja transitif berimbuhan memper-...-kan yang bermaksud 'menjadikan lebih cantik' ialah 'mempercantik' (kawasan taman). 'Dipercantik' ialah bentuk pasif, manakala 'kecantikan' ialah kata nama. Jawapan B." },
-        { id:"ms32", topic:"Peribahasa", stem:"Dua orang sahabat yang sentiasa tolong-menolong dan saling melengkapi antara satu sama lain diibaratkan ________.", options:["bagai aur dengan tebing","bagai api dengan air","bagai katak di bawah tempurung","bagai melukut di tepi gantang"], answer:0, explanation:"'Bagai aur dengan tebing' bermaksud dua pihak yang saling membantu dan bekerjasama. 'Bagai api dengan air' bermaksud tidak sehaluan; 'katak di bawah tempurung' bermaksud cetek pengetahuan. Jawapan A." }
+        { id:"ms32", topic:"Peribahasa", stem:"Dua orang sahabat yang sentiasa tolong-menolong dan saling melengkapi antara satu sama lain diibaratkan ________.", options:["bagai aur dengan tebing","bagai api dengan air","bagai katak di bawah tempurung","bagai melukut di tepi gantang"], answer:0, explanation:"'Bagai aur dengan tebing' bermaksud dua pihak yang saling membantu dan bekerjasama. 'Bagai api dengan air' bermaksud tidak sehaluan; 'katak di bawah tempurung' bermaksud cetek pengetahuan. Jawapan A." },
+        { id:"ms33", topic:"Sinonim", stem:"Perkataan seerti (sinonim) bagi 'pantas' ialah ________.", options:["laju","lambat","perlahan","malas"], answer:0, explanation:"'Pantas' bermaksud cepat, maka seertinya ialah 'laju'. 'Lambat' dan 'perlahan' pula berlawanan maksud. Jawapan A.", diff:1 },
+        { id:"ms34", topic:"Antonim", stem:"Perkataan berlawanan (antonim) bagi 'gembira' ialah ________.", options:["riang","ceria","sedih","suka"], answer:2, explanation:"Lawan bagi 'gembira' ialah 'sedih'. 'Riang', 'ceria' dan 'suka' pula seerti dengan gembira. Jawapan C.", diff:1 },
+        { id:"ms35", topic:"Ayat pasif", stem:"Tukarkan ayat berikut kepada ayat pasif: 'Ali membaca buku cerita itu.'", options:["Buku cerita itu dibaca oleh Ali.","Buku cerita itu membaca Ali.","Ali dibaca oleh buku cerita itu.","Buku cerita itu Ali membaca."], answer:0, explanation:"Ayat pasif menjadikan objek ('buku cerita itu') sebagai subjek dan menggunakan kata kerja pasif 'di-': 'Buku cerita itu dibaca oleh Ali.' Jawapan A.", diff:2 },
+        { id:"ms36", topic:"Kata adjektif", stem:"Pemandangan di puncak Gunung Kinabalu pada waktu pagi sungguh ________.", options:["indah","berlari","memasak","berjalan"], answer:0, explanation:"Tempat kosong memerlukan kata adjektif (kata sifat) untuk menggambarkan pemandangan, iaitu 'indah'. Pilihan lain ialah kata kerja. Jawapan A.", diff:1 },
+        { id:"ms37", topic:"Peribahasa", stem:"'Bagai isi dengan kuku' membawa maksud ________.", options:["sangat rapat dan tidak dapat dipisahkan","sentiasa berbalah dan bergaduh","tinggal berjauhan antara satu sama lain","tidak mengenali antara satu sama lain"], answer:0, explanation:"'Bagai isi dengan kuku' menggambarkan perhubungan yang sangat rapat dan akrab sehingga tidak dapat dipisahkan. Jawapan A.", diff:2 }
       ],
       notes: [
         { title:"Bahagian A — Karangan (30%)", body:"2026: Tulis karangan bertajuk \"Kelebihan Tinggal di Bandar\" (≥100 patah perkataan) berdasarkan kata kunci: banyak kemudahan awam, institusi pendidikan, tempat percutian (monorel, hospital, universiti, taman tema air). Petua: satu isi satu perenggan, gunakan penanda wacana (selain itu, di samping itu, kesimpulannya) dan ayat majmuk." },
@@ -145,7 +157,12 @@ window.QUESTION_BANK = {
         { id:"en45", topic:"Subject–verb agreement", stem:"The list of ingredients ________ printed clearly on the back of the packet.", options:["is","are","were","have"], answer:0, explanation:"The subject is the singular noun 'list' (not 'ingredients'), so the verb is 'is'. Answer: A." },
         { id:"en46", topic:"Vocabulary", stem:"Learning a new language can be challenging at first, but with daily practice it becomes ________.", options:["easier","easiest","more easy","easy more"], answer:0, explanation:"A comparative is needed to show change over time: 'easier'. Answer: A." },
         { id:"en47", topic:"Vocabulary", stem:"The volunteers worked tirelessly to ________ food and warm clothes for the flood victims.", options:["collect","correct","connect","collapse"], answer:0, explanation:"To gather things together is to 'collect'. 'Correct' means to fix, 'connect' means to join, and 'collapse' means to fall down. Answer: A." },
-        { id:"en48", topic:"Articles", stem:"My brother wants to be ________ engineer one day because he loves designing and building things.", options:["a","an","the","(no article)"], answer:1, explanation:"Use 'an' before a word that begins with a vowel sound: 'an engineer'. Answer: B." }
+        { id:"en48", topic:"Articles", stem:"My brother wants to be ________ engineer one day because he loves designing and building things.", options:["a","an","the","(no article)"], answer:1, explanation:"Use 'an' before a word that begins with a vowel sound: 'an engineer'. Answer: B." },
+        { id:"en49", topic:"Synonyms", stem:"Choose the word that is closest in meaning to 'enormous'.", options:["tiny","huge","narrow","quiet"], answer:1, explanation:"'Enormous' means extremely large, so the closest word is 'huge'. 'Tiny' is the opposite. Answer: B.", diff:1 },
+        { id:"en50", topic:"Antonyms", stem:"Choose the word that is OPPOSITE in meaning to 'ancient'.", options:["old","aged","modern","historic"], answer:2, explanation:"'Ancient' means very old, so its opposite is 'modern' (new / present-day). Answer: C.", diff:1 },
+        { id:"en51", topic:"Prepositions", stem:"The frightened kitten was hiding ________ the wooden table when we found it.", options:["under","into","among","onto"], answer:0, explanation:"Something hidden below the table is 'under' it. 'Into/onto' show movement, and 'among' needs three or more things. Answer: A.", diff:1 },
+        { id:"en52", topic:"Tenses", stem:"By the end of next year, Mrs Lim ________ at this school for two decades.", options:["will have taught","teaches","taught","is teaching"], answer:0, explanation:"An action that will be completed before a point in the future uses the future perfect: 'will have taught'. Answer: A.", diff:3 },
+        { id:"en53", topic:"Idioms", stem:"When the teacher said the quiz would be 'a piece of cake', she meant that it would be ________.", options:["very easy","very sweet","very difficult","very long"], answer:0, explanation:"The idiom 'a piece of cake' means something is very easy to do. Answer: A.", diff:2 }
       ],
       notes: [
         { title:"Section A — Composition (20 marks)", body:"2026: Choose ONE — (1) a picture-based story set at a cinema, using all the words: cinema, tickets, queue, broke into, pretended, annoyed, crowd, apologised, fault, embarrassed; or (2) a mind-map composition about your primary school (100–120 words). Plan: title → beginning (setting) → problem → climax → resolution/feeling." }
@@ -198,7 +215,14 @@ window.QUESTION_BANK = {
         { id:"ma46", topic:"分数运算", stem:"计算 3/4 + 1/6 的值（以最简分数表示）。", type:"fill", answer:["11/12"], explanation:"先通分：3/4 = 9/12，1/6 = 2/12；相加 = 9/12 + 2/12 = 11/12（已是最简分数）。" },
         { id:"ma47", topic:"百分比·折扣", stem:"一件外套原价 RM80，商店以八折出售。打折后的售价是多少令吉（RM）？", type:"fill", answer:["64","64.00"], explanation:"打八折即售价是原价的 80%。售价 = 80 × 80% = 80 × 0.8 = RM64。" },
         { id:"ma48", topic:"平均数", stem:"五个数的平均数是 12。若再加入一个数 18，这六个数的平均数是多少？", type:"fill", answer:["13"], explanation:"原五数之和 = 12 × 5 = 60；加入 18 后总和 = 60 + 18 = 78；新平均数 = 78 ÷ 6 = 13。" },
-        { id:"ma49", topic:"找规律", stem:"找出数列中问号处的数：2, 6, 12, 20, 30, ____。", type:"fill", answer:["42"], explanation:"相邻两数的差依次为 4、6、8、10，逐次增加 2；下一个差为 12，故 30 + 12 = 42。（也等于 n×(n+1)：6×7 = 42。）" }
+        { id:"ma49", topic:"找规律", stem:"找出数列中问号处的数：2, 6, 12, 20, 30, ____。", type:"fill", answer:["42"], explanation:"相邻两数的差依次为 4、6、8、10，逐次增加 2；下一个差为 12，故 30 + 12 = 42。（也等于 n×(n+1)：6×7 = 42。）" },
+        { id:"ma50", topic:"周长", stem:"一个边长为 9cm 的正方形，它的周长是多少（cm）？", type:"fill", answer:["36"], explanation:"正方形周长 = 边长 × 4 = 9 × 4 = 36cm。", diff:1 },
+        { id:"ma51", topic:"比例分配", stem:"把 60 颗糖果按 2 : 3 的比例分给哥哥和弟弟。请问较多的一份有多少颗？", type:"fill", answer:["36"], explanation:"总份数 = 2 + 3 = 5；每份 = 60 ÷ 5 = 12 颗；较多的一份 = 3 × 12 = 36 颗。", diff:2 },
+        { id:"ma52", topic:"行程问题", stem:"一辆汽车以每小时 60km 的速度行驶了 2.5 小时，一共行驶了多少 km？", type:"fill", answer:["150"], explanation:"路程 = 速度 × 时间 = 60 × 2.5 = 150km。", diff:1 },
+        { id:"ma53", topic:"分数乘法", stem:"一根绳子长 12m，用去了它的 3/4。请问用去了多少 m？", type:"fill", answer:["9"], explanation:"用去 = 12 × 3/4 = 36 ÷ 4 = 9m。", diff:1 },
+        { id:"ma54", topic:"百分比·逆推", stem:"某数的 25% 是 15，求这个数。", type:"fill", answer:["60"], explanation:"设该数为 x：x × 25% = 15 → x = 15 ÷ 0.25 = 60。", diff:2 },
+        { id:"ma55", topic:"平均数·行程", stem:"小明前 2 小时每小时走 4km，后 1 小时走 7km。这 3 小时内他平均每小时走多少 km？", type:"fill", answer:["5"], explanation:"总路程 = 4 × 2 + 7 × 1 = 8 + 7 = 15km；平均速度 = 总路程 ÷ 总时间 = 15 ÷ 3 = 5km/h。", diff:3 },
+        { id:"ma56", topic:"找规律·平方数", stem:"找出数列中问号处的数：1, 4, 9, 16, 25, ____。", type:"fill", answer:["36"], explanation:"这是平方数数列：1²、2²、3²、4²、5²……下一个是 6² = 36。", diff:1 }
       ],
       notes: [
         { title:"作答须知", body:"2026 数学卷共 30 题：甲组 20 题（每题 3.5 分），乙组 10 题（每题 3 分），全部填空作答。常考点：四则混合运算、分数小数互化、百分比与盈亏、比例分配、平均数、单利、行程问题，以及抽屉原理、找规律、计数等逻辑题。本题库收录可清晰还原的题目并附完整解题步骤。" },
