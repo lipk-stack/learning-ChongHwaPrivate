@@ -77,7 +77,7 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
 - `meta.builtIteration` → 3. Rebuilt `dist/ChongHwa-Prep-App.html` (~104 KB) via `python3 build.py`.
 - Tested with jsdom: home/quiz/shop render + all **6** games launch & quit cleanly with **0** runtime errors.
 
-### Iteration 4 (this repo — current) ✅
+### Iteration 4 (this repo — prior) ✅
 - **Syllabus / standards & content uplift:** bank **157 → 180** questions and added a per‑question
   **difficulty标准** (`diff` 1=基础 Basic / 2=进阶 Intermediate / 3=挑战 Challenge), shown as a badge in the quiz.
   New items broaden coverage: 华文 古诗词/文言词义/对偶/语序病句/感情色彩; BM 同义反义/被动句/形容词/谚语;
@@ -97,6 +97,29 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
   buy‑out + theme/avatar switching, reset, and **all 6 games launched, hammered with random clicks, and quit**
   — repeated 4× on **both** the readable and compact builds with **0** runtime errors.
 
+### Iteration 5 (this repo — current) ✅
+- **⏱️ Timed Mock-Exam mode** (the long-planned exam-realism feature). New home mode card → a
+  subject picker modal (四科任选 + 全科混合). Builds a **20-question timed paper** (≈45s/题 → ~15 min),
+  shows a live **mm:ss countdown chip** in the quiz top-bar that turns red & pulses in the last 30s,
+  and **auto-submits when time runs out**. "再来一次" re-runs the same timed config. Timer is tracked
+  and cleared on quit / finish / home so it never leaks.
+- **🧠 Smarter review (light spaced-repetition):** `state.wrong` now stores a **miss-count** per
+  question (migrates cleanly from the old boolean), and 错题重练 resurfaces the **most-often-missed
+  questions first**. Correct answers still clear the entry.
+- **⚡ 7th milestone mini-game → 是非急转弯 True/False Blitz:** a fast binary-decision game (✔对/✘错)
+  over a curated, cross-checked pool of statements spanning all four subjects (成语/数学/English/Malay).
+  Correct +1, wrong −1, 30-second sprint. Now **7 games** in the milestone rotation.
+- **Question bank 180 → 203:** +华文6 (古诗词/文言词义/夸张/词语搭配/病句/对联) · +国文5 (imbuhan/sinonim/
+  kata sendi/antonim/penjodoh bilangan) · +英文5 (vocab/subject-verb agreement/prepositions/past tense/
+  idioms) · +数学7 (面积/分数/折扣/平均数逆推/斐波那契/行程/最大公因数). All math answers re-verified by
+  computation. Per subject now: 华文 45 · BM 42 · English 58 · 数学 58.
+- **Build & test:** `meta.builtIteration` → 5. Added a tiny **test seam** (`?test=1` exposes the game
+  registry) so the jsdom test can launch every game directly. Rebuilt both the readable (`build.py`)
+  and compact (`make_dist.py`, ~110 KB on-disk) builds.
+- **Stress-tested with jsdom (repeated, both builds, 0 runtime errors):** subject practice (40 Q),
+  mixed, review (with the new ordering), **mixed + subject mock exams with the countdown**, the full
+  Star-Shop buy-out, and **all 7 games launched, hammered with ~30 random clicks each, and quit mid-play**.
+
 ---
 
 ## ⚠️ Known constraint — Google Drive delivery of the built app
@@ -113,14 +136,15 @@ Drive `ChongHwa` folder ("中华备考 App · 第2次迭代更新说明") tellin
 id** so I can `deploy-site` (reliable, gives a portable URL), or (b) confirm they're OK
 with the manual drag, or (c) keep the per‑iteration instructions doc approach.
 
-## Next up (ideas for Iteration 4+)
+## Next up (ideas for Iteration 6+)
 
 - [ ] **Mine more real questions** from the 2024/2023/2022 papers (Chinese & English passages, more Malay).
       Helper: decrypt with `pikepdf.open(pdf, password="chonghwakl.edu.my")` →
       `pdfminer.high_level.extract_text`. Verify each math answer by computing it.
 - [ ] **Reading‑comprehension mode**: show a passage (e.g. 林海音《迟到》, the Melaka & mooncake texts) then its questions.
-- [ ] **Timed mock‑exam mode** per subject matching real mark allocations (华文 选择 50分; 数学 30题 甲/乙组).
-- [ ] **Spaced repetition** for wrong questions (resurface after N days) — fields exist (`state.wrong`).
+- [ ] **Mock‑exam polish**: per‑subject mark allocations & a分数 report card (华文 选择 50分; 数学 30题 甲/乙组);
+      remember best mock score per subject; optional 难度‑weighted question selection.
+- [ ] **Stronger spaced repetition**: store a *due date* per wrong question (resurface after N days), not just a count.
 - [ ] **More shop depth**: spend ⭐ on power‑ups (50/50, skip), badges/titles, or a streak‑freeze.
 - [ ] One more mini‑game idea: 🀄 成语接龙 idiom‑chain or Malay peribahasa match.
 - [ ] Optional **service worker + manifest** for a true installable PWA (still single‑folder portable).
@@ -128,6 +152,8 @@ with the manual drag, or (c) keep the per‑iteration instructions doc approach.
 ✅ Done in Iteration 3: daily goal/streak, Star Shop (themes + avatars), two new mini‑games.
 ✅ Done in Iteration 4: +23 questions (180 total) with difficulty标准 badges, responsive full‑screen
    layout, ♻️ reset stars/score, and a quit‑game timer‑leak fix — all stress‑tested on both builds.
+✅ Done in Iteration 5: ⏱️ timed mock‑exam mode (countdown + auto‑submit), smarter miss‑count review
+   ordering, ⚡ 7th game (True/False Blitz), +23 questions (203 total) — all stress‑tested on both builds.
 
 ## Resume checklist for the next agent
 1. Read this file. Confirm Drive `ChongHwa` folder + PDF still accessible (password `chonghwakl.edu.my`).

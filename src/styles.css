@@ -237,6 +237,24 @@ h2.section-h{font-size:15px;color:var(--muted);margin:22px 0 10px 2px;font-weigh
   .qstem{font-size:21px}
 }
 
+/* ===== timed mock-exam countdown chip ===== */
+.qtimer{color:var(--blue) !important;transition:color .3s,background .3s}
+.qtimer.urgent{color:#fff !important;background:var(--bad) !important;border-color:var(--bad) !important;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.55}}
+
+/* ===== mock-exam subject picker ===== */
+.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mock-pick{font-size:15px;padding:14px 10px}
+@media (max-width:360px){.mock-grid{grid-template-columns:1fr}}
+
+/* ===== True/False Blitz game ===== */
+.tf-q{font-size:clamp(17px,3.4vw,24px);line-height:1.6;min-height:90px;display:flex;align-items:center;justify-content:center;flex:1 1 auto}
+.tf-btns{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:none;margin-top:8px}
+.tf-btns .btn{padding:clamp(20px,5vh,34px);font-size:clamp(18px,3vw,26px);font-weight:900;border-radius:16px}
+.good-btn{background:#19402f;color:#bff0d6;border:2px solid var(--ok)}
+.bad-btn{background:#3d1f27;color:#ffc6cd;border:2px solid var(--bad)}
+.good-btn:active,.bad-btn:active{transform:scale(.97)}
+
 /* confetti */
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
 .cf{position:absolute;top:-10px;width:9px;height:14px;border-radius:2px;animation:fall linear forwards}

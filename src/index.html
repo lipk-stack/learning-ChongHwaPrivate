@@ -49,7 +49,8 @@
     <h2 class="section-h">挑战模式 · Challenge Modes</h2>
     <div class="modes">
       <button class="mode-card" data-mode="mixed"><div class="ic">🎯</div><div class="t">综合挑战</div><div class="d">Mixed quiz · 全科混合 15 题</div></button>
-      <button class="mode-card" data-mode="review"><div class="ic">🔁</div><div class="t">错题重练</div><div class="d">Review mistakes · 攻克错题</div></button>
+      <button class="mode-card" data-mode="review"><div class="ic">🔁</div><div class="t">错题重练</div><div class="d">Review mistakes · 智能优先重练</div></button>
+      <button class="mode-card" data-mode="mock"><div class="ic">⏱️</div><div class="t">模拟考</div><div class="d">Timed mock exam · 限时模拟 20 题</div></button>
     </div>
     <div class="settings-row">
       <button class="btn ghost danger" id="reset-progress">♻️ 重置星星与成绩 · Reset Stars &amp; Score</button>
@@ -70,6 +71,7 @@
   <section id="screen-quiz" class="screen">
     <div class="topbar"><button class="back" id="quit-quiz">‹ 退出</button>
       <div class="title">第 <span id="q-index">1</span> / <span id="q-total">15</span> 题</div>
+      <span class="chip qtimer" id="q-timer" hidden>⏱ 0:00</span>
       <div class="chip">⭐ <span id="q-stars">0</span></div></div>
     <div class="qprogress"><i id="qprogress-fill" style="width:0%"></i></div>
     <div class="qcard">
@@ -130,6 +132,17 @@
       <button class="btn ghost" id="ms-later" style="flex:1">稍后</button>
       <button class="btn gold" id="ms-play" style="flex:2">立即挑战 ▶</button>
     </div>
+  </div>
+</div>
+
+<!-- timed mock-exam subject picker -->
+<div class="modal" id="modal-mock">
+  <div class="box">
+    <div class="em">⏱️</div>
+    <h3>模拟考 · Timed Mock Exam</h3>
+    <p>选择科目，限时作答，模拟真实考试。每题约 45 秒，时间到自动交卷。</p>
+    <div class="mock-grid" id="mock-opts"></div>
+    <button class="btn ghost" id="mock-cancel" style="margin-top:10px">取消 Cancel</button>
   </div>
 </div>
 

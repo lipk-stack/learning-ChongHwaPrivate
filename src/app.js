@@ -240,10 +240,33 @@
 
   /* ---------- QUIZ ---------- */
   var quiz = null;
-  function startQuiz(questions, label) {
+  function startQuiz(questions, label, opts) {
+    opts = opts || {};
     if (!questions.length) { alert("暂无可练习的题目。"); return; }
-    quiz = { qs: questions.slice(0, 15), i: 0, correct: 0, label: label, stars: 0 };
-    show("screen-quiz"); renderQuestion();
+    clearQuizTimer();
+    var count = opts.count || 15;
+    quiz = { qs: questions.slice(0, count), i: 0, correct: 0, label: label, stars: 0, opts: opts };
+    show("screen-quiz");
+    if (opts.timed) { startQuizTimer(opts.seconds || quiz.qs.length * 45); }
+    else { el("q-timer").hidden = true; }
+    renderQuestion();
+  }
+  /* ---------- mock-exam countdown ---------- */
+  var quizTimerId = null;
+  function clearQuizTimer() { if (quizTimerId) { clearInterval(quizTimerId); quizTimerId = null; } }
+  function startQuizTimer(total) {
+    quiz.timeLeft = total;
+    var tEl = el("q-timer"); tEl.hidden = false;
+    function paint() {
+      var m = Math.floor(quiz.timeLeft / 60), s = quiz.timeLeft % 60;
+      tEl.textContent = "⏱ " + m + ":" + (s < 10 ? "0" : "") + s;
+      tEl.classList.toggle("urgent", quiz.timeLeft <= 30);
+    }
+    paint();
+    quizTimerId = setInterval(function () {
+      quiz.timeLeft--; paint();
+      if (quiz.timeLeft <= 0) { clearQuizTimer(); toast("⏰ 时间到！自动交卷 · Time's up!"); finishQuiz(); }
+    }, 1000);
   }
   function renderQuestion() {
     var q = quiz.qs[quiz.i];
@@ -313,7 +336,9 @@
       addStars(delta, true);
       burst(14);
     } else {
-      state.streak = 0; state.wrong[q.id] = true;
+      state.streak = 0;
+      // store how many times this question was missed → review resurfaces the worst first
+      state.wrong[q.id] = (typeof state.wrong[q.id] === "number" ? state.wrong[q.id] : 0) + 1;
       delta = STAR_WRONG;
       addStars(delta, false);
     }
@@ -333,6 +358,8 @@
     next.onclick = function () { quiz.i++; quiz.i < quiz.qs.length ? renderQuestion() : finishQuiz(); };
   }
   function finishQuiz() {
+    clearQuizTimer();
+    el("q-timer").hidden = true;
     el("qprogress-fill").style.width = "100%";
     var total = quiz.qs.length, c = quiz.correct, pct = Math.round((c / total) * 100);
     el("result-correct").textContent = c;
@@ -346,7 +373,8 @@
     el("result-emoji").textContent = emoji;
     el("result-title").textContent = title;
     el("result-msg").textContent = msg;
-    el("result-again").onclick = function () { startQuiz(shuffle(quiz.qs), quiz.label); };
+    var againOpts = quiz.opts || {};
+    el("result-again").onclick = function () { startQuiz(shuffle(quiz.qs), quiz.label, againOpts); };
     if (pct >= 80) burst(60);
     show("screen-result");
   }
@@ -358,8 +386,40 @@
       var ids = Object.keys(state.wrong);
       var qs = allQuestions().filter(function (q) { return ids.indexOf(q.id) >= 0; });
       if (!qs.length) { alert("太棒了，目前没有错题需要重练！🎉"); return; }
-      startQuiz(shuffle(qs), "错题重练");
+      // spaced repetition: resurface the most-often-missed questions first
+      qs = shuffle(qs).sort(function (a, b) {
+        return (state.wrong[b.id] || 1) - (state.wrong[a.id] || 1);
+      });
+      startQuiz(qs, "错题重练");
     }
+    else if (mode === "mock") { openMockPicker(); }
+  }
+
+  /* ---------- timed mock exam ---------- */
+  function openMockPicker() {
+    var box = el("mock-opts"); box.innerHTML = "";
+    var choices = [];
+    Object.keys(SUBJECTS).forEach(function (k) {
+      choices.push({ key: k, label: SUBJECTS[k].icon + " " + SUBJECTS[k].name, n: 20 });
+    });
+    choices.push({ key: "__mix", label: "🎯 全科混合 Mixed", n: 20 });
+    choices.forEach(function (c) {
+      var b = document.createElement("button");
+      b.className = "btn primary mock-pick";
+      b.textContent = c.label;
+      b.onclick = function () { el("modal-mock").classList.remove("show"); startMockExam(c.key, c.n); };
+      box.appendChild(b);
+    });
+    el("modal-mock").classList.add("show");
+  }
+  function startMockExam(key, n) {
+    var pool = key === "__mix"
+      ? allQuestions()
+      : SUBJECTS[key].questions.map(function (q) { return Object.assign({ _subj: key }, q); });
+    var qs = shuffle(pool);
+    n = Math.min(n, qs.length);
+    var label = key === "__mix" ? "模拟考 · 全科混合" : "模拟考 · " + SUBJECTS[key].name;
+    startQuiz(qs, label, { count: n, timed: true, seconds: n * 45 });
   }
 
   /* =================================================================
@@ -368,7 +428,7 @@
      difficulty so the student can earn bonus stars. Interface:
        game.start(host, level, onDone)  ->  onDone(starsEarned)
   ================================================================= */
-  function goHome() { clearGameTimers(); show("screen-home"); renderHome(); }
+  function goHome() { clearGameTimers(); clearQuizTimer(); el("q-timer").hidden = true; show("screen-home"); renderHome(); }
 
   function maybeOfferMilestone() {
     var m = state.offered + 1;                 // the milestone number being offered (1-based)
@@ -766,7 +826,62 @@
     }
   };
 
-  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning];
+  /* =========== GAME 7: ⚡ True / False Blitz =========== */
+  function tfPool() {
+    // [statement, isTrue] — each cross-checked; languages kept subject-correct
+    return [
+      ["「画蛇添足」的意思是多此一举，反而把事情弄坏。", true],
+      ["端午节的传统习俗之一是吃汤圆。", false],
+      ["7 × 8 = 56。", true],
+      ["一个三角形的内角和是 360 度。", false],
+      ["《红楼梦》的作者是曹雪芹。", true],
+      ["「孔子」是法家的代表人物。", false],
+      ["「亡羊补牢」比喻事情发生前就做好万全准备。", false],
+      ["质数 7 只能被 1 和它本身整除。", true],
+      ["12 的因数包括 1、2、3、4、6 和 12。", true],
+      ["平行四边形的对边互相平行。", true],
+      ["½ + ¼ 等于 ¾。", true],
+      ["1 公里等于 100 米。", false],
+      ["'Abundant' means scarce or very rare.", false],
+      ["The plural of the word 'child' is 'children'.", true],
+      ["'Once in a blue moon' means something happens very often.", false],
+      ["A square has four sides of equal length.", true],
+      ["'Rajin' dalam bahasa Melayu bermaksud malas.", false],
+      ["Lawan kata bagi perkataan 'tinggi' ialah 'rendah'.", true],
+      ["'Pandai' bermaksud bijak dalam bahasa Melayu.", true],
+      ["Penjodoh bilangan bagi 'kerbau' ialah 'biji'.", false]
+    ];
+  }
+  var gameTrueFalse = {
+    name: "是非急转弯 True/False Blitz", icon: "⚡",
+    blurb: "快速判断句子的对与错，考验知识与反应。",
+    howto: "屏幕会闪出一句陈述（华文 / 数学 / English / Malay），判断它是「✔ 对」还是「✘ 错」。30 秒内答对越多 ⭐！答错会扣分哦。",
+    start: function (host, level, done) {
+      var time = 30, score = 0, pool = shuffle(tfPool()), idx = 0, cur = null;
+      host.innerHTML = '<div class="gamehud"><span class="timer">⏱ <span id="t">30</span>s</span>' +
+        '<span class="sc">⭐ <span id="s">0</span></span></div>' +
+        '<div class="game-q tf-q" id="q"></div>' +
+        '<div class="tf-btns"><button class="btn good-btn" id="tf-yes">✔ 对 True</button>' +
+        '<button class="btn bad-btn" id="tf-no">✘ 错 False</button></div>';
+      function newQ() {
+        if (!gameLive) return;
+        cur = pool[idx % pool.length]; idx++;
+        el("q").textContent = cur[0];
+      }
+      function answer(val) {
+        if (!gameLive || !cur) return;
+        if (val === cur[1]) { score++; el("s").textContent = score; burst(6); }
+        else { score = Math.max(0, score - 1); el("s").textContent = score; }
+        cur = null; setTimeout(newQ, 120);
+      }
+      el("tf-yes").onclick = function () { answer(true); };
+      el("tf-no").onclick = function () { answer(false); };
+      newQ();
+      var iv = gInterval(function () { time--; el("t").textContent = time; if (time <= 0) { clearInterval(iv); done(score); } }, 1000);
+    }
+  };
+
+  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse];
 
   /* =================================================================
      STAR SHOP — a sink for stars. Buying spends the current balance
@@ -859,6 +974,7 @@
   el("quit-quiz").onclick = function () { if (confirm("退出本次练习？进度已保存。")) goHome(); };
   el("quit-game").onclick = function () { if (confirm("退出小游戏？")) goHome(); };
   el("open-shop").onclick = openShop;
+  el("mock-cancel").onclick = function () { el("modal-mock").classList.remove("show"); };
   el("reset-progress").onclick = function () {
     if (confirm("确定要重置所有星星与成绩吗？\n（练习进度、连胜、每日打卡与里程碑都会清零；已购买的主题和头像会保留。）\n此操作无法撤销。")) {
       resetProgress();
@@ -867,4 +983,12 @@
 
   applyTheme(state.theme);
   renderHome();
+
+  // Test seam (no effect in normal use): when loaded with ?test=1, expose the
+  // game registry & launcher so the jsdom smoke test can exercise every game.
+  try {
+    if (window.location && window.location.search.indexOf("test=1") >= 0) {
+      window.__chq = { GAMES: GAMES, launchGame: launchGame, startMockExam: startMockExam };
+    }
+  } catch (e) {}
 })();
