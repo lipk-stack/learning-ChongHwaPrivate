@@ -259,3 +259,27 @@ h2.section-h{font-size:15px;color:var(--muted);margin:22px 0 10px 2px;font-weigh
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
 .cf{position:absolute;top:-10px;width:9px;height:14px;border-radius:2px;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.9}}
+
+/* ===== Reading comprehension: passage picker ===== */
+.reading-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:6px}
+.read-pick{display:flex;align-items:center;gap:12px;text-align:left;padding:12px 14px}
+.read-pick .rp-ic{font-size:26px;flex:none}
+.read-pick .rp-tx{display:flex;flex-direction:column;line-height:1.35}
+.read-pick .rp-tx small{font-size:12px;color:#ffffffcc;font-weight:600;margin-top:2px}
+
+/* ===== Reading comprehension: passage panel in quiz ===== */
+.passage{background:var(--card2);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.pg-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  background:linear-gradient(135deg,#2a2f5e,#23284e);color:var(--ink);border:0;cursor:pointer;
+  font-size:15px;font-weight:800;padding:12px 14px;text-align:left}
+.pg-caret{font-size:12px;color:var(--muted);font-weight:600;flex:none}
+.pg-body{padding:10px 16px 14px;max-height:42vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pg-body .pg-src{font-size:12.5px;color:var(--muted);margin:2px 0 8px}
+.pg-body p{font-size:15.5px;line-height:1.85;margin:0 0 10px;text-indent:0}
+.passage.collapsed .pg-body{display:none}
+
+/* ===== Idiom Chain game ===== */
+.idiom-link{font-size:15px;color:var(--muted);margin:6px 0 10px;text-align:center}
+.idiom-link b{color:var(--gold);font-size:20px}
+.lk-char{display:inline-block;color:#fff;background:var(--brand);border-radius:8px;
+  padding:0 8px;margin-left:2px;font-weight:900}

@@ -24,10 +24,12 @@
         })
       };
     });
+    o.passages = c.passages || [];
     window.QUESTION_BANK = o;
   }
   var BANK = window.QUESTION_BANK;
   var SUBJECTS = BANK.subjects;
+  var PASSAGES = BANK.passages || [];
   var LETTERS = ["A", "B", "C", "D", "E"];
   var STORE_KEY = "chonghwa_starquest_v2";
   // Per-question difficulty / academic standard (shown as a badge in the quiz).
@@ -271,6 +273,23 @@
   function renderQuestion() {
     var q = quiz.qs[quiz.i];
     var subj = SUBJECTS[q._subj];
+    // reading-comprehension passage panel (same passage for the whole set)
+    var pp = el("q-passage");
+    if (quiz.opts && quiz.opts.passage) {
+      var p = quiz.opts.passage;
+      var bodyHtml = String(p.body).split("\n").map(function (ln) {
+        return ln.trim() ? "<p>" + ln + "</p>" : "";
+      }).join("");
+      pp.hidden = false;
+      pp.innerHTML = '<button type="button" class="pg-head" id="pg-toggle"><span>📖 ' + p.title +
+        '</span><span class="pg-caret">收起 ▾</span></button>' +
+        '<div class="pg-body" id="pg-body"><div class="pg-src">' + (p.intro || "") + "</div>" + bodyHtml + "</div>";
+      el("pg-toggle").onclick = function () {
+        pp.classList.toggle("collapsed");
+        el("pg-toggle").querySelector(".pg-caret").textContent =
+          pp.classList.contains("collapsed") ? "展开 ▸" : "收起 ▾";
+      };
+    } else { pp.hidden = true; pp.innerHTML = ""; }
     el("q-total").textContent = quiz.qs.length;
     el("q-index").textContent = quiz.i + 1;
     el("q-stars").textContent = quiz.stars;
@@ -393,6 +412,28 @@
       startQuiz(qs, "错题重练");
     }
     else if (mode === "mock") { openMockPicker(); }
+    else if (mode === "reading") { openReadingPicker(); }
+  }
+
+  /* ---------- reading comprehension ---------- */
+  function openReadingPicker() {
+    if (!PASSAGES.length) { alert("暂无阅读理解篇章。"); return; }
+    var box = el("reading-opts"); box.innerHTML = "";
+    PASSAGES.forEach(function (p) {
+      var subj = SUBJECTS[p.subj];
+      var b = document.createElement("button");
+      b.className = "btn primary read-pick";
+      b.style.background = "linear-gradient(135deg," + subj.color + "," + subj.color + "aa)";
+      b.innerHTML = '<span class="rp-ic">' + (p.icon || subj.icon) + '</span><span class="rp-tx"><b>' +
+        p.title + '</b><small>' + subj.icon + " " + subj.name + " · " + p.questions.length + " 题</small></span>";
+      b.onclick = function () { el("modal-reading").classList.remove("show"); startReading(p); };
+      box.appendChild(b);
+    });
+    el("modal-reading").classList.add("show");
+  }
+  function startReading(p) {
+    var qs = p.questions.map(function (q) { return Object.assign({ _subj: p.subj }, q); });
+    startQuiz(qs, "阅读理解 · " + p.title, { count: qs.length, passage: p });
   }
 
   /* ---------- timed mock exam ---------- */
@@ -881,7 +922,55 @@
     }
   };
 
-  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse];
+  /* =========== GAME 8: 🀄 Idiom Chain (成语接龙) =========== */
+  function idiomPool() {
+    // {a: 给出的成语, link: 末字, b: 正确接龙(以末字开头), wrongs:[不以该字开头的成语]}
+    return [
+      { a:"一心一意", link:"意", b:"意气风发", wrongs:["三心二意","全力以赴","名列前茅"] },
+      { a:"千变万化", link:"化", b:"化险为夷", wrongs:["变本加厉","万事如意","一帆风顺"] },
+      { a:"名落孙山", link:"山", b:"山清水秀", wrongs:["落叶归根","水落石出","名正言顺"] },
+      { a:"画蛇添足", link:"足", b:"足智多谋", wrongs:["添油加醋","守株待兔","画龙点睛"] },
+      { a:"自强不息", link:"息", b:"息息相关", wrongs:["强词夺理","不耻下问","力争上游"] },
+      { a:"入木三分", link:"分", b:"分秒必争", wrongs:["木已成舟","三言两语","入乡随俗"] },
+      { a:"锦上添花", link:"花", b:"花言巧语", wrongs:["添砖加瓦","上行下效","锦绣前程"] },
+      { a:"后来居上", link:"上", b:"上行下效", wrongs:["来日方长","居安思危","后顾之忧"] }
+    ];
+  }
+  var gameIdiom = {
+    name: "成语接龙 Idiom Chain", icon: "🀄",
+    blurb: "用上一个成语的末字，接出下一个成语。",
+    howto: "屏幕显示一个成语，末字会标红。从四个选项中，选出「以这个红字开头」的成语来接龙。30 秒内接对越多 ⭐！",
+    start: function (host, level, done) {
+      var time = 30, score = 0, pool = shuffle(idiomPool()), idx = 0;
+      host.innerHTML = '<div class="gamehud"><span class="timer">⏱ <span id="t">30</span>s</span>' +
+        '<span class="sc">✔ <span id="s">0</span></span></div>' +
+        '<div class="game-q" id="q" style="font-size:20px"></div>' +
+        '<div class="idiom-link" id="lk"></div>' +
+        '<div class="game-opts" id="o" style="grid-template-columns:1fr"></div>';
+      function newQ() {
+        if (!gameLive) return;
+        var it = pool[idx % pool.length]; idx++;
+        el("q").innerHTML = '上一个成语：' + it.a.slice(0, -1) +
+          '<span class="lk-char">' + it.link + '</span>';
+        el("lk").innerHTML = '请接出以「<b>' + it.link + '</b>」开头的成语：';
+        var opts = shuffle([it.b].concat(it.wrongs));
+        var o = el("o"); o.innerHTML = "";
+        opts.forEach(function (v) {
+          var b2 = document.createElement("button"); b2.textContent = v; b2.style.fontSize = "16px";
+          b2.onclick = function () {
+            if (v === it.b) { score++; el("s").textContent = score; b2.classList.add("good"); }
+            else b2.classList.add("bad");
+            setTimeout(newQ, 200);
+          };
+          o.appendChild(b2);
+        });
+      }
+      newQ();
+      var iv = gInterval(function () { time--; el("t").textContent = time; if (time <= 0) { clearInterval(iv); done(score); } }, 1000);
+    }
+  };
+
+  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse, gameIdiom];
 
   /* =================================================================
      STAR SHOP — a sink for stars. Buying spends the current balance
@@ -975,6 +1064,7 @@
   el("quit-game").onclick = function () { if (confirm("退出小游戏？")) goHome(); };
   el("open-shop").onclick = openShop;
   el("mock-cancel").onclick = function () { el("modal-mock").classList.remove("show"); };
+  el("reading-cancel").onclick = function () { el("modal-reading").classList.remove("show"); };
   el("reset-progress").onclick = function () {
     if (confirm("确定要重置所有星星与成绩吗？\n（练习进度、连胜、每日打卡与里程碑都会清零；已购买的主题和头像会保留。）\n此操作无法撤销。")) {
       resetProgress();

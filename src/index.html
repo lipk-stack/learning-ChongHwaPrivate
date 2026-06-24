@@ -51,6 +51,7 @@
       <button class="mode-card" data-mode="mixed"><div class="ic">🎯</div><div class="t">综合挑战</div><div class="d">Mixed quiz · 全科混合 15 题</div></button>
       <button class="mode-card" data-mode="review"><div class="ic">🔁</div><div class="t">错题重练</div><div class="d">Review mistakes · 智能优先重练</div></button>
       <button class="mode-card" data-mode="mock"><div class="ic">⏱️</div><div class="t">模拟考</div><div class="d">Timed mock exam · 限时模拟 20 题</div></button>
+      <button class="mode-card" data-mode="reading"><div class="ic">📖</div><div class="t">阅读理解</div><div class="d">Reading comprehension · 读篇章答题</div></button>
     </div>
     <div class="settings-row">
       <button class="btn ghost danger" id="reset-progress">♻️ 重置星星与成绩 · Reset Stars &amp; Score</button>
@@ -75,6 +76,7 @@
       <div class="chip">⭐ <span id="q-stars">0</span></div></div>
     <div class="qprogress"><i id="qprogress-fill" style="width:0%"></i></div>
     <div class="qcard">
+      <div id="q-passage" class="passage" hidden></div>
       <div class="qmeta"><span class="badge" id="q-subject"></span><span id="q-diff" class="diffbadge" hidden></span><span id="q-topic" class="qtopic"></span></div>
       <div class="qstem" id="q-stem"></div>
       <div id="q-options"></div>
@@ -143,6 +145,17 @@
     <p>选择科目，限时作答，模拟真实考试。每题约 45 秒，时间到自动交卷。</p>
     <div class="mock-grid" id="mock-opts"></div>
     <button class="btn ghost" id="mock-cancel" style="margin-top:10px">取消 Cancel</button>
+  </div>
+</div>
+
+<!-- reading-comprehension passage picker -->
+<div class="modal" id="modal-reading">
+  <div class="box">
+    <div class="em">📖</div>
+    <h3>阅读理解 · Reading Comprehension</h3>
+    <p>选择一篇短文，先阅读，再根据内容答题。每篇都附有详细解析。</p>
+    <div class="reading-grid" id="reading-opts"></div>
+    <button class="btn ghost" id="reading-cancel" style="margin-top:10px">取消 Cancel</button>
   </div>
 </div>
 
