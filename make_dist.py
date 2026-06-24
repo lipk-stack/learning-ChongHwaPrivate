@@ -35,7 +35,10 @@ def compact(bank):
             "notes": [[n["title"], n["body"]] for n in s.get("notes", [])],
             "Q": Q,
         }
-    return {"meta": bank["meta"], "subjects": sub}
+    out = {"meta": bank["meta"], "subjects": sub}
+    if bank.get("passages"):
+        out["passages"] = bank["passages"]  # passages are small; kept verbatim
+    return out
 
 def minify(path, kind):
     try:

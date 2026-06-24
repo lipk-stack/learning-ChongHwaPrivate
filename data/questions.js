@@ -1,13 +1,14 @@
 // Chong Hwa Junior-1 Entrance Exam — Question Bank
 // Source: 2026小六历届试题（修订版）, Chong Hwa Independent High School KL
-// Iteration 5: 203 curated questions (Chinese / Bahasa Melayu / English / Math) with full
-// explanations and per-question difficulty (diff 1=基础 / 2=进阶 / 3=挑战) for standards alignment.
+// Iteration 6: 221 curated questions (Chinese / Bahasa Melayu / English / Math) with full
+// explanations and per-question difficulty (diff 1=基础 / 2=进阶 / 3=挑战) for standards alignment,
+// plus original exam-style reading-comprehension passages (window.QUESTION_BANK.passages).
 window.QUESTION_BANK = {
   meta: {
     school: "吉隆坡中华独立中学 / Chong Hwa Independent High School, KL",
     exam: "初一新生考试 · Junior 1 Entrance Examination",
     paperYear: 2026,
-    builtIteration: 5
+    builtIteration: 6
   },
   subjects: {
     chinese: {
@@ -58,7 +59,11 @@ window.QUESTION_BANK = {
         { id:"zh44", topic:"修辞手法", stem:"「教室里静得连一根针掉在地上都听得见。」这句运用了什么修辞手法？", options:["排比","夸张","设问","对偶"], answer:1, explanation:"用「连针掉地都听得见」极力渲染安静的程度，言过其实以加强效果，是「夸张」。故选 B。", diff:2 },
         { id:"zh45", topic:"词语搭配", stem:"下列哪一项动词与宾语的搭配「不恰当」？", options:["发扬传统","端正态度","提高水平","改善缺点"], answer:3, explanation:"「缺点」应说「改正缺点」或「克服缺点」；「改善」多与「环境、生活、关系」搭配。故 D「改善缺点」搭配不恰当，选 D。", diff:2 },
         { id:"zh46", topic:"病句", stem:"下列哪一个句子「没有」语病？", options:["他是一位很有经验的有三十年教龄的老教师。","为了避免成绩不再退步，他制定了学习计划。","我们要养成爱读书、读好书的好习惯。","能否取得好成绩，关键在于平时是否努力。"], answer:2, explanation:"C 句结构完整、表意清楚，没有语病。A 语序混乱、表述累赘；B「避免……不再退步」否定多余（应删「不」）；D 项虽前后都用了「能否、是否」两面词，搭配尚可，但此处最规范、无歧义的是 C。故选 C。", diff:3 },
-        { id:"zh47", topic:"对联", stem:"给上联「春风送暖花千树」选出最恰当的下联：", options:["瑞雪迎春燕一双","明月当空照大地","夏日炎炎好读书","秋雨绵绵润万家"], answer:0, explanation:"对联讲究字数相等、词性相对。「春风送暖花千树」对「瑞雪迎春燕一双」：名词对名词，数量短语「千树」对「一双」，对仗最工整。故选 A。", diff:3 }
+        { id:"zh47", topic:"对联", stem:"给上联「春风送暖花千树」选出最恰当的下联：", options:["瑞雪迎春燕一双","明月当空照大地","夏日炎炎好读书","秋雨绵绵润万家"], answer:0, explanation:"对联讲究字数相等、词性相对。「春风送暖花千树」对「瑞雪迎春燕一双」：名词对名词，数量短语「千树」对「一双」，对仗最工整。故选 A。", diff:3 },
+        { id:"zh48", topic:"古诗词", stem:"孟浩然《春晓》「夜来风雨声」的下一句是：", options:["花落知多少","处处闻啼鸟","春眠不觉晓","白云生处有人家"], answer:0, explanation:"《春晓》：「春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。」故下一句是「花落知多少」，选 A。", diff:1 },
+        { id:"zh49", topic:"文言词义", stem:"《论语》「学而时习之」中「时」的意思是：", options:["时间","按时、时常","季节","当时"], answer:1, explanation:"「学而时习之」指学过之后要按时、时常地温习。「时」在此是「按时、时常」之意，故选 B。", diff:2 },
+        { id:"zh50", topic:"成语运用", stem:"「他做事一丝不苟，力求 ____，从不敷衍了事。」最恰当的成语是：", options:["精益求精","半途而废","得过且过","敷衍塞责"], answer:0, explanation:"与「一丝不苟」「从不敷衍」呼应，强调把好的做得更好，「精益求精」最贴切。其余三项均含消极、马虎之意。故选 A。", diff:2 },
+        { id:"zh51", topic:"文化常识", stem:"二十四节气中，排在最前、标志春季开始的是：", options:["立春","春分","清明","谷雨"], answer:0, explanation:"二十四节气以「立春」为首，标志春季的开始；其后才是雨水、惊蛰、春分、清明、谷雨。故选 A。", diff:2 }
       ],
       notes: [
         { title:"现代文阅读 · 林海音《迟到》", body:"2026 年现代文阅读选用林海音《迟到》。重点考查：① 字音字形（皱 zhòu、哀 āi）；② 用成语概括人物状态（被打后「狼狈不堪」）；③ 体会父亲「含蓄深沉」的爱；④ 概括人物习惯（养成「守时」的习惯）；⑤ 谈启示（父母严格管教背后是爱与关心，要学会理解与感恩）。答题技巧：概括题先找原文依据，再用自己的话归纳；启示题要联系全文主旨，言之成理即可。" },
@@ -110,7 +115,11 @@ window.QUESTION_BANK = {
         { id:"ms39", topic:"Sinonim", stem:"Pilih perkataan yang sama maksud (sinonim) dengan 'pandai'.", options:["bijak","malas","lemah","sombong"], answer:0, explanation:"'Pandai' bermaksud cerdik atau bijak, jadi sinonimnya ialah 'bijak'. Jawapan A.", diff:1 },
         { id:"ms40", topic:"Kata sendi nama", stem:"Lengkapkan ayat: 'Ali tinggal ________ Kuala Lumpur.' Pilih kata sendi nama yang betul.", options:["di","ke","dari","pada"], answer:0, explanation:"Kata sendi nama 'di' menunjukkan tempat. Ayat yang betul ialah 'Ali tinggal di Kuala Lumpur.' Jawapan A.", diff:1 },
         { id:"ms41", topic:"Antonim", stem:"Apakah lawan kata (antonim) bagi 'rajin'?", options:["malas","tekun","usaha","cepat"], answer:0, explanation:"Lawan kata bagi 'rajin' ialah 'malas'. 'Tekun' pula merupakan sinonim, bukan antonim. Jawapan A.", diff:1 },
-        { id:"ms42", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Tiga ________ kerbau sedang membajak sawah.' Pilih penjodoh bilangan yang betul.", options:["ekor","biji","batang","orang"], answer:0, explanation:"Penjodoh bilangan bagi binatang ialah 'ekor'. Ayat yang betul: 'Tiga ekor kerbau sedang membajak sawah.' Jawapan A.", diff:2 }
+        { id:"ms42", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Tiga ________ kerbau sedang membajak sawah.' Pilih penjodoh bilangan yang betul.", options:["ekor","biji","batang","orang"], answer:0, explanation:"Penjodoh bilangan bagi binatang ialah 'ekor'. Ayat yang betul: 'Tiga ekor kerbau sedang membajak sawah.' Jawapan A.", diff:2 },
+        { id:"ms43", topic:"Sinonim", stem:"Pilih perkataan seerti (sinonim) bagi 'cantik'.", options:["hodoh","indah","buruk","lama"], answer:1, explanation:"'Cantik' bermaksud elok dipandang, jadi sinonimnya ialah 'indah'. 'Hodoh' dan 'buruk' pula berlawanan maksud. Jawapan B.", diff:1 },
+        { id:"ms44", topic:"Antonim", stem:"Pilih perkataan berlawanan (antonim) bagi 'tinggi'.", options:["besar","rendah","panjang","jauh"], answer:1, explanation:"Lawan bagi 'tinggi' ialah 'rendah'. 'Besar', 'panjang' dan 'jauh' bukan antonim bagi tinggi. Jawapan B.", diff:1 },
+        { id:"ms45", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Ayah membeli dua ________ kereta baharu tahun ini.' Pilih penjodoh bilangan yang betul.", options:["buah","biji","ekor","batang"], answer:0, explanation:"Penjodoh bilangan bagi kenderaan seperti kereta ialah 'buah' — dua buah kereta. Jawapan A.", diff:1 },
+        { id:"ms46", topic:"Imbuhan akhiran", stem:"Pilih bentuk kata yang betul: 'Guru itu memberi ________ kepada murid yang berjaya.'", options:["pujian","memuji","dipuji","terpuji"], answer:0, explanation:"Tempat kosong memerlukan kata nama yang menjadi objek 'memberi'. Kata dasar 'puji' + akhiran '-an' menjadi 'pujian'. Jawapan A.", diff:2 }
       ],
       notes: [
         { title:"Bahagian A — Karangan (30%)", body:"2026: Tulis karangan bertajuk \"Kelebihan Tinggal di Bandar\" (≥100 patah perkataan) berdasarkan kata kunci: banyak kemudahan awam, institusi pendidikan, tempat percutian (monorel, hospital, universiti, taman tema air). Petua: satu isi satu perenggan, gunakan penanda wacana (selain itu, di samping itu, kesimpulannya) dan ayat majmuk." },
@@ -178,7 +187,11 @@ window.QUESTION_BANK = {
         { id:"en55", topic:"Grammar", stem:"Choose the grammatically correct sentence.", options:["Each of the students has a textbook.","Each of the students have a textbook.","Each of the students having a textbook.","Each of the students were a textbook."], answer:0, explanation:"'Each' is singular and takes a singular verb, so the correct sentence is 'Each of the students has a textbook.' Answer: A.", diff:2 },
         { id:"en56", topic:"Prepositions", stem:"We will meet ________ Monday morning at the school library.", options:["on","in","at","by"], answer:0, explanation:"We use the preposition 'on' with days and dates, e.g. 'on Monday morning'. Answer: A.", diff:1 },
         { id:"en57", topic:"Tenses", stem:"Choose the correct verb form: 'She ________ to the dentist yesterday.'", options:["went","goes","has gone","will go"], answer:0, explanation:"The time marker 'yesterday' signals the simple past tense, so the correct form is 'went'. Answer: A.", diff:1 },
-        { id:"en58", topic:"Idioms", stem:"If something happens 'once in a blue moon', it happens ________.", options:["very rarely","very often","every night","very quickly"], answer:0, explanation:"The idiom 'once in a blue moon' means that something happens very rarely. Answer: A.", diff:2 }
+        { id:"en58", topic:"Idioms", stem:"If something happens 'once in a blue moon', it happens ________.", options:["very rarely","very often","every night","very quickly"], answer:0, explanation:"The idiom 'once in a blue moon' means that something happens very rarely. Answer: A.", diff:2 },
+        { id:"en59", topic:"Synonyms", stem:"Choose the word that is closest in meaning to 'rapid'.", options:["slow","fast","weak","calm"], answer:1, explanation:"'Rapid' means happening very quickly, so the closest synonym is 'fast'. 'Slow' is the opposite. Answer: B.", diff:1 },
+        { id:"en60", topic:"Subject–verb agreement", stem:"The news about the examination results ________ very encouraging this year.", options:["is","are","were","have"], answer:0, explanation:"'News' is an uncountable noun that takes a singular verb, so the correct form is 'is'. Answer: A.", diff:2 },
+        { id:"en61", topic:"Idioms", stem:"To 'hit the books' means to ________.", options:["study hard","throw a book","take a long break","play video games"], answer:0, explanation:"The idiom 'hit the books' means to study hard or begin studying seriously. Answer: A.", diff:2 },
+        { id:"en62", topic:"Punctuation", stem:"Choose the sentence that is punctuated correctly.", options:["\"Where are you going?\" asked Mother.","\"Where are you going\"? asked Mother.","\"Where are you going?\" Asked Mother.","Where are you going? \"asked Mother.\""], answer:0, explanation:"A direct question inside quotation marks keeps its question mark inside, and the reporting verb 'asked' begins with a small letter: \"Where are you going?\" asked Mother. Answer: A.", diff:2 }
       ],
       notes: [
         { title:"Section A — Composition (20 marks)", body:"2026: Choose ONE — (1) a picture-based story set at a cinema, using all the words: cinema, tickets, queue, broke into, pretended, annoyed, crowd, apologised, fault, embarrassed; or (2) a mind-map composition about your primary school (100–120 words). Plan: title → beginning (setting) → problem → climax → resolution/feeling." }
@@ -245,13 +258,61 @@ window.QUESTION_BANK = {
         { id:"ma60", topic:"平均数·逆推", stem:"小明四次测验的平均分是 85 分。前三次分别是 80、88、90 分，第四次考多少分？", type:"fill", answer:["82"], explanation:"四次总分 = 85 × 4 = 340；前三次之和 = 80 + 88 + 90 = 258；第四次 = 340 − 258 = 82 分。", diff:2 },
         { id:"ma61", topic:"找规律·斐波那契", stem:"找出数列中问号处的数：1, 1, 2, 3, 5, 8, ____。", type:"fill", answer:["13"], explanation:"这是斐波那契数列，每一项等于前两项之和：5 + 8 = 13。", diff:2 },
         { id:"ma62", topic:"行程·比例", stem:"一列火车 4 小时行驶了 320 km。以同样的速度行驶 7 小时，可行驶多少 km？", type:"fill", answer:["560"], explanation:"速度 = 320 ÷ 4 = 80 km/h；7 小时行驶 = 80 × 7 = 560 km。", diff:2 },
-        { id:"ma63", topic:"最大公因数", stem:"求 24 和 36 的最大公因数（HCF）。", type:"fill", answer:["12"], explanation:"24 = 2³×3，36 = 2²×3²；公因数取相同质因数的较低次幂 = 2²×3 = 12。故最大公因数是 12。", diff:2 }
+        { id:"ma63", topic:"最大公因数", stem:"求 24 和 36 的最大公因数（HCF）。", type:"fill", answer:["12"], explanation:"24 = 2³×3，36 = 2²×3²；公因数取相同质因数的较低次幂 = 2²×3 = 12。故最大公因数是 12。", diff:2 },
+        { id:"ma64", topic:"周长与面积", stem:"一个正方形的周长是 48cm，求它的面积（cm²）。", type:"fill", answer:["144"], explanation:"正方形边长 = 周长 ÷ 4 = 48 ÷ 4 = 12cm；面积 = 边长 × 边长 = 12 × 12 = 144cm²。", diff:2 },
+        { id:"ma65", topic:"时间换算", stem:"2 小时 15 分钟一共等于多少分钟？", type:"fill", answer:["135"], explanation:"2 小时 = 2 × 60 = 120 分钟；再加 15 分钟 = 120 + 15 = 135 分钟。", diff:1 },
+        { id:"ma66", topic:"百分比", stem:"某班有 40 名学生，其中 60% 是男生。请问男生有多少人？", type:"fill", answer:["24"], explanation:"男生人数 = 40 × 60% = 40 × 0.6 = 24 人。", diff:1 },
+        { id:"ma67", topic:"比例尺", stem:"一幅地图的比例尺是 1 : 1000000。图上量得两地相距 3.5cm，求两地的实际距离（km）。", type:"fill", answer:["35"], explanation:"实际距离 = 3.5cm × 1000000 = 3500000cm；换算成米 = 35000m；换算成公里 = 35km。", diff:3 },
+        { id:"ma68", topic:"连续偶数", stem:"三个连续偶数的和是 48，求其中最大的偶数。", type:"fill", answer:["18"], explanation:"中间的偶数 = 48 ÷ 3 = 16；三个偶数为 14、16、18，最大的是 18。", diff:2 },
+        { id:"ma69", topic:"利润·折扣", stem:"一件商品进价 RM200，先加价 25% 作为标价，再按标价打九折卖出。求最后的售价（RM）。", type:"fill", answer:["225","225.00"], explanation:"标价 = 200 × (1 + 25%) = 200 × 1.25 = RM250；售价 = 250 × 90% = 250 × 0.9 = RM225。", diff:3 }
       ],
       notes: [
         { title:"作答须知", body:"2026 数学卷共 30 题：甲组 20 题（每题 3.5 分），乙组 10 题（每题 3 分），全部填空作答。常考点：四则混合运算、分数小数互化、百分比与盈亏、比例分配、平均数、单利、行程问题，以及抽屉原理、找规律、计数等逻辑题。本题库收录可清晰还原的题目并附完整解题步骤。" },
         { title:"找规律例题（第 25 题）", body:"已知 3＊4 → 12,7,5；8＊5 → 40,13,27；6＊9 → 54,15,39。规律：a＊b 得「a×b、a+b、(a×b)−(a+b)」。所以 9＊8 → 72、17、55（答案取 55）。" }
       ]
     }
-  }
+  },
+  // ---- Reading-comprehension passages (original, exam-style, subject-correct language) ----
+  passages: [
+    {
+      id:"rc-zh1", subj:"chinese", lang:"zh", icon:"📖",
+      title:"阅读理解 ·《一碗热汤面》", source:"原创 · 仿真记叙文",
+      intro:"先读短文，再回答下面的问题。",
+      body:"那年冬天特别冷。母亲在小镇的街角开了一家面摊，每天天还没亮就起来和面、熬汤。我放学后总爱跑去帮忙，其实更多是为了那一碗冒着热气的汤面。\n\n有一天傍晚，来了一位衣着单薄的老人。他在摊前站了很久，却始终没有坐下。母亲看出他的犹豫，便盛了一碗热腾腾的汤面端到他面前，轻声说：「天冷，先吃吧，钱不急。」老人愣了一下，眼眶有些发红，连声道谢。\n\n后来我才知道，那位老人当时身上一分钱也没有。第二天清早，他特意送来一小袋自家种的青菜，放在摊位上就匆匆离开了。母亲望着那袋青菜，笑着对我说：「你看，善意是会回来的。」\n\n从那以后，我渐渐明白：一碗热汤面，温暖的不只是肚子，还有人心。",
+      questions:[
+        { id:"rc-zh1-q1", topic:"信息提取", stem:"母亲为什么先端面给那位老人，而说「钱不急」？", options:["因为老人是她的老朋友","因为她看出老人在寒冷中犹豫、为难，想先让他暖身","因为面摊当天生意太好","因为老人答应第二天付双倍的钱"], answer:1, explanation:"文中说母亲「看出他的犹豫」，又值「天冷」，便先盛面让老人取暖，体现的是体贴与善意，并非交易。故选 B。", diff:2 },
+        { id:"rc-zh1-q2", topic:"词句理解", stem:"第二段中「老人愣了一下，眼眶有些发红」最能表现老人当时怎样的心情？", options:["感到意外又十分感动","觉得羞愧而生气","非常害怕和紧张","觉得汤面不好吃"], answer:0, explanation:"「愣了一下」写出意外，「眼眶发红」「连声道谢」写出被陌生人善待后的感动。故选 A。", diff:2 },
+        { id:"rc-zh1-q3", topic:"概括·主旨", stem:"老人第二天送来一袋青菜，这个情节主要说明了什么？", options:["老人很会种菜","母亲的善意得到了回报","青菜比金钱更贵重","老人想长期在面摊吃饭"], answer:1, explanation:"老人虽身无分文，仍以自家青菜回礼，正呼应母亲所说「善意是会回来的」，说明善意得到了回报。故选 B。", diff:2 },
+        { id:"rc-zh1-q4", topic:"句子赏析", stem:"结尾「温暖的不只是肚子，还有人心」运用了怎样的写法，有什么作用？", options:["运用比喻，说明汤面很烫","由实到虚，点明善意能温暖人心的主旨","运用夸张，强调天气寒冷","只是简单交代事情的结果"], answer:1, explanation:"句子从「肚子」（实，指吃饱）写到「人心」（虚，指情感），由实入虚，升华并点明全文主旨。故选 B。", diff:3 },
+        { id:"rc-zh1-q5", topic:"启示·感悟", stem:"读完短文，下列哪一项最符合文章想要传达的道理？", options:["做生意一定要先收钱","帮助别人时要常存善意，善意往往会以另一种方式回到我们身边","天冷时应该多喝热汤","只有亲人之间才需要互相帮助"], answer:1, explanation:"全文借「一碗热汤面」表达对善意与温情的赞美：真诚地帮助他人，善意会以意想不到的方式回报。故选 B。", diff:2 }
+      ]
+    },
+    {
+      id:"rc-en1", subj:"english", lang:"en", icon:"🌱",
+      title:"Reading · The School Garden", source:"Original · exam-style passage",
+      intro:"Read the passage, then answer the questions.",
+      body:"When Mrs Tan first suggested turning the empty corner behind our classroom into a garden, most of us were not interested. The ground was dry and full of stones, and nobody believed that anything could grow there.\n\nStill, we began. Every Friday afternoon, our class cleared the weeds, dug the soil and planted seeds. At first, the work was tiring and our hands grew sore. Weeks passed and nothing appeared. Some classmates wanted to give up.\n\nThen, one morning, Ravi shouted with joy. Tiny green shoots had pushed their way through the soil. We gathered around, amazed that our hard work had finally paid off. From that day, we cared for the plants even more carefully, watering them and pulling out weeds.\n\nBy the end of the term, the once-empty corner was full of life. Bright flowers and fresh vegetables filled the garden, and butterflies visited every day. More than the plants, we had grown too — we had learned that patience and teamwork can turn even a stony corner into something beautiful.",
+      questions:[
+        { id:"rc-en1-q1", topic:"Detail", stem:"Why were most students NOT interested in the garden at first?", options:["The corner was too far from the classroom.","The ground was dry and stony, so they thought nothing could grow.","They did not like Mrs Tan.","They were too busy with examinations."], answer:1, explanation:"The passage says the ground 'was dry and full of stones, and nobody believed that anything could grow there.' Answer: B.", diff:2 },
+        { id:"rc-en1-q2", topic:"Sequence", stem:"What did the class do every Friday afternoon?", options:["They watched butterflies in the garden.","They rested behind the classroom.","They cleared weeds, dug the soil and planted seeds.","They bought flowers from a shop."], answer:2, explanation:"The text states that 'Every Friday afternoon, our class cleared the weeds, dug the soil and planted seeds.' Answer: C.", diff:1 },
+        { id:"rc-en1-q3", topic:"Vocabulary in context", stem:"In paragraph 3, the phrase 'had finally paid off' means their hard work ________.", options:["had cost a lot of money","had brought good results at last","had been wasted","had to be paid for"], answer:1, explanation:"'Paid off' is an idiom meaning that effort produced a good result — the seeds finally grew. Answer: B.", diff:3 },
+        { id:"rc-en1-q4", topic:"Inference", stem:"Why does the writer say 'we had grown too'?", options:["The students became physically taller.","The students learned important lessons about patience and teamwork.","The students grew more plants than expected.","The students moved to a new classroom."], answer:1, explanation:"'Grown' here is figurative: the students developed as people, learning patience and teamwork. Answer: B.", diff:3 },
+        { id:"rc-en1-q5", topic:"Main idea", stem:"Which is the BEST moral of the passage?", options:["Gardening is an easy hobby.","Patience and teamwork can turn something difficult into something beautiful.","Vegetables are better than flowers.","Friday is the best day to work."], answer:1, explanation:"The closing lines show that working together patiently changed a stony corner into a thriving garden — the central message. Answer: B.", diff:2 }
+      ]
+    },
+    {
+      id:"rc-ms1", subj:"malay", lang:"ms", icon:"🤝",
+      title:"Pemahaman · Gotong-Royong di Taman", source:"Asli · petikan gaya peperiksaan",
+      intro:"Baca petikan di bawah, kemudian jawab soalan-soalan yang berikut.",
+      body:"Pada suatu pagi Sabtu yang cerah, penduduk Taman Damai berkumpul di padang berhampiran surau. Mereka mengadakan gotong-royong untuk membersihkan kawasan taman yang semakin kotor dengan sampah dan semak-samun.\n\nEncik Razak, ketua kawasan, membahagikan penduduk kepada beberapa kumpulan. Ada yang memotong rumput, ada yang mengutip sampah, dan ada pula yang mengecat semula pagar surau yang sudah pudar. Kanak-kanak turut membantu dengan mengutip botol dan tin terpakai untuk dikitar semula.\n\nWalaupun cuaca semakin panas, tiada seorang pun yang mengeluh. Mereka bekerja sambil bergurau senda sehingga suasana menjadi meriah. Puan Aminah dan beberapa orang ibu pula menyediakan air dan kuih untuk semua peserta.\n\nMenjelang tengah hari, taman itu kelihatan bersih dan ceria semula. Penduduk berasa bangga kerana hasil kerjasama mereka. Mereka sedar bahawa semangat gotong-royong bukan sahaja membersihkan taman, malah mengeratkan hubungan sesama jiran.",
+      questions:[
+        { id:"rc-ms1-q1", topic:"Pemahaman", stem:"Mengapakah penduduk Taman Damai mengadakan gotong-royong?", options:["untuk meraikan hari kemerdekaan","untuk membersihkan taman yang kotor dengan sampah dan semak-samun","untuk membina sebuah surau baharu","untuk mengadakan pertandingan sukan"], answer:1, explanation:"Petikan menyatakan mereka berkumpul 'untuk membersihkan kawasan taman yang semakin kotor dengan sampah dan semak-samun'. Jawapan B.", diff:2 },
+        { id:"rc-ms1-q2", topic:"Pemahaman", stem:"Apakah tugas kanak-kanak semasa gotong-royong itu?", options:["memotong rumput","mengecat pagar surau","mengutip botol dan tin terpakai untuk dikitar semula","menyediakan air dan kuih"], answer:2, explanation:"Petikan menyebut 'Kanak-kanak turut membantu dengan mengutip botol dan tin terpakai untuk dikitar semula.' Jawapan C.", diff:1 },
+        { id:"rc-ms1-q3", topic:"Kosa kata", stem:"Perkataan 'mengeluh' dalam petikan membawa maksud ________.", options:["menyatakan rasa tidak puas hati atau penat","ketawa dengan gembira","bekerja dengan pantas","berehat seketika"], answer:0, explanation:"'Mengeluh' bermaksud menyatakan rasa tidak puas hati, susah atau penat. Dalam ayat itu, tiada sesiapa mengeluh walaupun cuaca panas. Jawapan A.", diff:3 },
+        { id:"rc-ms1-q4", topic:"Pemahaman (kecuali)", stem:"Berikut ialah kerja yang dilakukan semasa gotong-royong itu, KECUALI ________.", options:["memotong rumput","mengutip sampah","mengecat pagar surau","menanam pokok bunga"], answer:3, explanation:"Petikan menyebut memotong rumput, mengutip sampah dan mengecat pagar surau, tetapi tidak menyebut menanam pokok bunga. Jawapan D.", diff:2 },
+        { id:"rc-ms1-q5", topic:"Nilai / Pengajaran", stem:"Apakah pengajaran utama yang dapat diperoleh daripada petikan ini?", options:["Kita patut tinggal di taman yang besar.","Semangat gotong-royong dapat menyiapkan kerja dan mengeratkan hubungan sesama jiran.","Cuaca panas menyukarkan kerja.","Hanya orang dewasa boleh menyertai gotong-royong."], answer:1, explanation:"Petikan menegaskan bahawa kerjasama (gotong-royong) bukan sahaja membersihkan taman malah 'mengeratkan hubungan sesama jiran'. Jawapan B.", diff:2 }
+      ]
+    }
+  ]
 };
 
