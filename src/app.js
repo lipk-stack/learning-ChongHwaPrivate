@@ -2,8 +2,9 @@
   "use strict";
   /* ===================================================================
      Chong Hwa Junior-1 Entrance Exam · Star Quest
-     Iteration 3 — adds a daily-goal streak, a Star Shop (themes +
-     avatars that spend stars), and two more milestone mini-games.
+     Iteration 7 — 9 milestone mini-games (adds 🎯 24-Point Sprint),
+     timed mock exams, reading-comprehension passages, a Star Shop
+     (themes + avatars), daily-goal streak and a 243-question bank.
      Portable: single file, offline, localStorage progress.
   =================================================================== */
   // Distribution builds ship a compact bank (window.QB) to save space;
@@ -970,7 +971,58 @@
     }
   };
 
-  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse, gameIdiom];
+  /* =========== GAME 9: 🎯 24-Point Sprint (二十四点) =========== */
+  function pointsPool(level) {
+    // {nums:[四个数], ok:"正确算式(=24)", wrongs:[三个≠24的算式]}  — all verified by computation.
+    var easy = [
+      { nums:[1,2,3,4], ok:"1 × 2 × 3 × 4", wrongs:["1 + 2 + 3 + 4","(1 + 2) × 3 + 4","1 × 2 + 3 × 4"] },
+      { nums:[4,4,4,4], ok:"4 × 4 + 4 + 4", wrongs:["4 × 4 + 4 × 4","4 × 4 − 4 − 4","4 + 4 + 4 + 4"] },
+      { nums:[3,3,4,4], ok:"3 × 4 + 3 × 4", wrongs:["3 + 3 + 4 + 4","3 × 3 + 4 + 4","(3 + 4) × 3 + 4"] },
+      { nums:[2,2,3,3], ok:"(3 + 3) × 2 × 2", wrongs:["2 × 2 × 3 × 3","2 + 2 + 3 + 3","3 × 3 × 2 + 2"] },
+      { nums:[2,2,6,6], ok:"6 × 2 + 6 × 2", wrongs:["6 + 6 + 2 + 2","6 × 6 − 2 − 2","6 × 2 × 2 − 6"] }
+    ];
+    var hard = [
+      { nums:[2,3,4,6], ok:"6 × 4 × (3 − 2)", wrongs:["6 + 4 × 3 + 2","6 × 4 − 3 × 2","(6 + 2) × 3 − 4"] },
+      { nums:[2,4,6,8], ok:"(2 + 6) × 4 − 8", wrongs:["2 + 4 + 6 + 8","8 × 2 + 6 − 4","8 × 6 ÷ 4 + 2"] },
+      { nums:[5,5,5,5], ok:"5 × 5 − 5 ÷ 5", wrongs:["5 + 5 + 5 + 5","5 × 5 − 5 − 5","5 × 5 ÷ 5 + 5"] },
+      { nums:[1,3,4,6], ok:"6 ÷ (1 − 3 ÷ 4)", wrongs:["6 × 4 − 3 − 1","6 + 4 × 3 + 1","(6 + 1) × 4 − 3"] },
+      { nums:[1,2,4,6], ok:"6 × 4 ÷ (2 − 1)", wrongs:["6 + 4 + 2 + 1","6 × 4 − 2 × 1","(6 + 2) × 4 ÷ 1"] }
+    ];
+    return level <= 2 ? easy : easy.concat(hard);
+  }
+  var gameTwentyFour = {
+    name: "二十四点 24-Point", icon: "🎯",
+    blurb: "用四个数字凑出 24 点，挑选正确的算式。",
+    howto: "屏幕给出四个数字（每个用一次）。从四个算式中，选出「结果正好等于 24」的那一个。30 秒内答对越多 ⭐！这是最考验心算的一关哦。",
+    start: function (host, level, done) {
+      var time = 30, score = 0, pool = shuffle(pointsPool(level)), idx = 0;
+      host.innerHTML = '<div class="gamehud"><span class="timer">⏱ <span id="t">30</span>s</span>' +
+        '<span class="sc">✔ <span id="s">0</span></span></div>' +
+        '<div class="pt-nums" id="nums"></div>' +
+        '<div class="idiom-link" id="lk">选出结果「正好 = 24」的算式：</div>' +
+        '<div class="game-opts" id="o" style="grid-template-columns:1fr"></div>';
+      function newQ() {
+        if (!gameLive) return;
+        var it = pool[idx % pool.length]; idx++;
+        el("nums").innerHTML = it.nums.map(function (n) { return '<span class="pt-chip">' + n + '</span>'; }).join("");
+        var opts = shuffle([it.ok].concat(it.wrongs));
+        var o = el("o"); o.innerHTML = "";
+        opts.forEach(function (v) {
+          var b2 = document.createElement("button"); b2.textContent = v; b2.style.fontSize = "16px";
+          b2.onclick = function () {
+            if (v === it.ok) { score++; el("s").textContent = score; b2.classList.add("good"); }
+            else b2.classList.add("bad");
+            setTimeout(newQ, 220);
+          };
+          o.appendChild(b2);
+        });
+      }
+      newQ();
+      var iv = gInterval(function () { time--; el("t").textContent = time; if (time <= 0) { clearInterval(iv); done(score); } }, 1000);
+    }
+  };
+
+  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse, gameIdiom, gameTwentyFour];
 
   /* =================================================================
      STAR SHOP — a sink for stars. Buying spends the current balance

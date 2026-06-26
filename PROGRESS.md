@@ -147,6 +147,26 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
   use (games only unlock via milestones, minutes apart); the smoke test simply spaces launches by 350 ms.
   If ever needed, give `launchGame` a generation counter captured in each game’s closures.
 
+### Iteration 7 (this repo — current) ✅
+- **🎯 9th milestone mini-game → 二十四点 24-Point Sprint** (the long-planned 数学 24-point game). The
+  screen shows **four number chips** (each used once); the player picks, from 4 algebraic expressions,
+  the one whose result is **exactly 24**. The puzzle pool is **curated and 100% verified by computation**
+  (every correct expression = 24 and uses each given number once; every distractor ≠ 24). Difficulty
+  scales: Lv.≤2 uses 5 clean integer puzzles, higher levels add 5 harder ones including the famous
+  fractional `3 3 8 8` style (`6 ÷ (1 − 3 ÷ 4)` etc.). 30-second sprint, +1 per correct. Now **9 games**
+  in the milestone rotation. New `.pt-nums` / `.pt-chip` CSS for the number chips.
+- **Question bank 221 → 243 (+22):** +华文5 (古诗词《九月九日忆山东兄弟》/成语寓意「守株待兔」/夸张/四大名著作者/反义词) ·
+  +国文5 (peribahasa「bagai pinang dibelah dua / bagai isi dengan kuku」/imbuhan「mengisi」/penjodoh「sikat」/
+  ayat pasif「oleh」/antonim「berani」) · +英文6 (synonym「enormous」/preposition/SVA「every one」/present-perfect/
+  idiom「let the cat out of the bag」/antonym「ancient」) · +数学6 (分数减法/百分比涨价/平均数/正方体体积/找规律 n²+2/
+  一道 24 点选择题 ma75「3 3 8 8」). **All math answers re-verified by computation** (Python `fractions`).
+  Per subject now: 华文 54 · BM 51 · English 68 · 数学 70. Plus the 15 reading questions in passages.
+- **Build & test:** `meta.builtIteration` → 7. Rebuilt both the readable (`build.py`, ~180 KB) and compact
+  (`make_dist.py`, ~139 KB; cleancss still unavailable in-env so CSS stays un-minified — JS minified via
+  terser). jsdom smoke test extended to launch **all 9 games** (mixed easy/hard levels), hammer each with
+  ~30 random clicks and quit, plus a subject quiz and a mixed mock exam — **repeated on both builds with
+  0 runtime errors**. A targeted check confirms the 24-Point game renders 4 number chips + 4 options.
+
 ---
 
 ## ⚠️ Known constraint — Google Drive delivery of the built app
@@ -163,7 +183,7 @@ Drive `ChongHwa` folder ("中华备考 App · 第2次迭代更新说明") tellin
 id** so I can `deploy-site` (reliable, gives a portable URL), or (b) confirm they're OK
 with the manual drag, or (c) keep the per‑iteration instructions doc approach.
 
-## Next up (ideas for Iteration 7+)
+## Next up (ideas for Iteration 8+)
 
 - [ ] **More reading passages** — add a 数学应用题情境 passage and a second 华文说明文; let Reading mode
       group passages by subject. Consider mining real passages from the 2024/2023/2022 papers (decrypt with
@@ -174,7 +194,7 @@ with the manual drag, or (c) keep the per‑iteration instructions doc approach.
       remember best mock score per subject; optional 难度‑weighted question selection.
 - [ ] **Stronger spaced repetition**: store a *due date* per wrong question (resurface after N days), not just a count.
 - [ ] **More shop depth**: spend ⭐ on power‑ups (50/50, skip), badges/titles, or a streak‑freeze.
-- [ ] One more mini‑game idea: Malay peribahasa match, or 数学 24‑point.
+- [ ] One more mini‑game idea: Malay peribahasa match (Chinese 成语 and 数学 24‑point are now done).
 - [ ] Optional **service worker + manifest** for a true installable PWA (still single‑folder portable).
 - [ ] (Optional) make `launchGame` use a generation token so back‑to‑back game launches are bullet‑proof
       (see the Iteration‑6 note above — not reachable in real use today).
@@ -186,6 +206,8 @@ with the manual drag, or (c) keep the per‑iteration instructions doc approach.
    ordering, ⚡ 7th game (True/False Blitz), +23 questions (203 total) — all stress‑tested on both builds.
 ✅ Done in Iteration 6: 📖 reading‑comprehension mode (3 original subject‑correct passages + 15 questions),
    🀄 8th game (Idiom Chain), +18 questions (221 total) — all stress‑tested end‑to‑end on both builds.
+✅ Done in Iteration 7: 🎯 9th game (24‑Point Sprint, computation‑verified puzzles), +22 questions
+   (243 total) across all four subjects — all stress‑tested on both builds with 0 runtime errors.
 
 ## Resume checklist for the next agent
 1. Read this file. Confirm Drive `ChongHwa` folder + PDF still accessible (password `chonghwakl.edu.my`).

@@ -1,6 +1,6 @@
 // Chong Hwa Junior-1 Entrance Exam — Question Bank
 // Source: 2026小六历届试题（修订版）, Chong Hwa Independent High School KL
-// Iteration 6: 221 curated questions (Chinese / Bahasa Melayu / English / Math) with full
+// Iteration 7: 243 curated questions (Chinese / Bahasa Melayu / English / Math) with full
 // explanations and per-question difficulty (diff 1=基础 / 2=进阶 / 3=挑战) for standards alignment,
 // plus original exam-style reading-comprehension passages (window.QUESTION_BANK.passages).
 window.QUESTION_BANK = {
@@ -8,7 +8,7 @@ window.QUESTION_BANK = {
     school: "吉隆坡中华独立中学 / Chong Hwa Independent High School, KL",
     exam: "初一新生考试 · Junior 1 Entrance Examination",
     paperYear: 2026,
-    builtIteration: 6
+    builtIteration: 7
   },
   subjects: {
     chinese: {
@@ -63,7 +63,12 @@ window.QUESTION_BANK = {
         { id:"zh48", topic:"古诗词", stem:"孟浩然《春晓》「夜来风雨声」的下一句是：", options:["花落知多少","处处闻啼鸟","春眠不觉晓","白云生处有人家"], answer:0, explanation:"《春晓》：「春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。」故下一句是「花落知多少」，选 A。", diff:1 },
         { id:"zh49", topic:"文言词义", stem:"《论语》「学而时习之」中「时」的意思是：", options:["时间","按时、时常","季节","当时"], answer:1, explanation:"「学而时习之」指学过之后要按时、时常地温习。「时」在此是「按时、时常」之意，故选 B。", diff:2 },
         { id:"zh50", topic:"成语运用", stem:"「他做事一丝不苟，力求 ____，从不敷衍了事。」最恰当的成语是：", options:["精益求精","半途而废","得过且过","敷衍塞责"], answer:0, explanation:"与「一丝不苟」「从不敷衍」呼应，强调把好的做得更好，「精益求精」最贴切。其余三项均含消极、马虎之意。故选 A。", diff:2 },
-        { id:"zh51", topic:"文化常识", stem:"二十四节气中，排在最前、标志春季开始的是：", options:["立春","春分","清明","谷雨"], answer:0, explanation:"二十四节气以「立春」为首，标志春季的开始；其后才是雨水、惊蛰、春分、清明、谷雨。故选 A。", diff:2 }
+        { id:"zh51", topic:"文化常识", stem:"二十四节气中，排在最前、标志春季开始的是：", options:["立春","春分","清明","谷雨"], answer:0, explanation:"二十四节气以「立春」为首，标志春季的开始；其后才是雨水、惊蛰、春分、清明、谷雨。故选 A。", diff:2 },
+        { id:"zh52", topic:"古诗词", stem:"王维《九月九日忆山东兄弟》「独在异乡为异客」的下一句是：", options:["每逢佳节倍思亲","遍插茱萸少一人","西出阳关无故人","春风不度玉门关"], answer:0, explanation:"《九月九日忆山东兄弟》：「独在异乡为异客，每逢佳节倍思亲。遥知兄弟登高处，遍插茱萸少一人。」故下一句是「每逢佳节倍思亲」，选 A。", diff:1 },
+        { id:"zh53", topic:"成语·寓意", stem:"「守株待兔」这个成语主要告诉我们的道理是：", options:["要善于耐心等待时机","不可死守狭隘经验、心存侥幸而不知变通","遇事要懂得保护小动物","做事要持之以恒、绝不放弃"], answer:1, explanation:"「守株待兔」出自《韩非子》，讽刺那种死守偶然经验、妄想不劳而获、不知变通的人。故选 B。", diff:2 },
+        { id:"zh54", topic:"修辞手法", stem:"「危楼高百尺，手可摘星辰。」这两句运用了什么修辞手法？", options:["夸张","拟人","设问","对偶"], answer:0, explanation:"楼并非真有百尺、手也不能真的摘到星辰，诗人用言过其实的写法极力突出楼之高，这是「夸张」。故选 A。", diff:2 },
+        { id:"zh55", topic:"文学常识", stem:"中国古典四大名著中，作者是罗贯中的是哪一部？", options:["《水浒传》","《西游记》","《三国演义》","《红楼梦》"], answer:2, explanation:"《三国演义》作者是元末明初的罗贯中。《水浒传》作者施耐庵，《西游记》吴承恩，《红楼梦》曹雪芹。故选 C。", diff:1 },
+        { id:"zh56", topic:"反义词", stem:"下列哪一组词语是「反义词」？", options:["崎岖——坎坷","沉默——寂静","慷慨——吝啬","枯萎——干枯"], answer:2, explanation:"「慷慨」指大方、不吝惜，「吝啬」指小气、过分爱惜钱财，二者意思相反，是反义词。A、B、D 各组都是近义词。故选 C。", diff:2 }
       ],
       notes: [
         { title:"现代文阅读 · 林海音《迟到》", body:"2026 年现代文阅读选用林海音《迟到》。重点考查：① 字音字形（皱 zhòu、哀 āi）；② 用成语概括人物状态（被打后「狼狈不堪」）；③ 体会父亲「含蓄深沉」的爱；④ 概括人物习惯（养成「守时」的习惯）；⑤ 谈启示（父母严格管教背后是爱与关心，要学会理解与感恩）。答题技巧：概括题先找原文依据，再用自己的话归纳；启示题要联系全文主旨，言之成理即可。" },
@@ -119,7 +124,12 @@ window.QUESTION_BANK = {
         { id:"ms43", topic:"Sinonim", stem:"Pilih perkataan seerti (sinonim) bagi 'cantik'.", options:["hodoh","indah","buruk","lama"], answer:1, explanation:"'Cantik' bermaksud elok dipandang, jadi sinonimnya ialah 'indah'. 'Hodoh' dan 'buruk' pula berlawanan maksud. Jawapan B.", diff:1 },
         { id:"ms44", topic:"Antonim", stem:"Pilih perkataan berlawanan (antonim) bagi 'tinggi'.", options:["besar","rendah","panjang","jauh"], answer:1, explanation:"Lawan bagi 'tinggi' ialah 'rendah'. 'Besar', 'panjang' dan 'jauh' bukan antonim bagi tinggi. Jawapan B.", diff:1 },
         { id:"ms45", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Ayah membeli dua ________ kereta baharu tahun ini.' Pilih penjodoh bilangan yang betul.", options:["buah","biji","ekor","batang"], answer:0, explanation:"Penjodoh bilangan bagi kenderaan seperti kereta ialah 'buah' — dua buah kereta. Jawapan A.", diff:1 },
-        { id:"ms46", topic:"Imbuhan akhiran", stem:"Pilih bentuk kata yang betul: 'Guru itu memberi ________ kepada murid yang berjaya.'", options:["pujian","memuji","dipuji","terpuji"], answer:0, explanation:"Tempat kosong memerlukan kata nama yang menjadi objek 'memberi'. Kata dasar 'puji' + akhiran '-an' menjadi 'pujian'. Jawapan A.", diff:2 }
+        { id:"ms46", topic:"Imbuhan akhiran", stem:"Pilih bentuk kata yang betul: 'Guru itu memberi ________ kepada murid yang berjaya.'", options:["pujian","memuji","dipuji","terpuji"], answer:0, explanation:"Tempat kosong memerlukan kata nama yang menjadi objek 'memberi'. Kata dasar 'puji' + akhiran '-an' menjadi 'pujian'. Jawapan A.", diff:2 },
+        { id:"ms47", topic:"Peribahasa", stem:"Peribahasa 'bagai pinang dibelah dua' membawa maksud ________.", options:["sangat serupa atau seiras antara satu sama lain","sentiasa berbalah dan bermusuhan","suka tinggal berjauhan","tidak setia kepada kawan"], answer:0, explanation:"'Bagai pinang dibelah dua' menggambarkan dua orang yang sangat serupa atau seiras, sama ada dari segi rupa atau sifat. Jawapan A.", diff:2 },
+        { id:"ms48", topic:"Imbuhan", stem:"Lengkapkan ayat: 'Adik ________ air ke dalam baldi sebelum menyiram pokok.'", options:["isi","mengisi","diisi","berisi"], answer:1, explanation:"Ayat memerlukan kata kerja transitif aktif yang diikuti objek ('air'): 'mengisi'. 'Diisi' ialah bentuk pasif manakala 'berisi' ialah kata kerja tak transitif. Jawapan B.", diff:2 },
+        { id:"ms49", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Emak membeli dua ________ pisang di pasar.' Pilih penjodoh bilangan yang betul.", options:["sikat","biji","batang","keping"], answer:0, explanation:"Penjodoh bilangan bagi pisang (yang berangkai) ialah 'sikat' — dua sikat pisang. Jawapan A.", diff:2 },
+        { id:"ms50", topic:"Kata sendi nama", stem:"Lengkapkan ayat pasif: 'Surat itu ditulis ________ Ali dengan tulisan yang kemas.'", options:["oleh","dengan","kepada","untuk"], answer:0, explanation:"Dalam ayat pasif, pelaku perbuatan diperkenalkan dengan kata sendi nama 'oleh': 'ditulis oleh Ali'. Jawapan A.", diff:1 },
+        { id:"ms51", topic:"Antonim", stem:"Apakah lawan kata (antonim) bagi 'berani'?", options:["penakut","gagah","handal","perkasa"], answer:0, explanation:"Lawan bagi 'berani' ialah 'penakut'. 'Gagah', 'handal' dan 'perkasa' pula seerti atau berkait rapat dengan berani. Jawapan A.", diff:1 }
       ],
       notes: [
         { title:"Bahagian A — Karangan (30%)", body:"2026: Tulis karangan bertajuk \"Kelebihan Tinggal di Bandar\" (≥100 patah perkataan) berdasarkan kata kunci: banyak kemudahan awam, institusi pendidikan, tempat percutian (monorel, hospital, universiti, taman tema air). Petua: satu isi satu perenggan, gunakan penanda wacana (selain itu, di samping itu, kesimpulannya) dan ayat majmuk." },
@@ -191,7 +201,13 @@ window.QUESTION_BANK = {
         { id:"en59", topic:"Synonyms", stem:"Choose the word that is closest in meaning to 'rapid'.", options:["slow","fast","weak","calm"], answer:1, explanation:"'Rapid' means happening very quickly, so the closest synonym is 'fast'. 'Slow' is the opposite. Answer: B.", diff:1 },
         { id:"en60", topic:"Subject–verb agreement", stem:"The news about the examination results ________ very encouraging this year.", options:["is","are","were","have"], answer:0, explanation:"'News' is an uncountable noun that takes a singular verb, so the correct form is 'is'. Answer: A.", diff:2 },
         { id:"en61", topic:"Idioms", stem:"To 'hit the books' means to ________.", options:["study hard","throw a book","take a long break","play video games"], answer:0, explanation:"The idiom 'hit the books' means to study hard or begin studying seriously. Answer: A.", diff:2 },
-        { id:"en62", topic:"Punctuation", stem:"Choose the sentence that is punctuated correctly.", options:["\"Where are you going?\" asked Mother.","\"Where are you going\"? asked Mother.","\"Where are you going?\" Asked Mother.","Where are you going? \"asked Mother.\""], answer:0, explanation:"A direct question inside quotation marks keeps its question mark inside, and the reporting verb 'asked' begins with a small letter: \"Where are you going?\" asked Mother. Answer: A.", diff:2 }
+        { id:"en62", topic:"Punctuation", stem:"Choose the sentence that is punctuated correctly.", options:["\"Where are you going?\" asked Mother.","\"Where are you going\"? asked Mother.","\"Where are you going?\" Asked Mother.","Where are you going? \"asked Mother.\""], answer:0, explanation:"A direct question inside quotation marks keeps its question mark inside, and the reporting verb 'asked' begins with a small letter: \"Where are you going?\" asked Mother. Answer: A.", diff:2 },
+        { id:"en63", topic:"Synonyms", stem:"Choose the word closest in meaning to 'enormous'.", options:["tiny","very large","ordinary","empty"], answer:1, explanation:"'Enormous' means extremely big, so the closest synonym is 'very large'. Answer: B.", diff:1 },
+        { id:"en64", topic:"Prepositions", stem:"The frightened kitten was hiding ________ the table when the storm began.", options:["under","of","since","among"], answer:0, explanation:"'Under' shows position directly below something — the kitten hid under the table. Answer: A.", diff:1 },
+        { id:"en65", topic:"Subject–verb agreement", stem:"Every one of the students ________ a notebook and a pencil for the test.", options:["have","has","having","were"], answer:1, explanation:"The subject is 'Every one' (singular), so it takes the singular verb 'has', despite the plural 'students' in the phrase. Answer: B.", diff:2 },
+        { id:"en66", topic:"Present perfect", stem:"I ________ already finished my homework, so I can watch television now.", options:["have","has","had","having"], answer:0, explanation:"The present perfect with 'I' uses 'have' + past participle: 'I have already finished'. Answer: A.", diff:2 },
+        { id:"en67", topic:"Idioms", stem:"To 'let the cat out of the bag' means to ________.", options:["buy a new pet","reveal a secret by accident","run away quickly","make a serious mistake"], answer:1, explanation:"The idiom 'let the cat out of the bag' means to reveal a secret, usually without meaning to. Answer: B.", diff:3 },
+        { id:"en68", topic:"Antonyms", stem:"Choose the word that is OPPOSITE in meaning to 'ancient'.", options:["old","modern","huge","quiet"], answer:1, explanation:"'Ancient' means very old, so its opposite (antonym) is 'modern'. Answer: B.", diff:1 }
       ],
       notes: [
         { title:"Section A — Composition (20 marks)", body:"2026: Choose ONE — (1) a picture-based story set at a cinema, using all the words: cinema, tickets, queue, broke into, pretended, annoyed, crowd, apologised, fault, embarrassed; or (2) a mind-map composition about your primary school (100–120 words). Plan: title → beginning (setting) → problem → climax → resolution/feeling." }
@@ -264,7 +280,13 @@ window.QUESTION_BANK = {
         { id:"ma66", topic:"百分比", stem:"某班有 40 名学生，其中 60% 是男生。请问男生有多少人？", type:"fill", answer:["24"], explanation:"男生人数 = 40 × 60% = 40 × 0.6 = 24 人。", diff:1 },
         { id:"ma67", topic:"比例尺", stem:"一幅地图的比例尺是 1 : 1000000。图上量得两地相距 3.5cm，求两地的实际距离（km）。", type:"fill", answer:["35"], explanation:"实际距离 = 3.5cm × 1000000 = 3500000cm；换算成米 = 35000m；换算成公里 = 35km。", diff:3 },
         { id:"ma68", topic:"连续偶数", stem:"三个连续偶数的和是 48，求其中最大的偶数。", type:"fill", answer:["18"], explanation:"中间的偶数 = 48 ÷ 3 = 16；三个偶数为 14、16、18，最大的是 18。", diff:2 },
-        { id:"ma69", topic:"利润·折扣", stem:"一件商品进价 RM200，先加价 25% 作为标价，再按标价打九折卖出。求最后的售价（RM）。", type:"fill", answer:["225","225.00"], explanation:"标价 = 200 × (1 + 25%) = 200 × 1.25 = RM250；售价 = 250 × 90% = 250 × 0.9 = RM225。", diff:3 }
+        { id:"ma69", topic:"利润·折扣", stem:"一件商品进价 RM200，先加价 25% 作为标价，再按标价打九折卖出。求最后的售价（RM）。", type:"fill", answer:["225","225.00"], explanation:"标价 = 200 × (1 + 25%) = 200 × 1.25 = RM250；售价 = 250 × 90% = 250 × 0.9 = RM225。", diff:3 },
+        { id:"ma70", topic:"分数减法", stem:"计算 5/6 − 1/3（答案以最简分数表示）。", type:"fill", answer:["1/2"], explanation:"先通分：1/3 = 2/6；5/6 − 2/6 = 3/6 = 1/2（约分后为最简分数）。", diff:2 },
+        { id:"ma71", topic:"百分比·涨价", stem:"一本书原价 RM40，涨价 10% 后出售。新售价是多少令吉（RM）？", type:"fill", answer:["44","44.00"], explanation:"涨幅 = 40 × 10% = RM4；新售价 = 40 + 4 = RM44（即 40 × 1.1 = 44）。", diff:1 },
+        { id:"ma72", topic:"平均数", stem:"四个数 23、25、27、29 的平均数是多少？", type:"fill", answer:["26"], explanation:"总和 = 23 + 25 + 27 + 29 = 104；平均数 = 104 ÷ 4 = 26。", diff:1 },
+        { id:"ma73", topic:"体积", stem:"一个棱长为 5cm 的正方体，它的体积是多少 cm³？", type:"fill", answer:["125"], explanation:"正方体体积 = 棱长 × 棱长 × 棱长 = 5 × 5 × 5 = 125 cm³。", diff:2 },
+        { id:"ma74", topic:"找规律", stem:"找出数列中问号处的数：3, 6, 11, 18, 27, ____。", type:"fill", answer:["38"], explanation:"相邻两数的差依次为 3、5、7、9，逐次加 2；下一个差为 11，故 27 + 11 = 38。（也等于 n²+2：6²+2 = 38。）", diff:3 },
+        { id:"ma75", topic:"二十四点", stem:"用 3、3、8、8 各一次，配合 +、−、×、÷ 和括号，凑出 24。下列哪一个算式的结果「正好是 24」？", options:["8 ÷ ( 3 − 8 ÷ 3 )","( 8 − 3 ) × 8 ÷ 3","8 × 3 − 8 + 3","( 8 + 8 ) × 3 ÷ 3"], answer:0, explanation:"A：8÷3 ≈ 2.667，3 − 8÷3 = 1/3，8 ÷ (1/3) = 24，正好等于 24。其余：B = 40÷3 ≈ 13.3；C = 24 − 8 + 3 = 19；D = 16 × 3 ÷ 3 = 16。故选 A。这正是著名的『3 3 8 8』24 点难题。", diff:3 }
       ],
       notes: [
         { title:"作答须知", body:"2026 数学卷共 30 题：甲组 20 题（每题 3.5 分），乙组 10 题（每题 3 分），全部填空作答。常考点：四则混合运算、分数小数互化、百分比与盈亏、比例分配、平均数、单利、行程问题，以及抽屉原理、找规律、计数等逻辑题。本题库收录可清晰还原的题目并附完整解题步骤。" },
