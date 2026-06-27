@@ -1,6 +1,6 @@
 // Chong Hwa Junior-1 Entrance Exam — Question Bank
 // Source: 2026小六历届试题（修订版）, Chong Hwa Independent High School KL
-// Iteration 7: 243 curated questions (Chinese / Bahasa Melayu / English / Math) with full
+// Iteration 8: 263 curated questions (Chinese / Bahasa Melayu / English / Math) with full
 // explanations and per-question difficulty (diff 1=基础 / 2=进阶 / 3=挑战) for standards alignment,
 // plus original exam-style reading-comprehension passages (window.QUESTION_BANK.passages).
 window.QUESTION_BANK = {
@@ -8,7 +8,7 @@ window.QUESTION_BANK = {
     school: "吉隆坡中华独立中学 / Chong Hwa Independent High School, KL",
     exam: "初一新生考试 · Junior 1 Entrance Examination",
     paperYear: 2026,
-    builtIteration: 7
+    builtIteration: 8
   },
   subjects: {
     chinese: {
@@ -68,7 +68,12 @@ window.QUESTION_BANK = {
         { id:"zh53", topic:"成语·寓意", stem:"「守株待兔」这个成语主要告诉我们的道理是：", options:["要善于耐心等待时机","不可死守狭隘经验、心存侥幸而不知变通","遇事要懂得保护小动物","做事要持之以恒、绝不放弃"], answer:1, explanation:"「守株待兔」出自《韩非子》，讽刺那种死守偶然经验、妄想不劳而获、不知变通的人。故选 B。", diff:2 },
         { id:"zh54", topic:"修辞手法", stem:"「危楼高百尺，手可摘星辰。」这两句运用了什么修辞手法？", options:["夸张","拟人","设问","对偶"], answer:0, explanation:"楼并非真有百尺、手也不能真的摘到星辰，诗人用言过其实的写法极力突出楼之高，这是「夸张」。故选 A。", diff:2 },
         { id:"zh55", topic:"文学常识", stem:"中国古典四大名著中，作者是罗贯中的是哪一部？", options:["《水浒传》","《西游记》","《三国演义》","《红楼梦》"], answer:2, explanation:"《三国演义》作者是元末明初的罗贯中。《水浒传》作者施耐庵，《西游记》吴承恩，《红楼梦》曹雪芹。故选 C。", diff:1 },
-        { id:"zh56", topic:"反义词", stem:"下列哪一组词语是「反义词」？", options:["崎岖——坎坷","沉默——寂静","慷慨——吝啬","枯萎——干枯"], answer:2, explanation:"「慷慨」指大方、不吝惜，「吝啬」指小气、过分爱惜钱财，二者意思相反，是反义词。A、B、D 各组都是近义词。故选 C。", diff:2 }
+        { id:"zh56", topic:"反义词", stem:"下列哪一组词语是「反义词」？", options:["崎岖——坎坷","沉默——寂静","慷慨——吝啬","枯萎——干枯"], answer:2, explanation:"「慷慨」指大方、不吝惜，「吝啬」指小气、过分爱惜钱财，二者意思相反，是反义词。A、B、D 各组都是近义词。故选 C。", diff:2 },
+        { id:"zh57", topic:"古诗词", stem:"李绅《悯农》「锄禾日当午」的下一句是：", options:["汗滴禾下土","谁知盘中餐","粒粒皆辛苦","春种一粒粟"], answer:0, explanation:"《悯农》（其二）：「锄禾日当午，汗滴禾下土。谁知盘中餐，粒粒皆辛苦。」故下一句是「汗滴禾下土」，选 A。", diff:1 },
+        { id:"zh58", topic:"成语运用", stem:"下列哪一个成语最适合形容「做事有始有终、坚持到底」？", options:["持之以恒","半途而废","虎头蛇尾","三心二意"], answer:0, explanation:"「持之以恒」指长久地坚持下去，正合「有始有终、坚持到底」之意。其余三项都表示中途放弃或不专心，意思相反。故选 A。", diff:1 },
+        { id:"zh59", topic:"文言词义", stem:"《论语》「学而不思则罔，思而不学则殆」中「罔」的意思是：", options:["迷惑而无所得","渔网","不要、不可","危险"], answer:0, explanation:"「学而不思则罔」指只学习却不思考，就会迷惑而无所收获。「罔」在此是「迷惑、蒙蔽」之意；后句「殆」才是「疲乏、危险」。故选 A。", diff:3 },
+        { id:"zh60", topic:"修辞·反问", stem:"「这么浅显的道理，难道你还不明白吗？」这句运用了什么修辞手法？", options:["反问","设问","拟人","夸张"], answer:0, explanation:"句子用疑问的形式表达肯定的意思（你应该明白），答案就在问句之中，无需作答，这是「反问」。「设问」则是自问自答。故选 A。", diff:2 },
+        { id:"zh61", topic:"近义词", stem:"下列哪一组词语是「近义词」？", options:["寂静——喧闹","果然——居然","赞扬——表扬","容易——困难"], answer:2, explanation:"「赞扬」和「表扬」都指对人或事加以称赞，意思相近，是近义词。A、D 两组是反义词；「果然」表示事情与预料相符，「居然」表示出乎意料，二者并不同义。故选 C。", diff:2 }
       ],
       notes: [
         { title:"现代文阅读 · 林海音《迟到》", body:"2026 年现代文阅读选用林海音《迟到》。重点考查：① 字音字形（皱 zhòu、哀 āi）；② 用成语概括人物状态（被打后「狼狈不堪」）；③ 体会父亲「含蓄深沉」的爱；④ 概括人物习惯（养成「守时」的习惯）；⑤ 谈启示（父母严格管教背后是爱与关心，要学会理解与感恩）。答题技巧：概括题先找原文依据，再用自己的话归纳；启示题要联系全文主旨，言之成理即可。" },
@@ -129,7 +134,12 @@ window.QUESTION_BANK = {
         { id:"ms48", topic:"Imbuhan", stem:"Lengkapkan ayat: 'Adik ________ air ke dalam baldi sebelum menyiram pokok.'", options:["isi","mengisi","diisi","berisi"], answer:1, explanation:"Ayat memerlukan kata kerja transitif aktif yang diikuti objek ('air'): 'mengisi'. 'Diisi' ialah bentuk pasif manakala 'berisi' ialah kata kerja tak transitif. Jawapan B.", diff:2 },
         { id:"ms49", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Emak membeli dua ________ pisang di pasar.' Pilih penjodoh bilangan yang betul.", options:["sikat","biji","batang","keping"], answer:0, explanation:"Penjodoh bilangan bagi pisang (yang berangkai) ialah 'sikat' — dua sikat pisang. Jawapan A.", diff:2 },
         { id:"ms50", topic:"Kata sendi nama", stem:"Lengkapkan ayat pasif: 'Surat itu ditulis ________ Ali dengan tulisan yang kemas.'", options:["oleh","dengan","kepada","untuk"], answer:0, explanation:"Dalam ayat pasif, pelaku perbuatan diperkenalkan dengan kata sendi nama 'oleh': 'ditulis oleh Ali'. Jawapan A.", diff:1 },
-        { id:"ms51", topic:"Antonim", stem:"Apakah lawan kata (antonim) bagi 'berani'?", options:["penakut","gagah","handal","perkasa"], answer:0, explanation:"Lawan bagi 'berani' ialah 'penakut'. 'Gagah', 'handal' dan 'perkasa' pula seerti atau berkait rapat dengan berani. Jawapan A.", diff:1 }
+        { id:"ms51", topic:"Antonim", stem:"Apakah lawan kata (antonim) bagi 'berani'?", options:["penakut","gagah","handal","perkasa"], answer:0, explanation:"Lawan bagi 'berani' ialah 'penakut'. 'Gagah', 'handal' dan 'perkasa' pula seerti atau berkait rapat dengan berani. Jawapan A.", diff:1 },
+        { id:"ms52", topic:"Sinonim", stem:"Apakah perkataan seerti (sinonim) bagi 'pantas'?", options:["laju","perlahan","lewat","malas"], answer:0, explanation:"'Pantas' bermaksud cepat, maka perkataan seertinya ialah 'laju'. 'Perlahan' dan 'lewat' adalah lawannya. Jawapan A.", diff:1 },
+        { id:"ms53", topic:"Imbuhan", stem:"Lengkapkan ayat: 'Kakak ________ pintu itu dengan kuncinya.' Pilih imbuhan yang betul.", options:["membuka","terbuka","keterbukaan","dibuka"], answer:0, explanation:"Subjek 'Kakak' melakukan perbuatan terhadap 'pintu', maka digunakan kata kerja aktif transitif berimbuhan 'meN-': 'membuka'. 'Dibuka' ialah bentuk pasif. Jawapan A.", diff:1 },
+        { id:"ms54", topic:"Peribahasa", stem:"Peribahasa 'bagai aur dengan tebing' membawa maksud ________.", options:["saling membantu dan bekerjasama","sentiasa berbalah","jauh di mata","sangat kaya-raya"], answer:0, explanation:"'Bagai aur (buluh) dengan tebing' menggambarkan dua pihak yang saling memerlukan dan saling membantu, seperti buluh menahan tebing daripada runtuh. Jawapan A.", diff:2 },
+        { id:"ms55", topic:"Antonim", stem:"Apakah lawan kata (antonim) bagi 'rajin'?", options:["malas","tekun","gigih","usaha"], answer:0, explanation:"Lawan bagi 'rajin' ialah 'malas'. 'Tekun' dan 'gigih' pula seerti dengan rajin. Jawapan A.", diff:1 },
+        { id:"ms56", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Ayah membeli tiga ________ kereta untuk perniagaannya.' Pilih penjodoh bilangan yang betul.", options:["buah","ekor","batang","orang"], answer:0, explanation:"Penjodoh bilangan bagi kenderaan seperti kereta ialah 'buah' — tiga buah kereta. 'Ekor' untuk binatang, 'orang' untuk manusia. Jawapan A.", diff:1 }
       ],
       notes: [
         { title:"Bahagian A — Karangan (30%)", body:"2026: Tulis karangan bertajuk \"Kelebihan Tinggal di Bandar\" (≥100 patah perkataan) berdasarkan kata kunci: banyak kemudahan awam, institusi pendidikan, tempat percutian (monorel, hospital, universiti, taman tema air). Petua: satu isi satu perenggan, gunakan penanda wacana (selain itu, di samping itu, kesimpulannya) dan ayat majmuk." },
@@ -207,7 +217,12 @@ window.QUESTION_BANK = {
         { id:"en65", topic:"Subject–verb agreement", stem:"Every one of the students ________ a notebook and a pencil for the test.", options:["have","has","having","were"], answer:1, explanation:"The subject is 'Every one' (singular), so it takes the singular verb 'has', despite the plural 'students' in the phrase. Answer: B.", diff:2 },
         { id:"en66", topic:"Present perfect", stem:"I ________ already finished my homework, so I can watch television now.", options:["have","has","had","having"], answer:0, explanation:"The present perfect with 'I' uses 'have' + past participle: 'I have already finished'. Answer: A.", diff:2 },
         { id:"en67", topic:"Idioms", stem:"To 'let the cat out of the bag' means to ________.", options:["buy a new pet","reveal a secret by accident","run away quickly","make a serious mistake"], answer:1, explanation:"The idiom 'let the cat out of the bag' means to reveal a secret, usually without meaning to. Answer: B.", diff:3 },
-        { id:"en68", topic:"Antonyms", stem:"Choose the word that is OPPOSITE in meaning to 'ancient'.", options:["old","modern","huge","quiet"], answer:1, explanation:"'Ancient' means very old, so its opposite (antonym) is 'modern'. Answer: B.", diff:1 }
+        { id:"en68", topic:"Antonyms", stem:"Choose the word that is OPPOSITE in meaning to 'ancient'.", options:["old","modern","huge","quiet"], answer:1, explanation:"'Ancient' means very old, so its opposite (antonym) is 'modern'. Answer: B.", diff:1 },
+        { id:"en69", topic:"Synonyms", stem:"Choose the word closest in meaning to 'brave'.", options:["courageous","fearful","weak","careless"], answer:0, explanation:"'Brave' means showing no fear, so the closest synonym is 'courageous'. 'Fearful' and 'weak' are opposites. Answer: A.", diff:1 },
+        { id:"en70", topic:"Tenses", stem:"Choose the correct verb form: 'By the time we arrived at the station, the train ________.'", options:["had already left","leave","has left","leaving"], answer:0, explanation:"The past perfect tense ('had already left') shows an action completed before another past action (we arrived). Answer: A.", diff:2 },
+        { id:"en71", topic:"Prepositions", stem:"Choose the correct preposition: 'My sister is very good ________ playing the piano.'", options:["at","in","on","to"], answer:0, explanation:"We say someone is 'good at' doing something. Answer: A.", diff:1 },
+        { id:"en72", topic:"Idioms", stem:"If a task is 'a piece of cake', it is ________.", options:["very easy","very sweet","very difficult","very expensive"], answer:0, explanation:"The idiom 'a piece of cake' means something that is very easy to do. Answer: A.", diff:2 },
+        { id:"en73", topic:"Subject-verb agreement", stem:"Choose the correct verb: 'Neither the teacher nor the students ________ ready for the test.'", options:["were","was","is","has been"], answer:0, explanation:"With 'neither ... nor ...', the verb agrees with the nearer subject. Here the nearer subject is 'students' (plural), so the correct verb is 'were'. Answer: A.", diff:3 }
       ],
       notes: [
         { title:"Section A — Composition (20 marks)", body:"2026: Choose ONE — (1) a picture-based story set at a cinema, using all the words: cinema, tickets, queue, broke into, pretended, annoyed, crowd, apologised, fault, embarrassed; or (2) a mind-map composition about your primary school (100–120 words). Plan: title → beginning (setting) → problem → climax → resolution/feeling." }
@@ -286,7 +301,12 @@ window.QUESTION_BANK = {
         { id:"ma72", topic:"平均数", stem:"四个数 23、25、27、29 的平均数是多少？", type:"fill", answer:["26"], explanation:"总和 = 23 + 25 + 27 + 29 = 104；平均数 = 104 ÷ 4 = 26。", diff:1 },
         { id:"ma73", topic:"体积", stem:"一个棱长为 5cm 的正方体，它的体积是多少 cm³？", type:"fill", answer:["125"], explanation:"正方体体积 = 棱长 × 棱长 × 棱长 = 5 × 5 × 5 = 125 cm³。", diff:2 },
         { id:"ma74", topic:"找规律", stem:"找出数列中问号处的数：3, 6, 11, 18, 27, ____。", type:"fill", answer:["38"], explanation:"相邻两数的差依次为 3、5、7、9，逐次加 2；下一个差为 11，故 27 + 11 = 38。（也等于 n²+2：6²+2 = 38。）", diff:3 },
-        { id:"ma75", topic:"二十四点", stem:"用 3、3、8、8 各一次，配合 +、−、×、÷ 和括号，凑出 24。下列哪一个算式的结果「正好是 24」？", options:["8 ÷ ( 3 − 8 ÷ 3 )","( 8 − 3 ) × 8 ÷ 3","8 × 3 − 8 + 3","( 8 + 8 ) × 3 ÷ 3"], answer:0, explanation:"A：8÷3 ≈ 2.667，3 − 8÷3 = 1/3，8 ÷ (1/3) = 24，正好等于 24。其余：B = 40÷3 ≈ 13.3；C = 24 − 8 + 3 = 19；D = 16 × 3 ÷ 3 = 16。故选 A。这正是著名的『3 3 8 8』24 点难题。", diff:3 }
+        { id:"ma75", topic:"二十四点", stem:"用 3、3、8、8 各一次，配合 +、−、×、÷ 和括号，凑出 24。下列哪一个算式的结果「正好是 24」？", options:["8 ÷ ( 3 − 8 ÷ 3 )","( 8 − 3 ) × 8 ÷ 3","8 × 3 − 8 + 3","( 8 + 8 ) × 3 ÷ 3"], answer:0, explanation:"A：8÷3 ≈ 2.667，3 − 8÷3 = 1/3，8 ÷ (1/3) = 24，正好等于 24。其余：B = 40÷3 ≈ 13.3；C = 24 − 8 + 3 = 19；D = 16 × 3 ÷ 3 = 16。故选 A。这正是著名的『3 3 8 8』24 点难题。", diff:3 },
+        { id:"ma76", topic:"最小公倍数", stem:"4 和 6 的最小公倍数（LCM）是多少？", type:"fill", answer:["12"], explanation:"4 的倍数：4、8、12……；6 的倍数：6、12……。两者最小的公倍数是 12。", diff:2 },
+        { id:"ma77", topic:"分数应用", stem:"一本书共 200 页。小明第一天读了全书的 2/5，第二天读了全书的 1/4。两天一共读了多少页？", type:"fill", answer:["130"], explanation:"第一天：200 × 2/5 = 80 页；第二天：200 × 1/4 = 50 页；两天合计 80 + 50 = 130 页。", diff:3 },
+        { id:"ma78", topic:"比例分配", stem:"把 60 颗糖果按 2 : 3 分给哥哥和弟弟，分得较多的人得到几颗？", type:"fill", answer:["36"], explanation:"总份数 = 2 + 3 = 5；每份 = 60 ÷ 5 = 12 颗；分得较多的是 3 份 = 3 × 12 = 36 颗。", diff:2 },
+        { id:"ma79", topic:"平均数·逆推", stem:"三个数的平均数是 18，其中两个数分别是 15 和 20。第三个数是多少？", type:"fill", answer:["19"], explanation:"三个数的总和 = 平均数 × 个数 = 18 × 3 = 54；第三个数 = 54 − 15 − 20 = 19。", diff:2 },
+        { id:"ma80", topic:"单利", stem:"小华把 RM500 存入银行，年利率为 4%（单利）。存满 3 年后，可得利息多少令吉（RM）？", type:"fill", answer:["60","60.00"], explanation:"单利 = 本金 × 年利率 × 年数 = 500 × 4% × 3 = 20 × 3 = RM60。", diff:2 }
       ],
       notes: [
         { title:"作答须知", body:"2026 数学卷共 30 题：甲组 20 题（每题 3.5 分），乙组 10 题（每题 3 分），全部填空作答。常考点：四则混合运算、分数小数互化、百分比与盈亏、比例分配、平均数、单利、行程问题，以及抽屉原理、找规律、计数等逻辑题。本题库收录可清晰还原的题目并附完整解题步骤。" },
@@ -333,6 +353,19 @@ window.QUESTION_BANK = {
         { id:"rc-ms1-q3", topic:"Kosa kata", stem:"Perkataan 'mengeluh' dalam petikan membawa maksud ________.", options:["menyatakan rasa tidak puas hati atau penat","ketawa dengan gembira","bekerja dengan pantas","berehat seketika"], answer:0, explanation:"'Mengeluh' bermaksud menyatakan rasa tidak puas hati, susah atau penat. Dalam ayat itu, tiada sesiapa mengeluh walaupun cuaca panas. Jawapan A.", diff:3 },
         { id:"rc-ms1-q4", topic:"Pemahaman (kecuali)", stem:"Berikut ialah kerja yang dilakukan semasa gotong-royong itu, KECUALI ________.", options:["memotong rumput","mengutip sampah","mengecat pagar surau","menanam pokok bunga"], answer:3, explanation:"Petikan menyebut memotong rumput, mengutip sampah dan mengecat pagar surau, tetapi tidak menyebut menanam pokok bunga. Jawapan D.", diff:2 },
         { id:"rc-ms1-q5", topic:"Nilai / Pengajaran", stem:"Apakah pengajaran utama yang dapat diperoleh daripada petikan ini?", options:["Kita patut tinggal di taman yang besar.","Semangat gotong-royong dapat menyiapkan kerja dan mengeratkan hubungan sesama jiran.","Cuaca panas menyukarkan kerja.","Hanya orang dewasa boleh menyertai gotong-royong."], answer:1, explanation:"Petikan menegaskan bahawa kerjasama (gotong-royong) bukan sahaja membersihkan taman malah 'mengeratkan hubungan sesama jiran'. Jawapan B.", diff:2 }
+      ]
+    },
+    {
+      id:"rc-zh2", subj:"chinese", lang:"zh", icon:"🌾",
+      title:"阅读理解 ·《二十四节气》", source:"原创 · 仿真说明文",
+      intro:"先读短文，再回答下面的问题。这是一篇说明文，注意作者是怎样把知识讲清楚的。",
+      body:"二十四节气是中国古代劳动人民在长期的农业生产中，根据太阳在一年中位置的变化总结出来的一套时间知识。早在两千多年前，人们就把一年分成二十四等份，每一份就是一个节气，用来指导农事活动。\n\n二十四节气大致反映了季节、气候和物候的变化。例如「立春」表示春天开始，「夏至」这一天白昼最长，「霜降」前后天气转冷、开始结霜。农民根据节气来安排播种、灌溉和收割，所以民间有「清明前后，种瓜点豆」这样的农谚流传下来。\n\n为了方便记忆，人们还编了一首《二十四节气歌》：「春雨惊春清谷天，夏满芒夏暑相连……」短短几句，就把二十四个节气的名称巧妙地串联起来。\n\n如今，二十四节气已被列入联合国教科文组织的人类非物质文化遗产名录。它不仅是农业生产的「时间表」，更是中华民族智慧的结晶，至今仍影响着人们的生活。",
+      questions:[
+        { id:"rc-zh2-q1", topic:"信息提取", stem:"古人是根据什么总结出二十四节气的？", options:["月亮的圆缺变化","太阳在一年中位置的变化","星星的明暗变化","河水的涨落变化"], answer:1, explanation:"第一段明确指出，二十四节气是「根据太阳在一年中位置的变化总结出来的」。故选 B。", diff:2 },
+        { id:"rc-zh2-q2", topic:"细节理解", stem:"根据短文，「夏至」这一天有什么特点？", options:["天气最冷，开始结霜","白昼最长","春天刚刚开始","雨水最多"], answer:1, explanation:"第二段说「『夏至』这一天白昼最长」。「开始结霜」是霜降，「春天开始」是立春。故选 B。", diff:1 },
+        { id:"rc-zh2-q3", topic:"词句理解", stem:"农谚「清明前后，种瓜点豆」主要说明了节气的什么作用？", options:["用来预测刮风下雨","用来指导农民安排农事（如播种）","用来计算一年有多少天","用来安排节日庆典"], answer:1, explanation:"这句农谚告诉农民在清明前后适合种瓜豆，正说明节气可以「指导农事活动」、帮助农民安排播种。故选 B。", diff:2 },
+        { id:"rc-zh2-q4", topic:"说明方法", stem:"第二段列举「立春」「夏至」「霜降」等，主要运用了哪一种说明方法？", options:["打比方","举例子","列数字","作比较"], answer:1, explanation:"作者举出几个具体的节气作为例子来说明节气反映季节气候的变化，这是「举例子」的说明方法。故选 B。", diff:3 },
+        { id:"rc-zh2-q5", topic:"概括·主旨", stem:"下列哪一项最能概括本文的主要内容？", options:["介绍《二十四节气歌》的唱法","介绍二十四节气的由来、作用和价值","说明农民一年四季的辛苦","比较中国和外国的历法"], answer:1, explanation:"全文先讲二十四节气的由来，再讲它指导农事的作用，最后讲它成为非物质文化遗产的价值，因此主要内容是介绍其由来、作用和价值。故选 B。", diff:2 }
       ]
     }
   ]
