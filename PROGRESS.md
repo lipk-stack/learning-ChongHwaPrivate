@@ -167,6 +167,33 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
   ~30 random clicks and quit, plus a subject quiz and a mixed mock exam — **repeated on both builds with
   0 runtime errors**. A targeted check confirms the 24-Point game renders 4 number chips + 4 options.
 
+### Iteration 8 (this repo — current) ✅
+- **🗣️ 10th milestone mini-game → 谚语配对 Peribahasa Match** (the long-planned Malay-peribahasa game,
+  completing the brief's "different game each milestone" set across all four subjects). The screen shows a
+  **standard Malay peribahasa with one key word blanked out** (`______`) plus its **maksud (meaning, in
+  Malay)** as a hint; the player picks the missing word from 4 options. The pool of **8 peribahasa**
+  (*bagai pinang dibelah dua*, *seperti katak di bawah tempurung*, *sediakan payung sebelum hujan*,
+  *melentur buluh biarlah dari rebungnya*, *ada gula ada semut*, *bagai aur dengan tebing*, *berat sama
+  dipikul ringan sama dijinjing*, *bagai isi dengan kuku*) is curated and **kept wholly in Malay**
+  (subject-correct); every distractor is a clean wrong word. 30-second sprint, +1 per correct. Now **10
+  games** in the milestone rotation.
+- **Question bank 243 → 263 (+20, 5 per subject):** +华文5 (古诗词《悯农》/成语「持之以恒」/文言「罔」/反问修辞/近义词
+  辨析) · +国文5 (sinonim「pantas」/imbuhan「membuka」/peribahasa「bagai aur dengan tebing」/antonim「rajin」/
+  penjodoh「buah」) · +英文5 (synonym「brave」/past-perfect tense/preposition「good at」/idiom「a piece of cake」/
+  subject-verb agreement「neither…nor」) · +数学5 (最小公倍数/分数应用/比例分配/平均数逆推/单利). **All math answers
+  re-verified by computation (Python `fractions`).** Per subject now: 华文 59 · BM 56 · English 73 · 数学 75.
+- **📖 4th reading passage → 华文说明文《二十四节气》** (the long-planned second 华文 passage, this time an
+  **expository / 说明文** to balance the existing narrative). Carries **5 questions** (信息提取/细节/词句理解/
+  说明方法「举例子」/概括主旨) with full explanations; facts cross-checked (夏至白昼最长、霜降结霜、2016 列入 UNESCO
+  人类非物质文化遗产、节气歌首句「春雨惊春清谷天」). Reading mode now offers **4 passages / 20 questions**.
+- **Build & test:** `meta.builtIteration` → 8. Rebuilt both the readable (`build.py`, ~193 KB on disk) and
+  compact (`make_dist.py`, ~150 KB; cleancss still unavailable in-env so CSS stays un-minified — JS minified
+  via terser). A bank-integrity check confirms **no duplicate ids, every MCQ answer in range, every item
+  has an explanation**. jsdom smoke test extended to launch **all 10 games** (mixed easy/hard levels),
+  hammer each with ~30 random clicks and quit, plus a targeted check that Peribahasa Match renders 4 options
+  and a `______` blank, a subject quiz, **all 4 reading passages count (drove the new 二十四节气 one end-to-end
+  with panel collapse/expand)**, and a mixed timed mock exam — **passed on both builds with 0 runtime errors**.
+
 ---
 
 ## ⚠️ Known constraint — Google Drive delivery of the built app
@@ -183,18 +210,18 @@ Drive `ChongHwa` folder ("中华备考 App · 第2次迭代更新说明") tellin
 id** so I can `deploy-site` (reliable, gives a portable URL), or (b) confirm they're OK
 with the manual drag, or (c) keep the per‑iteration instructions doc approach.
 
-## Next up (ideas for Iteration 8+)
+## Next up (ideas for Iteration 9+)
 
-- [ ] **More reading passages** — add a 数学应用题情境 passage and a second 华文说明文; let Reading mode
-      group passages by subject. Consider mining real passages from the 2024/2023/2022 papers (decrypt with
-      `pikepdf.open(pdf, password="chonghwakl.edu.my")` → `pdfminer.high_level.extract_text`).
-- [ ] **Mine more real questions** from the 2024/2023/2022 papers (more Malay & English). Verify each math
-      answer by computing it.
 - [ ] **Mock‑exam polish**: per‑subject mark allocations & a分数 report card (华文 选择 50分; 数学 30题 甲/乙组);
       remember best mock score per subject; optional 难度‑weighted question selection.
 - [ ] **Stronger spaced repetition**: store a *due date* per wrong question (resurface after N days), not just a count.
 - [ ] **More shop depth**: spend ⭐ on power‑ups (50/50, skip), badges/titles, or a streak‑freeze.
-- [ ] One more mini‑game idea: Malay peribahasa match (Chinese 成语 and 数学 24‑point are now done).
+- [ ] **More reading passages** — add a 数学应用题情境 passage; let Reading mode group passages by subject.
+      Consider mining real passages from the 2024/2023/2022 papers (decrypt with
+      `pikepdf.open(pdf, password="chonghwakl.edu.my")` → `pdfminer.high_level.extract_text`).
+- [ ] **Mine more real questions** from the 2024/2023/2022 papers (more Malay & English). Verify each math
+      answer by computing it.
+- [ ] One more mini‑game idea: an English-spelling or a 数学几何图形 game (成语接龙 / 24‑point / peribahasa now done).
 - [ ] Optional **service worker + manifest** for a true installable PWA (still single‑folder portable).
 - [ ] (Optional) make `launchGame` use a generation token so back‑to‑back game launches are bullet‑proof
       (see the Iteration‑6 note above — not reachable in real use today).
@@ -208,6 +235,8 @@ with the manual drag, or (c) keep the per‑iteration instructions doc approach.
    🀄 8th game (Idiom Chain), +18 questions (221 total) — all stress‑tested end‑to‑end on both builds.
 ✅ Done in Iteration 7: 🎯 9th game (24‑Point Sprint, computation‑verified puzzles), +22 questions
    (243 total) across all four subjects — all stress‑tested on both builds with 0 runtime errors.
+✅ Done in Iteration 8: 🗣️ 10th game (Peribahasa Match, Malay cloze), 📖 4th reading passage
+   (华文说明文《二十四节气》, +5 questions), +20 questions (263 total) — all stress‑tested on both builds.
 
 ## Resume checklist for the next agent
 1. Read this file. Confirm Drive `ChongHwa` folder + PDF still accessible (password `chonghwakl.edu.my`).

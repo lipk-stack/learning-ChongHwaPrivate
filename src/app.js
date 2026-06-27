@@ -2,9 +2,9 @@
   "use strict";
   /* ===================================================================
      Chong Hwa Junior-1 Entrance Exam · Star Quest
-     Iteration 7 — 9 milestone mini-games (adds 🎯 24-Point Sprint),
-     timed mock exams, reading-comprehension passages, a Star Shop
-     (themes + avatars), daily-goal streak and a 243-question bank.
+     Iteration 8 — 10 milestone mini-games (adds 🗣️ Peribahasa Match),
+     timed mock exams, 4 reading-comprehension passages, a Star Shop
+     (themes + avatars), daily-goal streak and a 263-question bank.
      Portable: single file, offline, localStorage progress.
   =================================================================== */
   // Distribution builds ship a compact bank (window.QB) to save space;
@@ -1022,7 +1022,54 @@
     }
   };
 
-  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse, gameIdiom, gameTwentyFour];
+  /* =========== GAME 10: 🗣️ Peribahasa Match (谚语配对) =========== */
+  function peribahasaPool() {
+    // {full: 完整谚语, word: 挖空的词, hint: 马来文释义, wrongs:[三个干扰词]} — 全部为标准马来谚语
+    return [
+      { full:"Bagai pinang dibelah dua", word:"pinang", hint:"dua orang yang amat serupa atau sepadan", wrongs:["kelapa","durian","tebu"] },
+      { full:"Seperti katak di bawah tempurung", word:"katak", hint:"orang yang berfikiran sempit / kurang pengetahuan", wrongs:["ikan","ular","semut"] },
+      { full:"Sediakan payung sebelum hujan", word:"payung", hint:"bersiap sedia sebelum sesuatu berlaku", wrongs:["baju","makanan","bekalan"] },
+      { full:"Melentur buluh biarlah dari rebungnya", word:"buluh", hint:"mendidik anak biarlah sejak kecil", wrongs:["kayu","rotan","pokok"] },
+      { full:"Ada gula ada semut", word:"gula", hint:"di mana ada kesenangan, di situ ramai orang datang", wrongs:["madu","bunga","air"] },
+      { full:"Bagai aur dengan tebing", word:"tebing", hint:"saling membantu dan bekerjasama", wrongs:["sungai","angin","ombak"] },
+      { full:"Berat sama dipikul, ringan sama dijinjing", word:"ringan", hint:"bekerjasama dalam susah dan senang", wrongs:["susah","payah","lambat"] },
+      { full:"Bagai isi dengan kuku", word:"isi", hint:"hubungan yang sangat rapat, tidak terpisah", wrongs:["tulang","kulit","daging"] }
+    ];
+  }
+  var gamePeribahasa = {
+    name: "谚语配对 Peribahasa", icon: "🗣️",
+    blurb: "为马来谚语填上缺少的词语。",
+    howto: "屏幕显示一句马来谚语（peribahasa），其中一个词被挖空（______），并附上谚语的意思（maksud）。从四个词中选出正确的那一个填空。30 秒内填对越多 ⭐！",
+    start: function (host, level, done) {
+      var time = 30, score = 0, pool = shuffle(peribahasaPool()), idx = 0;
+      host.innerHTML = '<div class="gamehud"><span class="timer">⏱ <span id="t">30</span>s</span>' +
+        '<span class="sc">✔ <span id="s">0</span></span></div>' +
+        '<div class="game-q" id="q" style="font-size:19px"></div>' +
+        '<div class="idiom-link" id="lk"></div>' +
+        '<div class="game-opts" id="o" style="grid-template-columns:1fr 1fr"></div>';
+      function newQ() {
+        if (!gameLive) return;
+        var it = pool[idx % pool.length]; idx++;
+        el("q").innerHTML = it.full.replace(it.word, '<span class="lk-char">______</span>');
+        el("lk").innerHTML = 'Maksud: <i>' + it.hint + '</i><br>Pilih perkataan yang betul:';
+        var opts = shuffle([it.word].concat(it.wrongs));
+        var o = el("o"); o.innerHTML = "";
+        opts.forEach(function (v) {
+          var b2 = document.createElement("button"); b2.textContent = v; b2.style.fontSize = "16px";
+          b2.onclick = function () {
+            if (v === it.word) { score++; el("s").textContent = score; b2.classList.add("good"); }
+            else b2.classList.add("bad");
+            setTimeout(newQ, 200);
+          };
+          o.appendChild(b2);
+        });
+      }
+      newQ();
+      var iv = gInterval(function () { time--; el("t").textContent = time; if (time <= 0) { clearInterval(iv); done(score); } }, 1000);
+    }
+  };
+
+  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse, gameIdiom, gameTwentyFour, gamePeribahasa];
 
   /* =================================================================
      STAR SHOP — a sink for stars. Buying spends the current balance
