@@ -17,7 +17,7 @@ node -c src/app.js      # syntax check
 Source layout and the full plan live in **[PROGRESS.md](PROGRESS.md)** — read it before each iteration.
 
 ## Features
-- **263** curated questions across 4 subjects, each in its **correct language** with a **worked explanation**.
+- **283** curated questions across 4 subjects, each in its **correct language** with a **worked explanation**.
 - **📖 Reading-comprehension mode** — **4** original, exam-style passages (华文记叙文 · 华文说明文 · English · Bahasa Melayu),
   shown in a collapsible panel while you answer **20** detail / inference / main-idea questions with full解析.
 - **Difficulty / standards labels** on questions: 基础 Basic · 进阶 Intermediate · 挑战 Challenge.
@@ -27,10 +27,12 @@ Source layout and the full plan live in **[PROGRESS.md](PROGRESS.md)** — read 
 - **Responsive, full‑screen layout** — content and games scale to phone, tablet, and laptop resolutions.
 - **Star economy:** correct +2⭐ (+streak bonus, max +3), wrong −4⭐ — stars are earned, not handed out.
 - **Daily goal & streak:** earn 30⭐ a day to bank a **+8⭐ bonus** and grow your 🔥 day‑streak.
-- **🛍️ Star Shop** — spend stars (a sink that never touches your level) on **6 themes** and **8 avatars**.
-- **♻️ Reset** — clear stars & score anytime (purchased themes/avatars are kept).
-- **Milestone mini‑games** — a *different* game each milestone, harder each time (10 in rotation):
-  ⚡ Speed Math · 🧩 Memory Match · 🌠 Star Catcher · 🔤 Word Scramble · 🔢 Sequence Sprint · 📚 Meaning Match · ⚡ True/False Blitz · 🀄 Idiom Chain · 🎯 24‑Point Sprint · 🗣️ Peribahasa Match.
+- **🛍️ Star Shop** — spend stars (a sink that never touches your level) on **6 themes**, **8 avatars**, and **power‑ups**.
+- **⚡ In‑quiz power‑ups** — buy and use **✂️ 50/50** (drop two wrong options), **💡 Hint** (reveal the first
+  letter of the answer), and **⏭️ Skip** (skip a question with no penalty) right while you practise.
+- **♻️ Reset** — clear stars & score anytime (purchased themes/avatars/power‑ups are kept).
+- **Milestone mini‑games** — a *different* game each milestone, harder each time (11 in rotation):
+  ⚡ Speed Math · 🧩 Memory Match · 🌠 Star Catcher · 🔤 Word Scramble · 🔢 Sequence Sprint · 📚 Meaning Match · ⚡ True/False Blitz · 🀄 Idiom Chain · 🎯 24‑Point Sprint · 🗣️ Peribahasa Match · 🐝 Spelling Bee.
 - Practice by subject, **Mixed** challenge, **Timed Mock**, **📖 Reading**, and **Review mistakes** modes; study notes per subject.
 
 Source material: `ChongHwa/2026小六历届试题（修订版).pdf` (Google Drive).
