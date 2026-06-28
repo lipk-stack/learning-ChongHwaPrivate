@@ -194,6 +194,39 @@ double‑clicking on iPhone/iPad/Mac/Windows; supports iOS "Add to Home Screen")
   and a `______` blank, a subject quiz, **all 4 reading passages count (drove the new 二十四节气 one end-to-end
   with panel collapse/expand)**, and a mixed timed mock exam — **passed on both builds with 0 runtime errors**.
 
+### Iteration 9 (this repo — current) ✅
+- **🐝 11th milestone mini-game → 拼写蜜蜂 Spelling Bee** (the long-planned English-spelling game). The
+  screen shows an **English definition**; the player taps the **correctly-spelled word** from 4 options,
+  the other three being **common real-world misspellings** (e.g. *necessary* vs *neccessary/necesary/
+  neccesary*; *separate* vs *seperate*; *rhythm* vs *rythm/rhythem/rythym*). Pool is **wholly in English**
+  (subject-correct), curated & spell-checked (11 words, easy 5 / +6 harder at Lv.≥3), every distractor a
+  distinct misspelling and never equal to the answer. 30-second sprint, +1 per correct. Now **11 games**
+  in the milestone rotation.
+- **⚡ In-quiz Power-ups (a brand-new star sink + gamification depth):** three **consumable** power-ups
+  bought in the Star Shop and used live during any quiz/mock/reading set:
+  - **✂️ 五五开 50/50** (cost 16⭐) — removes two wrong options (MCQ only).
+  - **💡 提示 Hint** (cost 10⭐) — reveals the first character/letter of the correct answer (works for MCQ
+    *and* fill-in questions).
+  - **⏭️ 跳过 Skip** (cost 12⭐) — skips the current question with **no** star gain or loss, no streak hit,
+    not logged as a mistake.
+  A power-up bar renders above the options each question (showing owned counts, auto-disabling when 0 or
+  already used that question); it hides once the answer is graded. Counts persist in `state.powerups`
+  (migrates cleanly from v2; kept on Reset like cosmetics). New shop section **⚡ 道具 · Power-ups**.
+- **Question bank 263 → 283 (+20, 5 per subject):** +华文5 (古诗词《春夜喜雨》/成语「画龙点睛」/文言「温故而知新·故」/
+  排比修辞/标点符号) · +国文5 (sinonim「gembira」/antonim「tinggi」/imbuhan「membaca」/peribahasa「sedikit-sedikit…
+  menjadi bukit」/penjodoh「pasang」) · +英文5 (synonym「happy」/present-continuous/preposition「under」/idiom
+  「once in a blue moon」/subject-verb agreement「each」) · +数学5 (行程/百分比逆推/最大公因数 HCF/长方形周长/利润率).
+  **All math answers re-verified by computation (Python `fractions`).** Per subject now: 华文 64 · BM 61 ·
+  English 78 · 数学 80. Plus the 20 reading questions in 4 passages.
+- **Build & test:** `meta.builtIteration` → 9. Rebuilt both the readable (`build.py`, ~179 KB) and compact
+  (`make_dist.py`, ~162 KB; cleancss still unavailable in-env so CSS stays un-minified — JS minified via
+  terser). Bank-integrity check: **283 questions, no duplicate ids, every MCQ answer in range, every item
+  has an explanation.** jsdom smoke test extended to **buy & use all three power-ups** (asserts 50/50 cuts
+  4→2 options, Skip advances the index, shop buy increments inventory), launch **all 11 games** (mixed
+  easy/hard, ~25 random clicks each, quit), a targeted Spelling-Bee check (4 options + a definition), a
+  subject quiz, all 4 reading passages, and a mixed timed mock exam — **passed on both builds with 0
+  runtime errors.**
+
 ---
 
 ## ⚠️ Known constraint — Google Drive delivery of the built app
@@ -210,21 +243,23 @@ Drive `ChongHwa` folder ("中华备考 App · 第2次迭代更新说明") tellin
 id** so I can `deploy-site` (reliable, gives a portable URL), or (b) confirm they're OK
 with the manual drag, or (c) keep the per‑iteration instructions doc approach.
 
-## Next up (ideas for Iteration 9+)
+## Next up (ideas for Iteration 10+)
 
 - [ ] **Mock‑exam polish**: per‑subject mark allocations & a分数 report card (华文 选择 50分; 数学 30题 甲/乙组);
       remember best mock score per subject; optional 难度‑weighted question selection.
 - [ ] **Stronger spaced repetition**: store a *due date* per wrong question (resurface after N days), not just a count.
-- [ ] **More shop depth**: spend ⭐ on power‑ups (50/50, skip), badges/titles, or a streak‑freeze.
+- [ ] **More shop depth**: badges/titles, a streak‑freeze, or a "double‑stars (15 min)" booster
+      (50/50, hint, skip power‑ups now done in Iteration 9).
 - [ ] **More reading passages** — add a 数学应用题情境 passage; let Reading mode group passages by subject.
       Consider mining real passages from the 2024/2023/2022 papers (decrypt with
       `pikepdf.open(pdf, password="chonghwakl.edu.my")` → `pdfminer.high_level.extract_text`).
 - [ ] **Mine more real questions** from the 2024/2023/2022 papers (more Malay & English). Verify each math
       answer by computing it.
-- [ ] One more mini‑game idea: an English-spelling or a 数学几何图形 game (成语接龙 / 24‑point / peribahasa now done).
+- [ ] One more mini‑game idea: a 数学几何图形 (area/angle) game or a 华文 部首/笔顺 game
+      (成语接龙 / 24‑point / peribahasa / spelling‑bee now done).
 - [ ] Optional **service worker + manifest** for a true installable PWA (still single‑folder portable).
 - [ ] (Optional) make `launchGame` use a generation token so back‑to‑back game launches are bullet‑proof
-      (see the Iteration‑6 note above — not reachable in real use today).
+      (see the Iteration‑6 note above — not reachable in real use today; smoke test spaces launches 380 ms).
 
 ✅ Done in Iteration 3: daily goal/streak, Star Shop (themes + avatars), two new mini‑games.
 ✅ Done in Iteration 4: +23 questions (180 total) with difficulty标准 badges, responsive full‑screen
@@ -237,6 +272,8 @@ with the manual drag, or (c) keep the per‑iteration instructions doc approach.
    (243 total) across all four subjects — all stress‑tested on both builds with 0 runtime errors.
 ✅ Done in Iteration 8: 🗣️ 10th game (Peribahasa Match, Malay cloze), 📖 4th reading passage
    (华文说明文《二十四节气》, +5 questions), +20 questions (263 total) — all stress‑tested on both builds.
+✅ Done in Iteration 9: 🐝 11th game (Spelling Bee), ⚡ in‑quiz power‑ups (✂️50/50, 💡hint, ⏭️skip) as a
+   new star sink, +20 questions (283 total) — power‑up use + all 11 games stress‑tested on both builds.
 
 ## Resume checklist for the next agent
 1. Read this file. Confirm Drive `ChongHwa` folder + PDF still accessible (password `chonghwakl.edu.my`).

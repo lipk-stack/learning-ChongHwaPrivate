@@ -206,6 +206,16 @@ h2.section-h{font-size:15px;color:var(--muted);margin:22px 0 10px 2px;font-weigh
 .si-btn.buy{background:linear-gradient(135deg,var(--gold),#ff9d3d);color:#241a00}
 .si-btn.use{background:var(--card2);color:var(--ink);border:1px solid var(--line)}
 .si-btn.on{background:#16361f;color:var(--ok);border:1px solid var(--ok)}
+.si-have{font-size:11px;color:var(--muted);font-weight:700;margin-bottom:8px}
+
+/* ===== in-quiz power-ups ===== */
+.powerups{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
+.pu-btn{display:flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--line);
+  border-radius:12px;padding:8px 10px;font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;flex:1 1 auto;justify-content:center}
+.pu-btn:hover:not(:disabled){border-color:var(--gold)}
+.pu-btn:disabled{opacity:.4;cursor:not-allowed}
+.pu-btn .pu-ic{font-size:16px}
+.pu-btn .pu-ct{color:var(--gold)}
 
 /* ===== toast ===== */
 .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(18px);

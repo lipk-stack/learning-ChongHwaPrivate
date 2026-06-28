@@ -2,9 +2,10 @@
   "use strict";
   /* ===================================================================
      Chong Hwa Junior-1 Entrance Exam · Star Quest
-     Iteration 8 — 10 milestone mini-games (adds 🗣️ Peribahasa Match),
-     timed mock exams, 4 reading-comprehension passages, a Star Shop
-     (themes + avatars), daily-goal streak and a 263-question bank.
+     Iteration 9 — 11 milestone mini-games (adds 🐝 Spelling Bee), in-quiz
+     power-ups (✂️50/50, 💡hint, ⏭️skip) as a new star sink, timed mock exams,
+     4 reading-comprehension passages, a Star Shop (themes + avatars + power-ups),
+     daily-goal streak and a 283-question bank.
      Portable: single file, offline, localStorage progress.
   =================================================================== */
   // Distribution builds ship a compact bank (window.QB) to save space;
@@ -40,6 +41,14 @@
     3: { label: "挑战 Challenge", color: "#3a1a22", ink: "#ff9aa6" }
   };
 
+  // Consumable power-ups (bought in the Star Shop, used during a quiz).
+  var POWERUPS = [
+    { id: "fifty", icon: "✂️", name: "五五开 50/50", desc: "去掉两个错误选项（仅限选择题）。", cost: 16 },
+    { id: "hint", icon: "💡", name: "提示 Hint", desc: "显示正确答案的第一个字 / 字母。", cost: 10 },
+    { id: "skip", icon: "⏭️", name: "跳过 Skip", desc: "跳过这道题，不加也不扣星星。", cost: 12 }
+  ];
+  function powerupById(id) { for (var i = 0; i < POWERUPS.length; i++) if (POWERUPS[i].id === id) return POWERUPS[i]; return null; }
+
   /* ---------- star economy tuning ---------- */
   var STAR_RIGHT = 2;        // base stars for a correct answer (stars are earned, not handed out)
   var STAR_WRONG = -4;       // stars deducted for a wrong answer (balance never < 0)
@@ -68,6 +77,10 @@
     if (s.avatar == null) s.avatar = "📚";
     if (!s.owned) s.owned = { default: true };
     if (!s.ownedAvatars) s.ownedAvatars = { "📚": true };
+    if (!s.powerups) s.powerups = { fifty: 0, hint: 0, skip: 0 };
+    if (s.powerups.fifty == null) s.powerups.fifty = 0;
+    if (s.powerups.hint == null) s.powerups.hint = 0;
+    if (s.powerups.skip == null) s.powerups.skip = 0;
     return s;
   }
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
@@ -324,7 +337,55 @@
         optsBox.appendChild(b);
       });
     }
+    quiz.usedFifty = false; quiz.usedHint = false;
+    renderPowerups(q);
   }
+
+  /* ---------- power-ups (in-quiz) ---------- */
+  function renderPowerups(q) {
+    var bar = el("q-powerups"); if (!bar) return;
+    bar.innerHTML = "";
+    bar.hidden = false;
+    POWERUPS.forEach(function (p) {
+      var have = state.powerups[p.id] | 0;
+      var b = document.createElement("button");
+      b.className = "pu-btn";
+      b.innerHTML = '<span class="pu-ic">' + p.icon + '</span><span class="pu-nm">' + p.name +
+        '</span><span class="pu-ct">×' + have + '</span>';
+      var usableNow = have > 0 &&
+        (p.id !== "fifty" || (q.type !== "fill" && !quiz.usedFifty && q.options.length > 2)) &&
+        (p.id !== "hint" || !quiz.usedHint);
+      if (!usableNow) b.disabled = true;
+      b.onclick = function () { usePowerup(p.id, q); };
+      bar.appendChild(b);
+    });
+  }
+  function usePowerup(id, q) {
+    if ((state.powerups[id] | 0) <= 0) { toast("道具用完啦，去商店再买一个吧 🛍️"); return; }
+    if (id === "fifty") {
+      if (q.type === "fill" || quiz.usedFifty) return;
+      var btns = document.querySelectorAll("#q-options .opt");
+      var wrongIdx = [];
+      for (var i = 0; i < btns.length; i++) if (i !== q.answer && !btns[i].disabled) wrongIdx.push(i);
+      wrongIdx = shuffle(wrongIdx).slice(0, 2);
+      wrongIdx.forEach(function (i) { btns[i].disabled = true; btns[i].classList.add("dim"); });
+      quiz.usedFifty = true;
+    } else if (id === "hint") {
+      if (quiz.usedHint) return;
+      var ch = q.type === "fill" ? String(q.answer[0]).charAt(0) : String(q.options[q.answer]).charAt(0);
+      toast("💡 提示：正确答案以「" + ch + "」开头");
+      quiz.usedHint = true;
+    } else if (id === "skip") {
+      state.powerups.skip--; save();
+      el("q-powerups").hidden = true;
+      quiz.i++;
+      quiz.i < quiz.qs.length ? renderQuestion() : finishQuiz();
+      return;
+    }
+    state.powerups[id]--; save();
+    renderPowerups(q);
+  }
+
   function answerMcq(q, idx) {
     var correct = idx === q.answer;
     var btns = document.querySelectorAll("#q-options .opt");
@@ -364,6 +425,7 @@
     }
     save();
     el("q-stars").textContent = quiz.stars;
+    var pub = el("q-powerups"); if (pub) pub.hidden = true;
     var fb = el("q-feedback"); fb.hidden = false;
     fb.className = "feedback " + (correct ? "ok" : "bad");
     var head = correct ? "✅ 答对了！ Correct!" : "❌ 答错了 Not quite";
@@ -1069,7 +1131,60 @@
     }
   };
 
-  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse, gameIdiom, gameTwentyFour, gamePeribahasa];
+  /* =========== GAME 11: 🐝 Spelling Bee (英文拼写) =========== */
+  function spellingPool(level) {
+    // {word: 正确拼法, def: English definition, wrongs:[三个常见错误拼法]} — 全英文，subject-correct
+    var easy = [
+      { word:"because", def:"for the reason that", wrongs:["becuase","becose","becuse"] },
+      { word:"friend", def:"a person you like and trust", wrongs:["freind","frend","freand"] },
+      { word:"beautiful", def:"very pretty; lovely to look at", wrongs:["beutiful","beautifull","beatiful"] },
+      { word:"tomorrow", def:"the day after today", wrongs:["tommorow","tomorow","tommorrow"] },
+      { word:"happiness", def:"the feeling of being happy", wrongs:["happyness","hapiness","happines"] }
+    ];
+    var hard = [
+      { word:"necessary", def:"needed; something you must have", wrongs:["neccessary","necesary","neccesary"] },
+      { word:"separate", def:"to set apart; not joined together", wrongs:["seperate","separete","seperete"] },
+      { word:"definitely", def:"certainly; without any doubt", wrongs:["definately","definitly","defenitely"] },
+      { word:"embarrass", def:"to make someone feel shy or ashamed", wrongs:["embarass","embarras","embaras"] },
+      { word:"achieve", def:"to succeed in doing something", wrongs:["acheive","achive","acheeve"] },
+      { word:"rhythm", def:"a regular repeated pattern of sound", wrongs:["rythm","rhythem","rythym"] }
+    ];
+    return level <= 2 ? easy : easy.concat(hard);
+  }
+  var gameSpelling = {
+    name: "拼写蜜蜂 Spelling Bee", icon: "🐝",
+    blurb: "Choose the correctly-spelled English word.",
+    howto: "A definition is shown. From the 4 options, tap the word that is spelled CORRECTLY. The other three are common misspellings. Spell as many as you can in 30 seconds ⭐!",
+    start: function (host, level, done) {
+      var time = 30, score = 0, pool = shuffle(spellingPool(level)), idx = 0;
+      host.innerHTML = '<div class="gamehud"><span class="timer">⏱ <span id="t">30</span>s</span>' +
+        '<span class="sc">✔ <span id="s">0</span></span></div>' +
+        '<div class="game-q" id="q" style="font-size:18px"></div>' +
+        '<div class="idiom-link" id="lk"></div>' +
+        '<div class="game-opts" id="o" style="grid-template-columns:1fr 1fr"></div>';
+      function newQ() {
+        if (!gameLive) return;
+        var it = pool[idx % pool.length]; idx++;
+        el("q").innerHTML = 'Definition: <i>' + it.def + '</i>';
+        el("lk").innerHTML = 'Which spelling is <b>correct</b>?';
+        var opts = shuffle([it.word].concat(it.wrongs));
+        var o = el("o"); o.innerHTML = "";
+        opts.forEach(function (v) {
+          var b2 = document.createElement("button"); b2.textContent = v; b2.style.fontSize = "17px";
+          b2.onclick = function () {
+            if (v === it.word) { score++; el("s").textContent = score; b2.classList.add("good"); }
+            else b2.classList.add("bad");
+            setTimeout(newQ, 220);
+          };
+          o.appendChild(b2);
+        });
+      }
+      newQ();
+      var iv = gInterval(function () { time--; el("t").textContent = time; if (time <= 0) { clearInterval(iv); done(score); } }, 1000);
+    }
+  };
+
+  var GAMES = [gameSpeed, gameMemory, gameCatch, gameScramble, gameSequence, gameMeaning, gameTrueFalse, gameIdiom, gameTwentyFour, gamePeribahasa, gameSpelling];
 
   /* =================================================================
      STAR SHOP — a sink for stars. Buying spends the current balance
@@ -1136,6 +1251,24 @@
       };
       ag.appendChild(card);
     });
+    var pg = el("shop-powerups"); if (pg) {
+      pg.innerHTML = "";
+      POWERUPS.forEach(function (p) {
+        var have = state.powerups[p.id] | 0;
+        var card = document.createElement("div");
+        card.className = "shop-item";
+        card.innerHTML = '<div class="si-em">' + p.icon + '</div><div class="si-nm">' + p.name +
+          '</div><div class="si-have">拥有 ×' + have + '</div><button class="si-btn buy">⭐ ' + p.cost + '</button>';
+        card.querySelector(".si-btn").onclick = function () {
+          if (state.stars >= p.cost) {
+            state.stars -= p.cost; state.powerups[p.id] = (state.powerups[p.id] | 0) + 1;
+            burst(14); toast(p.icon + " 已购买「" + p.name + "」，答题时可使用！");
+          } else { toast("⭐ 不够啦！再去练习赚星星吧。"); return; }
+          save(); renderShop();
+        };
+        pg.appendChild(card);
+      });
+    }
   }
 
   /* ---------- confetti ---------- */

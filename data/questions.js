@@ -1,6 +1,6 @@
 // Chong Hwa Junior-1 Entrance Exam — Question Bank
 // Source: 2026小六历届试题（修订版）, Chong Hwa Independent High School KL
-// Iteration 8: 263 curated questions (Chinese / Bahasa Melayu / English / Math) with full
+// Iteration 9: 283 curated questions (Chinese / Bahasa Melayu / English / Math) with full
 // explanations and per-question difficulty (diff 1=基础 / 2=进阶 / 3=挑战) for standards alignment,
 // plus original exam-style reading-comprehension passages (window.QUESTION_BANK.passages).
 window.QUESTION_BANK = {
@@ -8,7 +8,7 @@ window.QUESTION_BANK = {
     school: "吉隆坡中华独立中学 / Chong Hwa Independent High School, KL",
     exam: "初一新生考试 · Junior 1 Entrance Examination",
     paperYear: 2026,
-    builtIteration: 8
+    builtIteration: 9
   },
   subjects: {
     chinese: {
@@ -73,7 +73,12 @@ window.QUESTION_BANK = {
         { id:"zh58", topic:"成语运用", stem:"下列哪一个成语最适合形容「做事有始有终、坚持到底」？", options:["持之以恒","半途而废","虎头蛇尾","三心二意"], answer:0, explanation:"「持之以恒」指长久地坚持下去，正合「有始有终、坚持到底」之意。其余三项都表示中途放弃或不专心，意思相反。故选 A。", diff:1 },
         { id:"zh59", topic:"文言词义", stem:"《论语》「学而不思则罔，思而不学则殆」中「罔」的意思是：", options:["迷惑而无所得","渔网","不要、不可","危险"], answer:0, explanation:"「学而不思则罔」指只学习却不思考，就会迷惑而无所收获。「罔」在此是「迷惑、蒙蔽」之意；后句「殆」才是「疲乏、危险」。故选 A。", diff:3 },
         { id:"zh60", topic:"修辞·反问", stem:"「这么浅显的道理，难道你还不明白吗？」这句运用了什么修辞手法？", options:["反问","设问","拟人","夸张"], answer:0, explanation:"句子用疑问的形式表达肯定的意思（你应该明白），答案就在问句之中，无需作答，这是「反问」。「设问」则是自问自答。故选 A。", diff:2 },
-        { id:"zh61", topic:"近义词", stem:"下列哪一组词语是「近义词」？", options:["寂静——喧闹","果然——居然","赞扬——表扬","容易——困难"], answer:2, explanation:"「赞扬」和「表扬」都指对人或事加以称赞，意思相近，是近义词。A、D 两组是反义词；「果然」表示事情与预料相符，「居然」表示出乎意料，二者并不同义。故选 C。", diff:2 }
+        { id:"zh61", topic:"近义词", stem:"下列哪一组词语是「近义词」？", options:["寂静——喧闹","果然——居然","赞扬——表扬","容易——困难"], answer:2, explanation:"「赞扬」和「表扬」都指对人或事加以称赞，意思相近，是近义词。A、D 两组是反义词；「果然」表示事情与预料相符，「居然」表示出乎意料，二者并不同义。故选 C。", diff:2 },
+        { id:"zh62", topic:"古诗词", stem:"杜甫《春夜喜雨》「好雨知时节」的下一句是：", options:["当春乃发生","花落知多少","二月春风似剪刀","处处闻啼鸟"], answer:0, explanation:"《春夜喜雨》开篇：「好雨知时节，当春乃发生。」意思是好雨像知道时节一样，正当春天万物萌发时就降下了。故选 A。其余三句分别出自《春晓》《咏柳》等，与本诗无关。", diff:2 },
+        { id:"zh63", topic:"成语寓意", stem:"成语「画龙点睛」用来比喻什么？", options:["在关键处稍加点染，使内容更加生动传神","做了多余的事，反而坏事","细小而毫无用处的东西","弄虚作假，欺骗他人"], answer:0, explanation:"「画龙点睛」原指画龙时点上眼睛龙便腾飞，后比喻写作或说话时在关键处加上精辟的一笔，使内容更加生动有力。B 是「画蛇添足」之意。故选 A。", diff:2 },
+        { id:"zh64", topic:"文言词义", stem:"《论语》「温故而知新」中「故」的意思是：", options:["旧的、已学过的知识","原因","故意","所以"], answer:0, explanation:"「温故而知新」指温习旧的知识，从而获得新的理解和体会。「故」在此是「旧的、已学过的（知识）」，与「新」相对。故选 A。", diff:3 },
+        { id:"zh65", topic:"修辞·排比", stem:"「鲜花在微笑，小鸟在歌唱，小溪在弹琴。」这句话主要运用了哪一种修辞手法？", options:["排比","对偶","设问","反复"], answer:0, explanation:"三个结构相同、语气一致的分句并列在一起，构成「排比」（同时也含拟人）。对偶只由两个字数相等、结构相对的句子组成；设问是自问自答；反复是同一词句重复出现。故选 A。", diff:2 },
+        { id:"zh66", topic:"标点符号", stem:"下列哪一项的标点符号使用「完全正确」？", options:["妈妈问我：「你的作业做完了吗？」","我买了苹果，香蕉，橙子和梨。","你今天到底去还是不去。","他大声喊：「快跑」！"], answer:0, explanation:"A 项冒号引出说话内容、引号标示原话、问号在引号内，使用正确。B 项并列词语之间应用顿号「、」而非逗号；C 项是疑问句，句末应用问号；D 项叹号应放在引号之内（「快跑！」）。故选 A。", diff:3 }
       ],
       notes: [
         { title:"现代文阅读 · 林海音《迟到》", body:"2026 年现代文阅读选用林海音《迟到》。重点考查：① 字音字形（皱 zhòu、哀 āi）；② 用成语概括人物状态（被打后「狼狈不堪」）；③ 体会父亲「含蓄深沉」的爱；④ 概括人物习惯（养成「守时」的习惯）；⑤ 谈启示（父母严格管教背后是爱与关心，要学会理解与感恩）。答题技巧：概括题先找原文依据，再用自己的话归纳；启示题要联系全文主旨，言之成理即可。" },
@@ -139,7 +144,12 @@ window.QUESTION_BANK = {
         { id:"ms53", topic:"Imbuhan", stem:"Lengkapkan ayat: 'Kakak ________ pintu itu dengan kuncinya.' Pilih imbuhan yang betul.", options:["membuka","terbuka","keterbukaan","dibuka"], answer:0, explanation:"Subjek 'Kakak' melakukan perbuatan terhadap 'pintu', maka digunakan kata kerja aktif transitif berimbuhan 'meN-': 'membuka'. 'Dibuka' ialah bentuk pasif. Jawapan A.", diff:1 },
         { id:"ms54", topic:"Peribahasa", stem:"Peribahasa 'bagai aur dengan tebing' membawa maksud ________.", options:["saling membantu dan bekerjasama","sentiasa berbalah","jauh di mata","sangat kaya-raya"], answer:0, explanation:"'Bagai aur (buluh) dengan tebing' menggambarkan dua pihak yang saling memerlukan dan saling membantu, seperti buluh menahan tebing daripada runtuh. Jawapan A.", diff:2 },
         { id:"ms55", topic:"Antonim", stem:"Apakah lawan kata (antonim) bagi 'rajin'?", options:["malas","tekun","gigih","usaha"], answer:0, explanation:"Lawan bagi 'rajin' ialah 'malas'. 'Tekun' dan 'gigih' pula seerti dengan rajin. Jawapan A.", diff:1 },
-        { id:"ms56", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Ayah membeli tiga ________ kereta untuk perniagaannya.' Pilih penjodoh bilangan yang betul.", options:["buah","ekor","batang","orang"], answer:0, explanation:"Penjodoh bilangan bagi kenderaan seperti kereta ialah 'buah' — tiga buah kereta. 'Ekor' untuk binatang, 'orang' untuk manusia. Jawapan A.", diff:1 }
+        { id:"ms56", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Ayah membeli tiga ________ kereta untuk perniagaannya.' Pilih penjodoh bilangan yang betul.", options:["buah","ekor","batang","orang"], answer:0, explanation:"Penjodoh bilangan bagi kenderaan seperti kereta ialah 'buah' — tiga buah kereta. 'Ekor' untuk binatang, 'orang' untuk manusia. Jawapan A.", diff:1 },
+        { id:"ms57", topic:"Sinonim", stem:"Apakah perkataan seerti (sinonim) bagi 'gembira'?", options:["riang","sedih","marah","takut"], answer:0, explanation:"'Gembira' bermaksud berasa senang hati, maka perkataan seertinya ialah 'riang'. 'Sedih' dan 'marah' pula berlawanan dengan gembira. Jawapan A.", diff:1 },
+        { id:"ms58", topic:"Antonim", stem:"Apakah lawan kata (antonim) bagi 'tinggi'?", options:["rendah","besar","jauh","panjang"], answer:0, explanation:"Lawan bagi 'tinggi' ialah 'rendah'. 'Besar', 'jauh' dan 'panjang' bukan lawan kepada tinggi. Jawapan A.", diff:1 },
+        { id:"ms59", topic:"Imbuhan", stem:"Lengkapkan ayat: 'Pelajar itu ________ buku cerita di perpustakaan.' Pilih imbuhan yang betul.", options:["membaca","dibaca","terbaca","bacaan"], answer:0, explanation:"Subjek 'Pelajar itu' melakukan perbuatan, maka digunakan kata kerja aktif transitif 'membaca'. 'Dibaca' bentuk pasif, 'bacaan' kata nama. Jawapan A.", diff:1 },
+        { id:"ms60", topic:"Peribahasa", stem:"Peribahasa 'sedikit-sedikit, lama-lama menjadi bukit' membawa maksud ________.", options:["mengumpul sedikit demi sedikit akhirnya menjadi banyak","melakukan kerja yang sia-sia","seseorang yang sangat tamak","perbuatan yang merbahaya"], answer:0, explanation:"Peribahasa ini bermaksud usaha atau simpanan yang kecil tetapi dilakukan secara berterusan akhirnya akan menjadi banyak atau besar, seperti tanah yang sedikit lama-kelamaan menjadi bukit. Jawapan A.", diff:2 },
+        { id:"ms61", topic:"Penjodoh bilangan", stem:"Lengkapkan ayat: 'Ibu membeli tiga ________ kasut di pasar raya itu.' Pilih penjodoh bilangan yang betul.", options:["pasang","biji","helai","batang"], answer:0, explanation:"Penjodoh bilangan bagi kasut, stokin atau sarung tangan (yang berpasangan) ialah 'pasang' — tiga pasang kasut. 'Biji' untuk benda kecil bulat, 'helai' untuk benda nipis seperti kain. Jawapan A.", diff:2 }
       ],
       notes: [
         { title:"Bahagian A — Karangan (30%)", body:"2026: Tulis karangan bertajuk \"Kelebihan Tinggal di Bandar\" (≥100 patah perkataan) berdasarkan kata kunci: banyak kemudahan awam, institusi pendidikan, tempat percutian (monorel, hospital, universiti, taman tema air). Petua: satu isi satu perenggan, gunakan penanda wacana (selain itu, di samping itu, kesimpulannya) dan ayat majmuk." },
@@ -222,7 +232,12 @@ window.QUESTION_BANK = {
         { id:"en70", topic:"Tenses", stem:"Choose the correct verb form: 'By the time we arrived at the station, the train ________.'", options:["had already left","leave","has left","leaving"], answer:0, explanation:"The past perfect tense ('had already left') shows an action completed before another past action (we arrived). Answer: A.", diff:2 },
         { id:"en71", topic:"Prepositions", stem:"Choose the correct preposition: 'My sister is very good ________ playing the piano.'", options:["at","in","on","to"], answer:0, explanation:"We say someone is 'good at' doing something. Answer: A.", diff:1 },
         { id:"en72", topic:"Idioms", stem:"If a task is 'a piece of cake', it is ________.", options:["very easy","very sweet","very difficult","very expensive"], answer:0, explanation:"The idiom 'a piece of cake' means something that is very easy to do. Answer: A.", diff:2 },
-        { id:"en73", topic:"Subject-verb agreement", stem:"Choose the correct verb: 'Neither the teacher nor the students ________ ready for the test.'", options:["were","was","is","has been"], answer:0, explanation:"With 'neither ... nor ...', the verb agrees with the nearer subject. Here the nearer subject is 'students' (plural), so the correct verb is 'were'. Answer: A.", diff:3 }
+        { id:"en73", topic:"Subject-verb agreement", stem:"Choose the correct verb: 'Neither the teacher nor the students ________ ready for the test.'", options:["were","was","is","has been"], answer:0, explanation:"With 'neither ... nor ...', the verb agrees with the nearer subject. Here the nearer subject is 'students' (plural), so the correct verb is 'were'. Answer: A.", diff:3 },
+        { id:"en74", topic:"Synonyms", stem:"Choose the word closest in meaning to 'happy'.", options:["joyful","angry","tired","afraid"], answer:0, explanation:"'Happy' means feeling pleased, so the closest synonym is 'joyful'. 'Angry' and 'afraid' describe very different feelings. Answer: A.", diff:1 },
+        { id:"en75", topic:"Tenses", stem:"Choose the correct verb form: 'Look! The baby ________ now.'", options:["is sleeping","sleep","sleeps","slept"], answer:0, explanation:"The word 'now' (and 'Look!') signals an action happening at this moment, so we use the present continuous tense: 'is sleeping'. Answer: A.", diff:2 },
+        { id:"en76", topic:"Prepositions", stem:"Choose the correct preposition: 'The frightened cat is hiding ________ the table.'", options:["under","of","since","among"], answer:0, explanation:"'Under' shows that the cat is in a position below the table. 'Of' and 'since' do not show place; 'among' is used for three or more things. Answer: A.", diff:1 },
+        { id:"en77", topic:"Idioms", stem:"If something happens 'once in a blue moon', it happens ________.", options:["very rarely","very often","very quickly","very loudly"], answer:0, explanation:"The idiom 'once in a blue moon' means something happens very rarely or hardly ever. Answer: A.", diff:2 },
+        { id:"en78", topic:"Subject-verb agreement", stem:"Choose the correct verb: 'Each of the students ________ a library book to read.'", options:["has","have","are having","were having"], answer:0, explanation:"'Each' is always singular, so it takes a singular verb: 'has'. Do not be misled by the plural 'students' after 'of'. Answer: A.", diff:3 }
       ],
       notes: [
         { title:"Section A — Composition (20 marks)", body:"2026: Choose ONE — (1) a picture-based story set at a cinema, using all the words: cinema, tickets, queue, broke into, pretended, annoyed, crowd, apologised, fault, embarrassed; or (2) a mind-map composition about your primary school (100–120 words). Plan: title → beginning (setting) → problem → climax → resolution/feeling." }
@@ -306,7 +321,12 @@ window.QUESTION_BANK = {
         { id:"ma77", topic:"分数应用", stem:"一本书共 200 页。小明第一天读了全书的 2/5，第二天读了全书的 1/4。两天一共读了多少页？", type:"fill", answer:["130"], explanation:"第一天：200 × 2/5 = 80 页；第二天：200 × 1/4 = 50 页；两天合计 80 + 50 = 130 页。", diff:3 },
         { id:"ma78", topic:"比例分配", stem:"把 60 颗糖果按 2 : 3 分给哥哥和弟弟，分得较多的人得到几颗？", type:"fill", answer:["36"], explanation:"总份数 = 2 + 3 = 5；每份 = 60 ÷ 5 = 12 颗；分得较多的是 3 份 = 3 × 12 = 36 颗。", diff:2 },
         { id:"ma79", topic:"平均数·逆推", stem:"三个数的平均数是 18，其中两个数分别是 15 和 20。第三个数是多少？", type:"fill", answer:["19"], explanation:"三个数的总和 = 平均数 × 个数 = 18 × 3 = 54；第三个数 = 54 − 15 − 20 = 19。", diff:2 },
-        { id:"ma80", topic:"单利", stem:"小华把 RM500 存入银行，年利率为 4%（单利）。存满 3 年后，可得利息多少令吉（RM）？", type:"fill", answer:["60","60.00"], explanation:"单利 = 本金 × 年利率 × 年数 = 500 × 4% × 3 = 20 × 3 = RM60。", diff:2 }
+        { id:"ma80", topic:"单利", stem:"小华把 RM500 存入银行，年利率为 4%（单利）。存满 3 年后，可得利息多少令吉（RM）？", type:"fill", answer:["60","60.00"], explanation:"单利 = 本金 × 年利率 × 年数 = 500 × 4% × 3 = 20 × 3 = RM60。", diff:2 },
+        { id:"ma81", topic:"行程问题", stem:"一辆汽车以每小时 60 公里的速度行驶，行驶 2.5 小时一共可行驶多少公里？", type:"fill", answer:["150"], explanation:"路程 = 速度 × 时间 = 60 × 2.5 = 150 公里。", diff:2 },
+        { id:"ma82", topic:"百分比·逆推", stem:"一件衣服打八折（即按原价的 80%）出售，售价是 RM48。这件衣服的原价是多少令吉（RM）？", type:"fill", answer:["60"], explanation:"打八折表示售价是原价的 80%。原价 = 售价 ÷ 80% = 48 ÷ 0.8 = RM60。验证：60 × 0.8 = 48，正确。", diff:3 },
+        { id:"ma83", topic:"最大公因数", stem:"24 和 36 的最大公因数（HCF）是多少？", type:"fill", answer:["12"], explanation:"24 的因数：1、2、3、4、6、8、12、24；36 的因数：1、2、3、4、6、9、12、18、36。两者共同的最大因数是 12。", diff:2 },
+        { id:"ma84", topic:"几何·周长", stem:"一个长方形的长是 8 厘米，宽是 5 厘米。它的周长是多少厘米？", type:"fill", answer:["26"], explanation:"长方形周长 = （长 + 宽）× 2 = (8 + 5) × 2 = 13 × 2 = 26 厘米。", diff:2 },
+        { id:"ma85", topic:"利润率", stem:"一件商品的成本是 RM80，售价是 RM100。它的利润率是百分之几？", type:"fill", answer:["25","25%"], explanation:"利润 = 售价 − 成本 = 100 − 80 = RM20；利润率 = 利润 ÷ 成本 × 100% = 20 ÷ 80 × 100% = 25%。", diff:3 }
       ],
       notes: [
         { title:"作答须知", body:"2026 数学卷共 30 题：甲组 20 题（每题 3.5 分），乙组 10 题（每题 3 分），全部填空作答。常考点：四则混合运算、分数小数互化、百分比与盈亏、比例分配、平均数、单利、行程问题，以及抽屉原理、找规律、计数等逻辑题。本题库收录可清晰还原的题目并附完整解题步骤。" },
